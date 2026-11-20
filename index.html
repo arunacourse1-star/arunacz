@@ -1,97 +1,1703 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
-  <!-- Anda bisa mengubah teks di dalam <title> sesuai nama aplikasi Anda -->
-  <title>Aplikasi Web Digital</title>
-  <meta name="description" content="Portal Aplikasi Web">
-  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/5968/5968853.png">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ARUNA LMS - Deep Blue Glassy Radial Edition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 300: '#FDBA74', 400: '#FB923C', 500: '#F97316', 600: '#EA580C', 700: '#C2410C', 800: '#9A3412', 900: '#7C2D12' },
+            gold: { 400: '#FACC15', 500: '#D4AF37', 600: '#B48A1E' },
+            navy: { 700: '#1E293B', 800: '#0F172A', 850: '#0B132B', 900: '#060D1E', 950: '#030712' }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    .touch-target { min-height: 40px; min-width: 40px; }
+    
+    /* LIGHT MODE BACKGROUND */
+    body {
+      background-color: #F8FAFC;
+      background-image:
+        radial-gradient(circle at 14% 12%, rgba(59, 130, 246, 0.08), transparent 38%),
+        radial-gradient(circle at 86% 20%, rgba(249, 115, 22, 0.07), transparent 36%),
+        radial-gradient(circle at 75% 88%, rgba(14, 165, 233, 0.06), transparent 42%);
+      background-attachment: fixed;
+      color: #0F172A;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      height: 100dvh;
+    /* DEEP COSMIC BLUE DARK MODE BACKGROUND */
+    .dark body {
+      background-color: #050B17;
+      background-image:
+        radial-gradient(circle at 16% 14%, rgba(37, 99, 235, 0.22), transparent 45%),
+        radial-gradient(circle at 85% 18%, rgba(14, 165, 233, 0.16), transparent 42%),
+        radial-gradient(circle at 55% 88%, rgba(30, 64, 175, 0.18), transparent 48%),
+        radial-gradient(circle at 35% 50%, rgba(249, 115, 22, 0.08), transparent 45%);
+      background-attachment: fixed;
+      color: #F1F5F9;
+    }
+
+    @keyframes executiveWave {
+      0%, 100% { background-position: 0% 50%; transform: translateY(0px); }
+      50% { background-position: 100% 50%; transform: translateY(-1.5px); }
+    }
+    .animated-welcome {
+      background: linear-gradient(90deg, #EA580C, #F97316, #2563EB, #0284C7, #EA580C);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: executiveWave 6s ease-in-out infinite;
+      display: inline-block;
+    }
+    .dark .animated-welcome {
+      background: linear-gradient(90deg, #60A5FA, #38BDF8, #FDBA74, #93C5FD, #60A5FA);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .royal-logo-box {
+      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #F97316 100%);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.40);
+    }
+    
+    .glass-surface {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-color: rgba(59, 130, 246, 0.15);
+    }
+    .dark .glass-surface {
+      background: rgba(8, 16, 33, 0.82);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      border-color: rgba(59, 130, 246, 0.22);
+    }
+
+    .premium-card {
+      position: relative;
       overflow: hidden;
-      background-color: #f8fafc;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.85) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 24px -6px rgba(15, 23, 42, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+      transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
-
-    /* Layar Loading sebelum aplikasi Google Apps Script selesai dimuat */
-    #loader {
-      position: fixed;
+    .premium-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(59, 130, 246, 0.45);
+      box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
+    }
+    .dark .premium-card {
+      background: linear-gradient(145deg, rgba(11, 23, 46, 0.82) 0%, rgba(6, 13, 27, 0.92) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(59, 130, 246, 0.22);
+      box-shadow: 0 12px 28px -6px rgba(2, 6, 23, 0.70), inset 0 1px 0 0 rgba(96, 165, 250, 0.16);
+    }
+    .dark .premium-card:hover {
+      border-color: rgba(96, 165, 250, 0.55);
+      box-shadow: 0 18px 36px -8px rgba(37, 99, 235, 0.30), inset 0 1px 0 0 rgba(147, 197, 253, 0.28);
+    }
+    .premium-card::before {
+      content: "";
+      position: absolute;
       inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #ffffff;
+      background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(59, 130, 246, 0.14), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .premium-card:hover::before { opacity: 1; }
+    .premium-card > * { position: relative; z-index: 2; }
+
+    .btn-cta-primary {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #F97316 100%);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px -3px rgba(37, 99, 235, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-cta-primary:hover {
+      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #EA580C 100%);
+      box-shadow: 0 10px 24px -3px rgba(37, 99, 235, 0.60);
+      transform: translateY(-1.5px) scale(1.01);
+    }
+    .btn-cta-primary:active { transform: scale(0.98); }
+
+    @keyframes tabFadeSlideUp {
+      0% { opacity: 0; transform: translateY(10px) scale(0.99); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .page-animate-enter { animation: tabFadeSlideUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .stagger-card {
+      opacity: 0;
+      animation: tabFadeSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: calc(var(--stagger, 0) * 50ms);
+    }
+
+    @keyframes floatAmbientOrb {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      33% { transform: translate3d(24px, -20px, 0) scale(1.06); }
+      66% { transform: translate3d(-18px, 16px, 0) scale(0.96); }
+    }
+    .ambient-orb-1 { animation: floatAmbientOrb 14s ease-in-out infinite; }
+    .ambient-orb-2 { animation: floatAmbientOrb 18s ease-in-out infinite reverse; }
+
+    @keyframes modalSpringPop {
+      0% { opacity: 0; transform: scale(0.94) translateY(14px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-spring-card { animation: modalSpringPop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+    @keyframes epPulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.45); }
+      50% { box-shadow: 0 0 12px 2.5px rgba(59, 130, 246, 0.30); }
+    }
+    .ep-active-glow { animation: epPulseGlow 2.4s infinite ease-in-out; }
+    .ep-btn-bounce { transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .ep-btn-bounce:hover { transform: translateY(-1.5px) scale(1.05); }
+
+    .glow-progress-track {
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(59, 130, 246, 0.16);
+      overflow: hidden;
+    }
+    .glow-progress-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: linear-gradient(90deg, #3B82F6, #0EA5E9, #F97316);
+      background-size: 200% 100%;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.65);
+      transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .donut-ring-circle {
+      transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    #top-transition-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
       z-index: 9999;
-      transition: opacity 0.4s ease;
+      background: linear-gradient(90deg, #2563EB, #0EA5E9, #F97316);
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.85);
+      opacity: 0;
+      pointer-events: none;
     }
-
-    .spinner {
-      width: 44px;
-      height: 44px;
-      border: 4px solid #e2e8f0;
-      border-top: 4px solid #2563eb;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 14px;
+    .video-player-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 0.875rem;
+      background: #040813;
     }
-
-    .loading-text {
-      color: #475569;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    iframe {
+    .video-player-wrapper iframe,
+    .video-player-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      display: block;
+      border: 0;
+    }
+
+    /* ====== ORBITAL SOLAR SYSTEM RADIAL MENU ANIMATIONS ====== */
+    @keyframes solarOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes solarCounterOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    .orbit-stage-track {
+      animation: solarOrbit 26s linear infinite;
+    }
+    .orbit-stage-track:hover {
+      animation-play-state: paused;
+    }
+    .planet-carrier {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      transform: rotate(calc(var(--angle) * 1deg)) translate(130px) rotate(calc(var(--angle) * -1deg));
+    }
+    @media (min-width: 640px) {
+      .planet-carrier {
+        transform: rotate(calc(var(--angle) * 1deg)) translate(160px) rotate(calc(var(--angle) * -1deg));
+      }
+    }
+    .planet-item {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      animation: solarCounterOrbit 26s linear infinite;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .orbit-stage-track:hover .planet-item {
+      animation-play-state: paused;
+    }
+    .planet-item:hover {
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow: 0 0 22px rgba(59, 130, 246, 0.8), inset 0 0 12px rgba(147, 197, 253, 0.4);
+      border-color: #60A5FA;
+    }
+    .planet-active-glow {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.75);
+      border-color: #3B82F6 !important;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.32) 0%, rgba(14, 165, 233, 0.20) 100%) !important;
     }
   </style>
 </head>
-<body>
-
-  <!-- Animasi Loading -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <div class="loading-text">Memuat aplikasi...</div>
+<body class="font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+  <div id="top-transition-bar"></div>
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="ambient-orb-1 absolute -top-24 -left-24 w-80 h-80 rounded-full bg-blue-500/10 dark:bg-blue-600/20 blur-3xl"></div>
+    <div class="ambient-orb-2 absolute bottom-0 right-0 w-96 h-96 rounded-full bg-cyan-500/10 dark:bg-cyan-600/15 blur-3xl"></div>
   </div>
 
-  <!-- URL Google Apps Script Anda sudah terpasang di bawah ini -->
-  <iframe 
-    id="gas-frame"
-    src="https://script.google.com/macros/s/AKfycbzc-QIyJ9uk5xGkotgI4UOH3LwA3t9q8pVmOGndOB4XeLLIRq9wrHntRGFaeVYR-S0WLw/exec" 
-    allow="geolocation; microphone; camera; clipboard-read; clipboard-write; fullscreen"
-    onload="hideLoader()">
-  </iframe>
+  <!-- VIEW 1: LOGIN & REGISTER -->
+  <div id="auth-view" class="fixed inset-0 z-50 flex items-center justify-center p-4 glass-surface">
+    <div class="w-full max-w-md premium-card rounded-2xl p-6 sm:p-7 space-y-5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-11 h-11 rounded-xl royal-logo-box flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
+              <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-black text-lg tracking-tight text-slate-900 dark:text-white block leading-none">ARUNA</span>
+            <span class="text-[10px] font-extrabold tracking-widest text-blue-600 dark:text-blue-400 uppercase">ROYAL HUB LMS</span>
+          </div>
+        </div>
+        <button type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script" class="text-xs text-slate-400 hover:text-blue-400 p-1.5 rounded-lg border border-slate-700/50 hover:border-blue-500/40 transition">
+          ⚙️ GAS API
+        </button>
+      </div>
+
+      <div>
+        <h2 id="auth-heading" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Selamat Datang di ARUNA LMS</h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Masuk dengan akun Google Sheets Anda untuk mengakses kurikulum & progres modul.</p>
+      </div>
+
+      <div class="space-y-3.5">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Email / Username / Nama</label>
+          <input id="login-email" type="text" value="robin@gmail.com" placeholder="Ketik robin@gmail.com atau nama Anda"
+            class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Password</label>
+          <input id="login-pass" type="password" value="admin123" placeholder="Masukkan password"
+            class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+        </div>
+        <p id="auth-msg" class="text-xs font-semibold text-blue-600 dark:text-blue-400 min-h-[18px] text-center"></p>
+        <button id="auth-submit-btn" onclick="handleLogin()"
+          class="touch-target w-full btn-cta-primary font-black py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center">
+          <span>Masuk ke Sistem</span>
+        </button>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+        <button id="toggle-auth-btn" onclick="toggleRegisterMode()" class="hover:text-blue-500 font-bold">
+          Belum punya akun? <span class="underline text-blue-600 dark:text-blue-400">Daftar Mandiri</span>
+        </button>
+        <span class="font-mono text-[11px]">Deep Blue v4.2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KONFIGURASI URL GAS (UNTUK PENGGUNA VERCEL / EKSTERNAL) -->
+  <div id="gas-config-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="w-full max-w-lg premium-card modal-spring-card rounded-2xl p-5 sm:p-6 space-y-4">
+      <div class="flex items-center justify-between pb-2 border-b border-blue-500/20">
+        <h3 class="text-base font-black text-slate-900 dark:text-white">⚙️ Hubungkan Vercel ke Google Sheets</h3>
+        <button onclick="closeGasConfigModal()" class="text-slate-400 hover:text-white font-bold text-sm px-2">✕</button>
+      </div>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Jika Web App dibuka dari domain eksternal seperti <strong>arunacz.vercel.app</strong>, masukkan URL Web App Google Apps Script (Deploy > Web app) agar login dapat terhubung langsung ke Google Sheets.
+      </p>
+      <div class="space-y-2">
+        <label class="block text-[11px] font-bold uppercase text-slate-300">URL Web App Google Apps Script</label>
+        <input id="cfg-gas-url" type="url" placeholder="https://script.google.com/macros/s/.../exec"
+          class="w-full px-3 py-2 rounded-lg border border-blue-500/30 bg-slate-900 text-xs text-white outline-none">
+        <p class="text-[10px] text-blue-400">💡 Dapatkan dari: Apps Script Editor > Deploy > Manage deployments > Web app URL.</p>
+      </div>
+      <div class="flex items-center justify-between pt-2 border-t border-blue-500/20">
+        <button onclick="enterInstantDemoMode()" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-bold">
+          ✨ Mode Demo Instan
+        </button>
+        <div class="flex gap-2">
+          <button onclick="closeGasConfigModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-400 font-bold">Tutup</button>
+          <button onclick="saveGasUrlConfig()" class="px-4 py-1.5 btn-cta-primary rounded-lg text-xs font-black">💾 Simpan URL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: SILABUS KURIKULUM -->
+  <div id="syllabus-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET COURSES & MODULES</span>
+          <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Silabus Kurikulum ARUNA LMS</h3>
+        </div>
+        <button onclick="closeSyllabus()" class="touch-target p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+      </div>
+      <div id="syllabus-dynamic-list" class="overflow-y-auto my-3 space-y-2.5 pr-1"></div>
+      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex justify-end">
+        <button onclick="closeSyllabus()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">Tutup Silabus</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: DETAIL MODUL, VIDEO PLAYER (EP 1-10) & FORM EDIT MATERI -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="w-full max-w-3xl premium-card modal-spring-card rounded-2xl p-4 sm:p-6 max-h-[92vh] flex flex-col">
+      <div class="flex items-start justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-500/20">
+        <div>
+          <div class="flex flex-wrap items-center gap-1.5">
+            <span id="modal-mod-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500 dark:text-blue-400">MODUL</span>
+            <span id="modal-ep-badge" class="text-[10px] font-black px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-300 border border-blue-500/30">EP 1</span>
+          </div>
+          <h3 id="modal-mod-title" class="text-base sm:text-lg font-black text-slate-900 dark:text-white mt-0.5">Judul Episode</h3>
+        </div>
+        <button onclick="closeModuleModal()" class="touch-target px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+      </div>
+
+      <div class="overflow-y-auto my-3 space-y-3 pr-1 text-xs sm:text-sm">
+        <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/75 border border-slate-200 dark:border-blue-500/20 space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">Pilih Modul:</span>
+              <select id="modal-course-selector" onchange="onModalCourseChange(this.value)"
+                class="px-2.5 py-1 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-800 text-xs font-bold text-slate-900 dark:text-white outline-none"></select>
+            </div>
+            <span id="modal-mod-type" class="text-xs font-bold text-blue-600 dark:text-blue-400">Video & Materi</span>
+          </div>
+          <div id="modal-episodes-bar" class="grid grid-cols-5 sm:grid-cols-10 gap-1 pt-1"></div>
+        </div>
+
+        <div id="modal-video-section" class="space-y-1.5">
+          <div id="modal-video-player-box" class="video-player-wrapper shadow-lg border border-blue-500/30 hidden">
+            <iframe id="modal-video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            <video id="modal-video-html5" controls class="hidden"></video>
+          </div>
+          <div id="modal-video-empty-state" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-dashed border-slate-300 dark:border-blue-500/30 text-center space-y-1">
+            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">🎬 Belum Ada Link Video pada Episode Ini</p>
+            <p id="modal-empty-video-desc" class="text-[11px] text-slate-500 dark:text-slate-400">Video pembelajaran untuk episode ini sedang disiapkan oleh Admin/Instruktur.</p>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+            <span id="modal-video-source-badge" class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Sumber Video: Otomatis</span>
+            <a id="modal-mod-link" href="#" target="_blank" class="text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline">Buka Link Video di Tab Baru ↗</a>
+          </div>
+        </div>
+
+        <div class="p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-slate-200 dark:border-blue-500/20 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <h4 class="text-[11px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">📖 Materi Pembelajaran Episode Ini</h4>
+            <span class="text-[10px] text-slate-500 font-mono">Sheet: Modules</span>
+          </div>
+          <div id="modal-material-content-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed whitespace-pre-line"></div>
+        </div>
+
+        <details id="modal-admin-video-form" class="hidden group rounded-xl bg-blue-500/5 dark:bg-blue-600/10 border border-blue-500/25 p-3.5">
+          <summary class="cursor-pointer list-none flex items-center justify-between text-xs font-black text-blue-600 dark:text-blue-300">
+            <span>⚙️ Input / Ubah Link Video Google Drive, YouTube & Isi Materi (Khusus Admin)</span>
+            <span class="text-[11px] font-bold underline">Buka Form ▾</span>
+          </summary>
+          <div class="mt-3 pt-2.5 border-t border-blue-500/20 space-y-2.5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <div class="sm:col-span-2">
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Judul Episode</label>
+                <input id="input-ep-title" type="text" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Durasi (Menit)</label>
+                <input id="input-ep-duration" type="number" min="1" value="15" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+              </div>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video (Google Drive / YouTube / MP4)</label>
+              <input id="input-ep-video-url" type="url" oninput="previewEpisodeVideoInput()" placeholder="https://drive.google.com/file/d/.../view atau https://www.youtube.com/watch?v=..."
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+              <p id="input-ep-convert-hint" class="text-[10px] text-blue-600 dark:text-blue-300 mt-1 font-medium">💡 Otomatis mengonversi link Google Drive & YouTube menjadi video player.</p>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Isi Materi Pembelajaran / Catatan Episode</label>
+              <textarea id="input-ep-material-text" rows="3" placeholder="Tuliskan ringkasan materi, langkah praktik, atau instruksi tugas..."
+                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
+            </div>
+            <div class="flex justify-end">
+              <button id="btn-save-ep-content" onclick="saveCurrentEpisodeContent()" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-lg text-xs">
+                💾 Simpan Video & Materi ke Spreadsheet
+              </button>
+            </div>
+          </div>
+        </details>
+
+        <div id="modal-quiz-box" class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25 space-y-2">
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-300">EVALUASI KUIS (SHEET QUIZZES)</span>
+          <p id="modal-quiz-question" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Pertanyaan Kuis</p>
+          <div id="modal-quiz-options" class="space-y-1.5"></div>
+        </div>
+        <p id="modal-status-msg" class="text-xs font-bold text-center text-blue-500 min-h-[16px]"></p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex flex-col sm:flex-row gap-2 justify-end">
+        <button onclick="closeModuleModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Tutup</button>
+        <button id="btn-submit-module" onclick="submitActiveModule()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">
+          ✓ Selesaikan Episode & Klaim +150 XP
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TAMBAH / EDIT PROJECT ARUNA -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="w-full max-w-lg premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[90vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET PROJECTARUNA</span>
+          <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Kelola Karya & Project Aruna</h3>
+        </div>
+        <button onclick="closeProjectModal()" class="touch-target px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+      </div>
+      <div class="overflow-y-auto my-3 space-y-2.5 pr-1 text-xs">
+        <input id="proj-input-id" type="hidden" value="">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Nama Project</label>
+            <input id="proj-input-title" type="text" placeholder="Contoh: Sistem Kasir GAS" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Kategori Project</label>
+            <input id="proj-input-cat" type="text" value="Web App GAS" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Deskripsi & Fitur Project</label>
+          <textarea id="proj-input-desc" rows="3" placeholder="Jelaskan fitur utama project..." class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video Demo (Google Drive / YouTube)</label>
+          <input id="proj-input-video" type="url" oninput="previewProjectModalVideo()" placeholder="https://drive.google.com/file/d/.../view" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+        </div>
+        <div id="project-modal-video-box" class="video-player-wrapper hidden border border-blue-500/30">
+          <iframe id="project-modal-iframe" src="" allowfullscreen></iframe>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Aplikasi / Source Code</label>
+            <input id="proj-input-res" type="url" placeholder="https://script.google.com/..." class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Status Project</label>
+            <select id="proj-input-status" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+              <option value="Production">Production</option>
+              <option value="Ready Template">Ready Template</option>
+              <option value="In Development">In Development</option>
+            </select>
+          </div>
+        </div>
+        <p id="proj-modal-msg" class="text-xs font-bold text-center text-blue-500 min-h-[16px]"></p>
+      </div>
+      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex justify-end gap-2">
+        <button onclick="closeProjectModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Batal</button>
+        <button id="btn-save-project" onclick="saveProjectArunaForm()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">💾 Simpan Project</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: PRATINJAU SERTIFIKAT DIGITAL ARUNA ROYAL HUB -->
+  <div id="certificate-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+    <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 border-2 border-blue-400/40 text-center space-y-4">
+      <div class="flex justify-between items-center border-b border-blue-500/20 pb-2.5">
+        <span class="text-[11px] font-black tracking-widest uppercase text-blue-400">🏆 SERTIFIKAT KOMPETENSI DIGITAL • ARUNA ROYAL HUB</span>
+        <button onclick="closeCertificateModal()" class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-400 font-bold text-xs">✕</button>
+      </div>
+      <div class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-blue-600/10 via-cyan-500/5 to-slate-900/60 border border-blue-400/30 space-y-2.5">
+        <div class="w-12 h-12 mx-auto rounded-xl royal-logo-box flex items-center justify-center font-black text-xl text-white">A</div>
+        <p class="text-[11px] font-extrabold uppercase tracking-widest text-slate-400">Diberikan Kepada:</p>
+        <h3 id="cert-modal-name" class="text-xl sm:text-2xl font-black animated-welcome">Nama Peserta</h3>
+        <p class="text-xs text-slate-400">Telah menyelesaikan evaluasi modul pembelajaran dengan predikat Sangat Memuaskan:</p>
+        <p id="cert-modal-module" class="text-sm sm:text-base font-black text-blue-400">MODUL — Judul Episode</p>
+        <div class="pt-2 flex flex-wrap justify-center gap-2.5 text-xs font-bold">
+          <span id="cert-modal-score" class="px-3 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/30">Skor: 100 / 100</span>
+          <span id="cert-modal-code" class="px-3 py-1 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 font-mono">CERT-2026-001</span>
+          <span id="cert-modal-date" class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300">Tanggal</span>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2.5">
+        <button onclick="closeCertificateModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Tutup</button>
+        <button onclick="window.print()" class="touch-target px-5 py-2 btn-cta-primary rounded-xl text-xs font-black">🖨️ Cetak / Simpan PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== RADIAL ORBITAL SOLAR SYSTEM OVERLAY ====== -->
+  <div id="radial-orbit-overlay" onclick="onOrbitBackdropClick(event)" class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-md bg-slate-950/85 p-4 transition-all duration-300">
+    <div class="relative flex items-center justify-center w-full max-w-lg h-[460px] sm:h-[500px]">
+      
+      <!-- Outer ambient glow & orbital tracks -->
+      <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full border border-blue-500/15 pointer-events-none"></div>
+      
+      <!-- Rotating Orbital Ring Track with 6 Planets -->
+      <div id="solar-orbit-track" class="orbit-stage-track relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full border border-dashed border-blue-500/35 shadow-2xl flex items-center justify-center">
+        
+        <!-- Planet 1: Home (Angle 270 / Top) -->
+        <div class="planet-carrier" style="--angle: 270;">
+          <button type="button" onclick="switchTabAndCloseOrbit('home')" id="planet-btn-home" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🏠</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Home</span>
+          </button>
+        </div>
+
+        <!-- Planet 2: Dashboard (Angle 330 / Top-Right) -->
+        <div class="planet-carrier" style="--angle: 330;">
+          <button type="button" onclick="switchTabAndCloseOrbit('dashboard')" id="planet-btn-dashboard" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">📊</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Dashboard</span>
+          </button>
+        </div>
+
+        <!-- Planet 3: Modul (Angle 30 / Bottom-Right) -->
+        <div class="planet-carrier" style="--angle: 30;">
+          <button type="button" onclick="switchTabAndCloseOrbit('modul')" id="planet-btn-modul" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">📖</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Modul</span>
+          </button>
+        </div>
+
+        <!-- Planet 4: Project Aruna (Angle 90 / Bottom) -->
+        <div class="planet-carrier" style="--angle: 90;">
+          <button type="button" onclick="switchTabAndCloseOrbit('project')" id="planet-btn-project" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🚀</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Project</span>
+          </button>
+        </div>
+
+        <!-- Planet 5: ArunaLink (Angle 150 / Bottom-Left) -->
+        <div class="planet-carrier" style="--angle: 150;">
+          <button type="button" onclick="switchTabAndCloseOrbit('arunalink')" id="planet-btn-arunalink" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🔗</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">ArunaLink</span>
+          </button>
+        </div>
+
+        <!-- Planet 6: WhatsApp (Angle 210 / Top-Left) -->
+        <div class="planet-carrier" style="--angle: 210;">
+          <a href="https://wa.me/6285723476832" target="_blank" rel="noopener noreferrer" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+            <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">💬</span>
+            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Center Sun / ARUNA Core Button -->
+      <div class="absolute z-20 flex flex-col items-center justify-center">
+        <button type="button" onclick="toggleRadialOrbit(false)" title="Tutup Menu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full royal-logo-box flex flex-col items-center justify-center shadow-2xl border-2 sm:border-3 border-blue-400/80 hover:scale-105 active:scale-95 transition cursor-pointer group">
+          <svg class="w-8 h-8 group-hover:rotate-90 transition-transform duration-500" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
+            <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+          </svg>
+          <span class="text-[8px] sm:text-[9px] font-black tracking-widest text-white uppercase mt-0.5">TUTUP ✕</span>
+        </button>
+      </div>
+
+      <div class="absolute -bottom-9 sm:-bottom-11 text-center pointer-events-none">
+        <p class="text-[10px] sm:text-xs font-bold text-blue-300 bg-slate-900/90 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-lg">
+          🪐 Hover planet untuk pause • Klik planet untuk berpindah menu
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====== 1 TOMBOL AWAL MELAYANG (FLOATING RADIAL ORB TRIGGER) ====== -->
+  <div id="radial-floating-trigger" class="fixed bottom-5 left-5 z-40 flex items-center gap-2.5">
+    <button type="button" onclick="toggleRadialOrbit(true)" title="Buka Menu"
+      class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full royal-logo-box flex items-center justify-center shadow-xl border-2 border-blue-400/60 hover:scale-110 active:scale-95 transition cursor-pointer group ep-active-glow">
+      <div class="absolute inset-0 rounded-full bg-blue-500/25 animate-ping pointer-events-none"></div>
+      <svg class="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
+        <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+      </svg>
+    </button>
+    <div onclick="toggleRadialOrbit(true)" class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-blue-500/35 text-xs font-black text-blue-400 shadow-xl cursor-pointer hover:border-blue-400 transition">
+      <span>🪐</span><span>Menu</span>
+    </div>
+  </div>
+
+  <!-- VIEW 2: MAIN APPLICATION (100% PROPORTIONAL MODERN LAYOUT) -->
+  <div id="main-app" class="flex-1 flex flex-col min-h-screen hidden relative z-10">
+    
+    <!-- TOP HEADER BAR (COMPACT & BALANCED) -->
+    <header class="h-16 glass-surface border-b px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
+      <div class="flex items-center space-x-3">
+        <!-- TOMBOL MENU: HANYA TULISAN "MENU" -->
+        <button type="button" onclick="toggleRadialOrbit(true)" class="touch-target px-3 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/35 text-blue-500 dark:text-blue-400 font-black text-xs sm:text-sm flex items-center space-x-1.5 hover:bg-blue-600 hover:text-white transition shadow-sm">
+          <span>🪐</span><span class="font-black">Menu</span>
+        </button>
+        <div class="hidden sm:flex items-center space-x-2 pl-2 border-l border-blue-500/20">
+          <div class="w-7 h-7 rounded-lg royal-logo-box flex items-center justify-center font-black text-xs text-white">A</div>
+          <span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide">ARUNA ROYAL HUB</span>
+        </div>
+        <h2 id="current-page-title" class="text-sm sm:text-base font-black text-blue-500 ml-1">Home Hub</h2>
+      </div>
+
+      <div class="flex items-center space-x-2.5">
+        <div class="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25">
+          <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+          <span id="realtime-clock" class="font-mono text-[11px] font-bold text-blue-600 dark:text-blue-300">--:--:-- WIB</span>
+        </div>
+        <button onclick="toggleDarkMode()" class="touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25 text-xs font-bold text-slate-800 dark:text-slate-200">
+          <span id="theme-icon">🌙</span><span id="theme-label" class="hidden sm:inline">Mode Malam</span>
+        </button>
+
+        <!-- User Profile Pill in Header -->
+        <div class="flex items-center space-x-2 pl-2 border-l border-blue-500/20">
+          <div id="header-user-initial" class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-black text-xs">AR</div>
+          <div class="hidden lg:block text-left">
+            <p id="header-username" class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Memuat...</p>
+            <p id="header-role" class="text-[10px] text-blue-400 font-semibold">Active</p>
+          </div>
+          <button onclick="location.reload()" title="Keluar Akun" class="p-1.5 text-slate-400 hover:text-blue-500 font-bold text-sm">↪</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN DASHBOARD & TABS CONTENT (COMPACT PROPORTIONAL VIEWPORT) -->
+    <main class="flex-1 p-3 sm:p-6 max-w-7xl w-full mx-auto space-y-5 pb-20">
+      
+      <!-- TAB HOME -->
+      <div id="tab-home" class="tab-content page-animate-enter space-y-5">
+        <div class="rounded-2xl sm:rounded-3xl p-5 sm:p-7 premium-card">
+          <div class="inline-flex items-center space-x-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full border border-blue-500/30">
+            <span>⚡ ARUNA ROYAL HUB • TERHUBUNG KE SPREADSHEET</span>
+          </div>
+          <h1 id="welcome-banner-text" class="text-xl sm:text-2xl lg:text-3xl font-black animated-welcome leading-snug mt-3">Selamat Datang di ARUNA LMS!</h1>
+          <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
+            Seluruh progres modul pembelajaran (EP 1 – EP 10), evaluasi kuis, poin XP, Project Aruna, hingga koleksi ArunaLink tersinkronisasi otomatis dengan database Google Sheets Anda.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2.5">
+            <button onclick="switchTab('modul')" class="touch-target btn-cta-primary font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm">🚀 Mulai Belajar Gratis</button>
+            <button onclick="openSyllabus()" class="touch-target bg-blue-500/10 dark:bg-slate-800/80 border border-blue-500/30 text-slate-800 dark:text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm hover:border-blue-500 transition">📋 Lihat Silabus</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div onclick="switchTab('modul')" style="--stagger:0" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Modul & Materi Aktif (Sheet Modules)</h3>
+            <p id="home-stat-modules" class="text-2xl font-black text-blue-500 mt-1.5">0 / 0 Selesai</p>
+            <div class="glow-progress-track mt-2.5"><div id="home-progress-fill" class="glow-progress-fill" style="width:0%"></div></div>
+            <p class="text-[11px] text-slate-500 mt-2">Klik untuk melanjutkan modul pembelajaran.</p>
+          </div>
+          <div onclick="switchTab('dashboard')" style="--stagger:1" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Status Sertifikasi (Sheet Enrollments)</h3>
+            <p id="home-stat-cert" class="text-2xl font-black text-amber-400 mt-1.5">In Progress</p>
+            <p class="text-[11px] text-slate-500 mt-2">Lihat riwayat sertifikat & nilai di Dashboard.</p>
+          </div>
+          <div onclick="switchTab('arunalink')" style="--stagger:2" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">ArunaLink Resources (Sheet ArunaLinks)</h3>
+            <p id="home-stat-links" class="text-2xl font-black text-cyan-400 mt-1.5">0 Tautan</p>
+            <p class="text-[11px] text-slate-500 mt-2">Akses cepat template & asisten AI kerja.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB DASHBOARD ANALITIK -->
+      <div id="tab-dashboard" class="tab-content space-y-5 hidden">
+        <!-- 1. Banner Profil Gamifikasi, Pangkat & Target Level XP -->
+        <div class="premium-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div class="flex items-start sm:items-center gap-3.5">
+              <div id="dash-user-initial" class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl royal-logo-box flex items-center justify-center text-white font-black text-xl flex-shrink-0">AR</div>
+              <div>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span id="dash-rank-badge" class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40">🌱 Rookie Learner • Lv. 1</span>
+                  <span id="dash-role-pill" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-400">Member</span>
+                </div>
+                <h2 id="dash-user-name" class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-1">Statistik & Capaian Kompetensi</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Pantau level XP, progres episode per modul, dan sertifikat kelulusan Anda secara realtime.</p>
+              </div>
+            </div>
+            <div class="w-full lg:w-72 p-3.5 rounded-xl bg-blue-500/10 dark:bg-slate-900/70 border border-blue-500/25 space-y-1.5">
+              <div class="flex justify-between items-center text-xs font-extrabold">
+                <span id="dash-xp-level-text" class="text-blue-400">Progress Level XP</span>
+                <span id="dash-xp-next-text" class="text-amber-400 font-mono">0 / 300 XP</span>
+              </div>
+              <div class="glow-progress-track"><div id="dash-xp-progress-fill" class="glow-progress-fill" style="width:5%"></div></div>
+              <div class="pt-1 flex justify-between items-center">
+                <span id="dash-next-ep-label" class="text-[10px] text-slate-400 truncate max-w-[155px]">Siap mulai belajar</span>
+                <button onclick="resumeNextEpisode()" class="px-2.5 py-1 btn-cta-primary rounded-lg text-[10px] font-black">🚀 Lanjut Episode ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Panel Ringkasan Eksekutif Admin (Khusus Admin) -->
+        <div id="dash-admin-overview" class="hidden premium-card p-4 sm:p-5 rounded-2xl border border-amber-500/35">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">👑 PANEL KONTROL EKSEKUTIF ADMIN</span>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white mt-1.5">Ringkasan Konten Spreadsheet ARUNACOURSE</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="openQuickInputVideoModal()" class="touch-target px-3.5 py-1.5 btn-cta-primary rounded-lg text-xs font-black">🎬 + Input Video (EP 1-10)</button>
+              <button onclick="switchTab('project'); openProjectModal('')" class="touch-target px-3.5 py-1.5 rounded-lg bg-blue-500/15 text-blue-400 border border-blue-500/35 text-xs font-black hover:bg-blue-600 hover:text-white transition">🚀 + Tambah Project</button>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Episode Ber-Video Aktif</span><p id="dash-admin-videos" class="text-lg font-black text-blue-400 mt-0.5">0 Video</p></div>
+              <span class="text-xl">🎬</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Karya Project Aruna</span><p id="dash-admin-projects" class="text-lg font-black text-amber-400 mt-0.5">0 Project</p></div>
+              <span class="text-xl">🚀</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Koleksi ArunaLink</span><p id="dash-admin-links" class="text-lg font-black text-cyan-400 mt-0.5">0 Tautan</p></div>
+              <span class="text-xl">🔗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Empat Kartu KPI Eksekutif (COMPACT) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+          <div style="--stagger:0" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold uppercase text-slate-400">Total Durasi Belajar</span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⏱️</span>
+            </div>
+            <p id="dash-stat-hours" class="text-xl sm:text-2xl font-black text-blue-500">0 Menit</p>
+            <div class="glow-progress-track"><div id="dash-dur-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <p id="dash-dur-sub" class="text-[10px] text-slate-400 font-semibold">Akumulasi durasi tuntas</p>
+          </div>
+
+          <div style="--stagger:1" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold uppercase text-slate-400">Rata-rata Skor Kuis</span>
+              <span class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🎯</span>
+            </div>
+            <p id="dash-stat-score" class="text-xl sm:text-2xl font-black text-amber-400">0.0 / 100</p>
+            <div class="glow-progress-track"><div id="dash-score-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <p id="dash-score-sub" class="text-[10px] text-slate-400 font-semibold">Passing Grade: Min. 80 / 100</p>
+          </div>
+
+          <div style="--stagger:2" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold uppercase text-slate-400">Total Poin Gamifikasi</span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⚡</span>
+            </div>
+            <p id="dash-stat-xp" class="text-xl sm:text-2xl font-black text-cyan-400">0 XP</p>
+            <div class="glow-progress-track"><div id="dash-xp-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <p class="text-[10px] text-slate-400 font-semibold">+150 XP tiap episode selesai</p>
+          </div>
+
+          <div style="--stagger:3" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold uppercase text-slate-400">Episode & Sertifikat</span>
+              <span class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🏅</span>
+            </div>
+            <p id="dash-stat-ep-cert" class="text-xl sm:text-2xl font-black text-blue-400">0 / 40 EP</p>
+            <div class="glow-progress-track"><div id="dash-ep-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <p id="dash-ep-sub" class="text-[10px] text-slate-400 font-semibold">0 Sertifikat Digital Terbit</p>
+          </div>
+        </div>
+
+        <!-- 2. Donut Ring & Breakdown Per Modul -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="premium-card p-4 sm:p-5 rounded-2xl flex flex-col items-center justify-between text-center">
+            <div>
+              <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-400">VISUALISASI CAPAIAN</span>
+              <h3 class="text-base font-black text-slate-900 dark:text-white mt-0.5">Progres Kurikulum Total</h3>
+            </div>
+            <div class="relative w-36 h-36 my-3 flex items-center justify-center">
+              <svg class="w-full h-full" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" stroke="rgba(59,130,246,0.16)" stroke-width="9" fill="none"></circle>
+                <circle id="dash-donut-circle" class="donut-ring-circle" cx="50" cy="50" r="40" stroke="url(#blueCyanGrad)" stroke-width="9" stroke-linecap="round" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                <defs>
+                  <linearGradient id="blueCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#3B82F6"/>
+                    <stop offset="100%" stop-color="#0EA5E9"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="dash-donut-pct" class="text-2xl font-black text-blue-500">0%</span>
+                <span id="dash-donut-summary" class="text-[10px] font-bold text-slate-400">0/40 EP</span>
+              </div>
+            </div>
+            <div class="w-full space-y-1.5">
+              <span id="dash-donut-status" class="inline-block text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">Status: In Progress</span>
+              <p class="text-[11px] text-slate-400">Selesaikan seluruh episode untuk predikat <strong>Royal Grandmaster</strong>.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 premium-card p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-400">PETA KURIKULUM (EP 1 – EP 10)</span>
+                <h3 class="text-base font-black text-slate-900 dark:text-white mt-0.5">Rincian Progres Per Modul Pembelajaran</h3>
+              </div>
+              <button onclick="switchTab('modul')" class="text-xs font-black text-blue-400 hover:underline">Lihat Semua Modul ↗</button>
+            </div>
+            <div id="dash-course-breakdown-list" class="space-y-2.5"></div>
+          </div>
+        </div>
+
+        <!-- 4. Tabel Riwayat Nilai & Sertifikat Digital -->
+        <div class="premium-card p-4 sm:p-6 rounded-2xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+            <div>
+              <h3 class="text-base font-black text-slate-900 dark:text-white">🏆 Riwayat Nilai, Evaluasi & Sertifikat Digital</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Klik tombol <strong>🎓 Lihat Sertifikat</strong> untuk mencetak sertifikat resmi Anda.</p>
+            </div>
+            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/25">Sheet: Submissions</span>
+          </div>
+          <div class="overflow-x-auto rounded-xl border border-blue-500/20">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100/90 dark:bg-slate-900/90 text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300">
+                <tr><th class="py-2.5 px-3">ID Submission</th><th class="py-2.5 px-3">ID Episode / Modul</th><th class="py-2.5 px-3">Skor</th><th class="py-2.5 px-3">XP</th><th class="py-2.5 px-3">Kode Sertifikat</th><th class="py-2.5 px-3">Waktu</th><th class="py-2.5 px-3 text-right">Aksi</th></tr>
+              </thead>
+              <tbody id="dash-submissions-tbody" class="divide-y divide-slate-200/50 dark:divide-slate-800"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB MODUL PEMBELAJARAN -->
+      <div id="tab-modul" class="tab-content space-y-4 hidden">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Pilih modul kurikulum dari Sheet <strong>Courses</strong> & <strong>Modules</strong> (Lengkap EP 1 – EP 10).</p>
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="btn-top-input-video" onclick="openQuickInputVideoModal()" class="hidden touch-target btn-cta-primary px-3.5 py-2 rounded-xl text-xs font-black">🎬 + Input Video & Materi (EP 1-10)</button>
+            <button onclick="openSyllabus()" class="touch-target bg-white/80 dark:bg-slate-900/80 border border-blue-500/30 px-3.5 py-2 rounded-xl text-xs font-bold text-blue-500 dark:text-blue-400 hover:border-blue-400 transition">📋 Lihat Silabus Kurikulum</button>
+          </div>
+        </div>
+        <div id="module-category-pills" class="flex flex-wrap gap-2 pb-0.5"></div>
+        <div id="courses-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </div>
+
+      <!-- TAB PROJECT ARUNA -->
+      <div id="tab-project" class="tab-content space-y-4 hidden">
+        <div class="premium-card p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG KE SHEET PROJECTARUNA</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">Project Aruna — Etalase Karya & Sistem</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi project aplikasi web, video demo Google Drive / YouTube, dan template sistem ARUNA.</p>
+          </div>
+          <button id="btn-top-add-project" onclick="openProjectModal('')" class="hidden touch-target btn-cta-primary px-4 py-2.5 rounded-xl text-xs font-black flex-shrink-0">+ Tambah Project Aruna</button>
+        </div>
+        <div id="project-category-pills" class="flex flex-wrap gap-2 pb-0.5"></div>
+        <div id="project-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </div>
+
+      <!-- TAB ARUNALINK -->
+      <div id="tab-arunalink" class="tab-content space-y-4 hidden">
+        <div class="premium-card p-5 sm:p-6 rounded-2xl">
+          <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG KE SHEET ARUNALINKS</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">ArunaLink — Koleksi Tautan & Alat Bantu</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi resmi template Google Sheets, starter code, dan tools untuk member ARUNA.</p>
+        </div>
+        <div id="arunalink-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </div>
+    </main>
+  </div>
 
   <script>
-    function hideLoader() {
-      const loader = document.getElementById('loader');
-      loader.style.opacity = '0';
-      setTimeout(() => {
-        loader.style.display = 'none';
-      }, 400);
+    var currentUser = null, appState = null, selectedCategory = 'ALL', selectedProjectCategory = 'ALL', activeModContext = null, isRegister = false, shimmerTimer = null, currentActiveTab = 'home';
+
+    function isAdminUser() {
+      return Boolean(currentUser && String(currentUser.role || '').trim().toLowerCase() === 'admin');
+    }
+
+    // ====== UNIVERSAL BACKEND BRIDGE (GAS + VERCEL HYBRID) ======
+    // URL Web App Google Apps Script resmi yang langsung terhubung ke Sheet ARUNACOURSE:
+    var HARDCODED_GAS_URL = 'https://script.google.com/macros/s/AKfycbzc-QIyJ9uk5xGkotgI4UOH3LwA3t9q8pVmOGndOB4XeLLIRq9wrHntRGFaeVYR-S0WLw/exec';
+
+    function isRunningInAppsScript() {
+      return typeof google !== 'undefined' && Boolean(google.script && google.script.run);
+    }
+
+    function getSavedGasUrl() {
+      return HARDCODED_GAS_URL.trim() || localStorage.getItem('ARUNA_GAS_URL') || '';
+    }
+
+    function openGasConfigModal() {
+      var modal = document.getElementById('gas-config-modal');
+      var input = document.getElementById('cfg-gas-url');
+      if (input) input.value = getSavedGasUrl();
+      if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+    }
+
+    function closeGasConfigModal() {
+      var modal = document.getElementById('gas-config-modal');
+      if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+    }
+
+    function saveGasUrlConfig() {
+      var val = document.getElementById('cfg-gas-url').value.trim();
+      if (!val) {
+        alert('Masukkan URL Web App Apps Script (contoh: https://script.google.com/macros/s/.../exec)');
+        return;
+      }
+      localStorage.setItem('ARUNA_GAS_URL', val);
+      closeGasConfigModal();
+      var msg = document.getElementById('auth-msg');
+      if (msg) {
+        msg.className = 'text-xs text-center text-green-400 font-bold min-h-[18px]';
+        msg.innerText = '✓ URL Google Apps Script tersimpan! Silakan klik Masuk.';
+      }
+    }
+
+    // Mode Demo Instan untuk preview cepat di Vercel tanpa perlu setup
+    function enterInstantDemoMode() {
+      closeGasConfigModal();
+      var mockUser = { id: 'USR-202610-001', email: 'idam@gmail.com', name: 'Robin Tarigan (Demo)', role: 'Admin' };
+      var mockState = getMockDemoState(mockUser.id);
+      applyLoginSuccess(mockUser, mockState);
+    }
+
+    function getMockDemoState(userId) {
+      return {
+        courses: [
+          {
+            id: 'CRS-001', badgeCode: 'MODUL 01', title: 'ArunaBOT Web Architecture & GAS', description: 'Panduan lengkap membangun Web App enterprise dengan Google Apps Script, Index Mapping, dan In-Memory Caching.', category: 'Aruna Core', instructor: 'Robin Tarigan', totalModules: 10, filledVideoCount: 3, completedModules: 2, progressPct: 20, totalDuration: 150,
+            modules: [
+              { id: 'MOD-001', courseId: 'CRS-001', epNumber: 1, epCode: 'EP 1', title: 'EP 1: Pengenalan Google Apps Script & Monolith Web App', order: 1, type: 'Video & Materi', url: 'https://www.youtube.com/watch?v=M7lc1UVf-VE', duration: 15, materialText: 'Pengenalan ekosistem GAS & Web App Architecture.', completed: true, isSavedInSheet: true, quiz: { quizId: 'QZ-01', question: 'Apa fungsi utama file setup.gs?', options: ['Menyimpan CSS', 'Inisialisasi skema tabel & migrasi aman', 'Menghapus database'], correctIndex: 1, passingScore: 80 } },
+              { id: 'MOD-002', courseId: 'CRS-001', epNumber: 2, epCode: 'EP 2', title: 'EP 2: Setup Database Spreadsheet & Auto Index Mapping', order: 2, type: 'Video & Materi', url: 'https://www.youtube.com/watch?v=M7lc1UVf-VE', duration: 15, materialText: 'Penerapan Index-Based Column Mapping agar tabel kebal perubahan urutan kolom.', completed: true, isSavedInSheet: true, quiz: null },
+              { id: 'CRS-001-EP03', courseId: 'CRS-001', epNumber: 3, epCode: 'EP 3', title: 'EP 3: Radial Orbit Navigation & Mobile Responsive', order: 3, type: 'Video & Materi', url: '', duration: 15, materialText: 'Materi pembelajaran untuk navigasi orbit planet.', completed: false, isSavedInSheet: false, quiz: null }
+            ]
+          },
+          {
+            id: 'CRS-002', badgeCode: 'MODUL 02', title: 'Mastery SCORM/xAPI & SIAKAD API', description: 'Integrasi paket e-learning interaktif SCORM serta sinkronisasi webhook otomatis ke SIAKAD Kampus dan HRIS.', category: 'Engineering', instructor: 'Dr. Budi Santoso', totalModules: 10, filledVideoCount: 1, completedModules: 0, progressPct: 0, totalDuration: 150,
+            modules: []
+          },
+          {
+            id: 'CRS-003', badgeCode: 'MODUL 03', title: 'Automated Grading & Gamification Engine', description: 'Membangun bank soal pilihan ganda & esai dengan kalkulasi XP otomatis serta generator Sertifikat Digital.', category: 'Google Sheets', instructor: 'Robin Tarigan', totalModules: 10, filledVideoCount: 1, completedModules: 0, progressPct: 0, totalDuration: 150,
+            modules: []
+          },
+          {
+            id: 'CRS-004', badgeCode: 'MODUL 04', title: 'Collaborative Virtual Classroom', description: 'Manajemen diskusi interaktif, live session, dan kolaborasi peserta secara realtime.', category: 'Aruna Core', instructor: 'Dr. Budi Santoso', totalModules: 10, filledVideoCount: 0, completedModules: 0, progressPct: 0, totalDuration: 150,
+            modules: []
+          }
+        ],
+        links: [
+          { id: 'LNK-01', category: 'AI Tools', title: 'ArunaBOT Gemini Web', description: 'Asisten arsitek produk, mentoring rekayasa sistem, & generator PRD otomatis.', url: 'https://gemini.google.com', badge: 'AI Tools', updatedAt: '20/11/2026' },
+          { id: 'LNK-02', category: 'SOP & Library', title: 'Aruna Master Library', description: 'Pustaka referensi dokumen resmi, SOP operasional, dan template manajemen.', url: 'https://docs.google.com', badge: 'Library', updatedAt: '20/11/2026' }
+        ],
+        projects: [
+          { id: 'PRJ-202610-001', title: 'ARUNA Royal Hub LMS', category: 'Web App GAS', description: 'Platform manajemen pembelajaran terintegrasi Google Sheets dengan pemutar video dan sertifikasi digital.', videoUrl: 'https://www.youtube.com/watch?v=M7lc1UVf-VE', resourceUrl: 'https://script.google.com', status: 'Production', updatedAt: '20/11/2026' },
+          { id: 'PRJ-202610-002', title: 'Smart Inventory & POS Berkah', category: 'ERP & Kasir', description: 'Aplikasi kasir dan stok gudang multi-cabang berbasis Google Apps Script dengan laporan laba rugi.', videoUrl: '', resourceUrl: 'https://sheets.google.com', status: 'Ready Template', updatedAt: '20/11/2026' }
+        ],
+        submissions: [
+          { subId: 'SUB-202610-001', modId: 'MOD-001', score: 100, certCode: 'CERT-202610-101', xp: 150, date: '20/11/2026 14:00' },
+          { subId: 'SUB-202610-002', modId: 'MOD-002', score: 100, certCode: 'CERT-202610-102', xp: 150, date: '20/11/2026 15:30' }
+        ],
+        stats: {
+          totalCourses: 4, totalModulesCount: 40, completedModulesCount: 2, completedCoursesCount: 0, totalLinks: 2, totalProjects: 2, totalXp: 300, studyHours: '0.5', studyMinutes: 30, avgScore: '100.0', certStatus: 'In Progress'
+        }
+      };
+    }
+
+    // Universal Caller: otomatis memilih antara google.script.run (GAS) atau fetch (Vercel)
+    function callBackend(actionName, params, onSuccess, onFailure) {
+      if (isRunningInAppsScript()) {
+        var runner = google.script.run
+          .withSuccessHandler(onSuccess)
+          .withFailureHandler(onFailure);
+        
+        if (actionName === 'login') runner.apiLogin(params.email, params.password);
+        else if (actionName === 'register') runner.apiRegister(params.name, params.email, params.password);
+        else if (actionName === 'saveModule') runner.apiSaveModuleEpisode(params.userId, params.payload);
+        else if (actionName === 'saveProject') runner.apiSaveProjectAruna(params.userId, params.payload);
+        else if (actionName === 'completeModule') runner.apiCompleteModule(params.userId, params.courseId, params.modId, params.score);
+        return;
+      }
+
+      // Lingkungan Eksternal (Vercel)
+      var gasUrl = getSavedGasUrl();
+      if (!gasUrl) {
+        openGasConfigModal();
+        if (onFailure) onFailure(new Error('URL Google Apps Script belum diatur pada Vercel.'));
+        return;
+      }
+
+      var payload = Object.assign({ action: actionName }, params);
+      var controller = new AbortController();
+      var timeoutId = setTimeout(function() { controller.abort(); }, 12000);
+
+      // Buat query string untuk pemanggilan GET yang kilat dan bebas CORS
+      var queryString = Object.keys(payload).map(function(k) {
+        var v = typeof payload[k] === 'object' ? JSON.stringify(payload[k]) : payload[k];
+        return encodeURIComponent(k) + '=' + encodeURIComponent(v);
+      }).join('&');
+
+      fetch(gasUrl + '?' + queryString, {
+        method: 'GET',
+        signal: controller.signal
+      })
+      .then(function(res) {
+        clearTimeout(timeoutId);
+        return res.json();
+      })
+      .then(function(data) {
+        onSuccess(data);
+      })
+      .catch(function(err) {
+        // Fallback ke POST jika GET terkena limit ukuran
+        fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        })
+        .then(function(res2) { return res2.json(); })
+        .then(function(data2) {
+          clearTimeout(timeoutId);
+          onSuccess(data2);
+        })
+        .catch(function(err2) {
+          clearTimeout(timeoutId);
+          console.error('GAS Fetch Error:', err2);
+          if (onFailure) onFailure(err2);
+        });
+      });
+    }
+
+    /* ====== ORBITAL RADIAL MENU CONTROLS ====== */
+    function toggleRadialOrbit(show) {
+      var overlay = document.getElementById('radial-orbit-overlay');
+      if (!overlay) return;
+      if (typeof show === 'boolean') {
+        if (show) {
+          overlay.classList.remove('hidden');
+          overlay.classList.add('flex');
+          highlightActivePlanet();
+        } else {
+          overlay.classList.add('hidden');
+          overlay.classList.remove('flex');
+        }
+      } else {
+        var isHidden = overlay.classList.contains('hidden');
+        if (isHidden) {
+          overlay.classList.remove('hidden');
+          overlay.classList.add('flex');
+          highlightActivePlanet();
+        } else {
+          overlay.classList.add('hidden');
+          overlay.classList.remove('flex');
+        }
+      }
+    }
+
+    function onOrbitBackdropClick(e) {
+      if (e.target.id === 'radial-orbit-overlay') {
+        toggleRadialOrbit(false);
+      }
+    }
+
+    function highlightActivePlanet() {
+      var tabs = ['home', 'dashboard', 'modul', 'project', 'arunalink'];
+      tabs.forEach(function (t) {
+        var btn = document.getElementById('planet-btn-' + t);
+        if (btn) {
+          btn.classList.toggle('planet-active-glow', t === currentActiveTab);
+        }
+      });
+    }
+
+    function switchTabAndCloseOrbit(tabName) {
+      switchTab(tabName);
+      toggleRadialOrbit(false);
+    }
+
+    // Interactive Mouse Spotlight
+    document.addEventListener('mousemove', function (e) {
+      var card = e.target.closest ? e.target.closest('.premium-card') : null;
+      if (card) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }
+    });
+
+    function triggerTopShimmer() {
+      var bar = document.getElementById('top-transition-bar');
+      if (!bar) return;
+      if (shimmerTimer) clearTimeout(shimmerTimer);
+      bar.style.transition = 'none'; bar.style.width = '0%'; bar.style.opacity = '1';
+      void bar.offsetWidth;
+      bar.style.transition = 'width 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.22s ease';
+      bar.style.width = '100%';
+      shimmerTimer = setTimeout(function () { bar.style.opacity = '0'; }, 350);
+    }
+
+    function updateClock() {
+      var n = new Date();
+      document.getElementById('realtime-clock').innerText = String(n.getHours()).padStart(2, '0') + ':' + String(n.getMinutes()).padStart(2, '0') + ':' + String(n.getSeconds()).padStart(2, '0') + ' WIB';
+    }
+    setInterval(updateClock, 1000); updateClock();
+
+    function toggleDarkMode() {
+      triggerTopShimmer();
+      var isDark = document.documentElement.classList.toggle('dark');
+      document.getElementById('theme-icon').innerText = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-label').innerText = isDark ? 'Mode Malam' : 'Mode Putih';
+    }
+
+    function toggleRegisterMode() {
+      isRegister = !isRegister;
+      document.getElementById('auth-msg').innerText = '';
+      document.getElementById('auth-heading').innerText = isRegister ? 'Daftar Akun ARUNA LMS' : 'Selamat Datang di ARUNA LMS';
+      var btn = document.getElementById('auth-submit-btn');
+      btn.innerText = isRegister ? 'Daftar Sekarang (Langsung Aktif)' : 'Masuk ke Sistem';
+      btn.setAttribute('onclick', isRegister ? 'handleRegister()' : 'handleLogin()');
+      document.getElementById('toggle-auth-btn').innerHTML = isRegister
+        ? 'Sudah punya akun? <span class="underline font-bold text-blue-500">Masuk di sini</span>'
+        : 'Belum punya akun? <span class="underline font-bold text-blue-500">Daftar Mandiri</span>';
+    }
+
+    function ensureTenEpisodesPerCourse(state) {
+      if (!state || !state.courses) return;
+      if (!state.projects) state.projects = [];
+      state.courses.forEach(function (c) {
+        var existing = c.modules || [], maxEp = Math.max(10, existing.length), norm = [];
+        for (var ep = 1; ep <= maxEp; ep++) {
+          var found = existing.find(function (m) { return Number(m.order) === ep || Number(m.epNumber) === ep; }) || existing[ep - 1];
+          if (found && Number(found.order || ep) === ep) {
+            found.epNumber = ep; found.order = ep;
+            if (!found.title) found.title = 'EP ' + ep + ': Materi ' + c.title;
+            if (!found.materialText) found.materialText = 'Materi pembelajaran untuk ' + found.title + '.';
+            norm.push(found);
+          } else {
+            norm.push({ id: c.id + '-EP' + String(ep).padStart(2, '0'), courseId: c.id, epNumber: ep, order: ep, title: 'EP ' + ep + ': Materi Pembelajaran ' + ep, type: 'Video & Materi', url: '', duration: 10, materialText: 'Materi pembelajaran untuk EP ' + ep + '.', completed: false, quiz: null });
+          }
+        }
+        c.modules = norm; c.totalModules = norm.length;
+        c.completedModules = norm.filter(function (m) { return m.completed; }).length;
+        c.progressPct = c.totalModules > 0 ? Math.round((c.completedModules / c.totalModules) * 100) : 0;
+        c.totalDuration = norm.reduce(function (a, b) { return a + (Number(b.duration) || 10); }, 0);
+      });
+    }
+
+    function applyLoginSuccess(user, appData) {
+      currentUser = user;
+      appState = appData;
+      ensureTenEpisodesPerCourse(appState);
+      document.getElementById('auth-view').classList.add('hidden');
+      document.getElementById('main-app').classList.remove('hidden');
+      
+      // Set User info in Header
+      var initial = currentUser.name.substring(0, 2).toUpperCase();
+      var hInitial = document.getElementById('header-user-initial');
+      if (hInitial) hInitial.innerText = initial;
+      var hName = document.getElementById('header-username');
+      if (hName) hName.innerText = currentUser.name;
+      var hRole = document.getElementById('header-role');
+      if (hRole) hRole.innerText = currentUser.role + ' • Active';
+
+      document.getElementById('welcome-banner-text').innerText = 'Selamat Datang, ' + currentUser.name + ' di ARUNA LMS!';
+      renderAllConnectedMenus();
+      switchTab('home');
+    }
+
+    function handleLogin() {
+      var email = document.getElementById('login-email').value.trim();
+      var pass = document.getElementById('login-pass').value.trim();
+      var msg = document.getElementById('auth-msg');
+      var btn = document.getElementById('auth-submit-btn');
+      if (!email || !pass) { msg.innerText = 'Email dan password wajib diisi!'; return; }
+      
+      triggerTopShimmer();
+      msg.className = 'text-xs text-center text-blue-500 font-bold min-h-[18px]';
+      msg.innerText = '⏳ Memverifikasi akun & memuat data...';
+      btn.disabled = true;
+
+      callBackend('login', { email: email, password: pass }, function(res) {
+        btn.disabled = false;
+        if (res && res.success) {
+          applyLoginSuccess(res.user, res.appData);
+        } else {
+          msg.className = 'text-xs text-center text-red-500 font-semibold min-h-[18px]';
+          msg.innerText = (res && res.message) ? res.message : 'Login gagal.';
+        }
+      }, function(err) {
+        btn.disabled = false;
+        msg.className = 'text-xs text-center text-red-400 font-semibold min-h-[18px]';
+        msg.innerText = isRunningInAppsScript()
+          ? 'Error: ' + (err && err.message ? err.message : String(err))
+          : 'Belum terhubung ke Apps Script. Klik ⚙️ GAS API di atas atau coba Mode Demo.';
+      });
+    }
+
+    function handleRegister() {
+      var email = document.getElementById('login-email').value.trim();
+      var pass = document.getElementById('login-pass').value.trim();
+      var msg = document.getElementById('auth-msg');
+      var btn = document.getElementById('auth-submit-btn');
+      if (!email || !pass) { msg.innerText = 'Semua kolom wajib diisi!'; return; }
+      msg.innerText = '⏳ Menyimpan ke Sheet Users...';
+      btn.disabled = true;
+
+      callBackend('register', { name: email.split('@')[0], email: email, password: pass }, function(res) {
+        btn.disabled = false;
+        msg.innerText = res ? res.message : 'Selesai.';
+        if (res && res.success) setTimeout(toggleRegisterMode, 1500);
+      }, function(err) {
+        btn.disabled = false;
+        msg.innerText = 'Gagal daftar: ' + (err && err.message ? err.message : String(err));
+      });
+    }
+
+    function resumeNextEpisode() {
+      if (!appState || !appState.courses || !appState.courses.length) return;
+      var targetCourse = appState.courses[0], targetMod = targetCourse.modules[0];
+      for (var i = 0; i < appState.courses.length; i++) {
+        var c = appState.courses[i];
+        var inc = c.modules.find(function (m) { return !m.completed; });
+        if (inc) { targetCourse = c; targetMod = inc; break; }
+      }
+      openModuleDetail(targetCourse.id, targetMod.id);
+    }
+
+    function openCertificatePreview(subIdx) {
+      var s = appState && appState.submissions ? appState.submissions[subIdx] : null;
+      if (!s) return;
+      document.getElementById('cert-modal-name').innerText = currentUser ? currentUser.name : 'Peserta ARUNA';
+      document.getElementById('cert-modal-module').innerText = 'Episode / Modul: ' + s.modId;
+      document.getElementById('cert-modal-score').innerText = 'Skor Evaluasi: ' + s.score + ' / 100 (+' + s.xp + ' XP)';
+      document.getElementById('cert-modal-code').innerText = s.certCode;
+      document.getElementById('cert-modal-date').innerText = s.date;
+      var m = document.getElementById('certificate-modal');
+      m.classList.remove('hidden'); m.classList.add('flex');
+    }
+
+    function closeCertificateModal() {
+      var m = document.getElementById('certificate-modal');
+      m.classList.add('hidden'); m.classList.remove('flex');
+    }
+
+    function renderAllConnectedMenus() {
+      if (!appState) return;
+      ensureTenEpisodesPerCourse(appState);
+      var adminFlag = isAdminUser();
+      var btnInputVideo = document.getElementById('btn-top-input-video');
+      if (btnInputVideo) btnInputVideo.classList.toggle('hidden', !adminFlag);
+      var btnAddProj = document.getElementById('btn-top-add-project');
+      if (btnAddProj) btnAddProj.classList.toggle('hidden', !adminFlag);
+      var adminOverview = document.getElementById('dash-admin-overview');
+      if (adminOverview) adminOverview.classList.toggle('hidden', !adminFlag);
+
+      var st = appState.stats || {};
+      var totalEp = appState.courses.reduce(function (a, c) { return a + c.totalModules; }, 0) || st.totalModulesCount || 40;
+      var compEp = appState.courses.reduce(function (a, c) { return a + c.completedModules; }, 0) || st.completedModulesCount || 0;
+      var overallPct = totalEp > 0 ? Math.round((compEp / totalEp) * 100) : 0;
+      var totalCourseDuration = appState.courses.reduce(function (a, c) { return a + (Number(c.totalDuration) || 100); }, 0) || 400;
+
+      document.getElementById('home-stat-modules').innerText = compEp + ' / ' + totalEp + ' Selesai';
+      var homeBar = document.getElementById('home-progress-fill');
+      if (homeBar) homeBar.style.width = overallPct + '%';
+      document.getElementById('home-stat-cert').innerText = st.certStatus || 'In Progress';
+      document.getElementById('home-stat-links').innerText = (st.totalLinks || 0) + ' Tautan Aktif';
+
+      // 1. Profil Gamifikasi & Rank Level XP
+      if (currentUser) {
+        document.getElementById('dash-user-initial').innerText = currentUser.name.substring(0, 2).toUpperCase();
+        document.getElementById('dash-user-name').innerText = currentUser.name + ' — Dashboard Kompetensi';
+        document.getElementById('dash-role-pill').innerText = currentUser.role + ' • Active';
+      }
+      var xp = Number(st.totalXp) || 0;
+      var rankTitle = '🌱 Rookie Learner • Lv. 1', nextXp = 300;
+      if (xp >= 1800) { rankTitle = '👑 Royal Grandmaster • Lv. 4'; nextXp = 3000; }
+      else if (xp >= 900) { rankTitle = '🔥 Master Architect • Lv. 3'; nextXp = 1800; }
+      else if (xp >= 300) { rankTitle = '⚡ Aruna Specialist • Lv. 2'; nextXp = 900; }
+      document.getElementById('dash-rank-badge').innerText = rankTitle;
+      document.getElementById('dash-xp-next-text').innerText = xp + ' / ' + nextXp + ' XP';
+      var xpPct = Math.min(100, Math.max(4, Math.round((xp / nextXp) * 100)));
+      document.getElementById('dash-xp-progress-fill').style.width = xpPct + '%';
+
+      var nextEpLabel = 'Seluruh episode selesai! 🎉';
+      for (var ci = 0; ci < appState.courses.length; ci++) {
+        var incMod = appState.courses[ci].modules.find(function (m) { return !m.completed; });
+        if (incMod) { nextEpLabel = 'Berikutnya: ' + appState.courses[ci].badgeCode + ' • EP ' + incMod.order; break; }
+      }
+      document.getElementById('dash-next-ep-label').innerText = nextEpLabel;
+
+      // 5. Statistik Panel Admin
+      var videoCount = 0;
+      appState.courses.forEach(function (c) {
+        c.modules.forEach(function (m) {
+          if (m.url && m.url.trim() && m.url !== 'https://developers.google.com/apps-script') videoCount++;
+        });
+      });
+      document.getElementById('dash-admin-videos').innerText = videoCount + ' / ' + totalEp + ' Episode';
+      document.getElementById('dash-admin-projects').innerText = (appState.projects ? appState.projects.length : 0) + ' Karya Aktif';
+      document.getElementById('dash-admin-links').innerText = (st.totalLinks || 0) + ' Tautan Aktif';
+
+      // 3. Empat Kartu KPI Eksekutif
+      document.getElementById('dash-stat-hours').innerText = (st.studyMinutes || 0) + ' Menit (' + (st.studyHours || '0.0') + ' Jam)';
+      var durPct = Math.min(100, Math.round(((Number(st.studyMinutes) || 0) / totalCourseDuration) * 100));
+      document.getElementById('dash-dur-bar').style.width = durPct + '%';
+      document.getElementById('dash-dur-sub').innerText = 'Target: ' + totalCourseDuration + ' Menit';
+
+      var avgNum = parseFloat(st.avgScore) || 0;
+      document.getElementById('dash-stat-score').innerText = (st.avgScore || '0.0') + ' / 100';
+      document.getElementById('dash-score-bar').style.width = Math.min(100, Math.round(avgNum)) + '%';
+      document.getElementById('dash-score-sub').innerText = avgNum >= 80 ? '✓ Lulus Passing Grade (≥ 80)' : 'Standar: Min. 80 / 100';
+
+      document.getElementById('dash-stat-xp').innerText = xp + ' XP';
+      document.getElementById('dash-xp-bar').style.width = xpPct + '%';
+
+      document.getElementById('dash-stat-ep-cert').innerText = compEp + ' / ' + totalEp + ' EP';
+      document.getElementById('dash-ep-bar').style.width = overallPct + '%';
+      document.getElementById('dash-ep-sub').innerText = (appState.submissions || []).length + ' Sertifikat Digital';
+
+      // 2. Donut Chart SVG & Breakdown Per Modul
+      var circumference = 251.2;
+      var offset = circumference - (overallPct / 100) * circumference;
+      var donutCircle = document.getElementById('dash-donut-circle');
+      if (donutCircle) donutCircle.style.strokeDashoffset = String(offset);
+      document.getElementById('dash-donut-pct').innerText = overallPct + '%';
+      document.getElementById('dash-donut-summary').innerText = compEp + '/' + totalEp + ' EP';
+      document.getElementById('dash-donut-status').innerText = 'Status: ' + (overallPct === 100 ? 'Completed 🏆' : (st.certStatus || 'In Progress'));
+
+      document.getElementById('dash-course-breakdown-list').innerHTML = appState.courses.map(function (c) {
+        var vidCnt = c.modules.filter(function (m) { return m.url && m.url.trim() && m.url !== 'https://developers.google.com/apps-script'; }).length;
+        var nextM = c.modules.find(function (m) { return !m.completed; }) || c.modules[0];
+        return '<div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">' +
+          '<div class="flex-1 space-y-1">' +
+            '<div class="flex flex-wrap items-center gap-1.5">' +
+              '<span class="text-[10px] font-black px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 border border-blue-500/30">' + c.badgeCode + '</span>' +
+              '<span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">' + c.title + '</span>' +
+              '<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400">🎬 ' + vidCnt + ' Video</span>' +
+            '</div>' +
+            '<div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div>' +
+          '</div>' +
+          '<div class="flex items-center justify-between sm:justify-end gap-2.5 flex-shrink-0">' +
+            '<div class="text-right"><p class="text-[11px] font-black text-blue-400">' + c.completedModules + '/' + c.totalModules + ' EP</p><p class="text-[9px] font-bold text-slate-400">' + c.progressPct + '% Selesai</p></div>' +
+            '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (nextM ? nextM.id : '') + '\')" class="px-3 py-1.5 btn-cta-primary rounded-lg text-xs font-black">Buka ></button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      // 4. Tabel Riwayat Nilai & Sertifikat Digital
+      var tbody = document.getElementById('dash-submissions-tbody');
+      tbody.innerHTML = (appState.submissions || []).length === 0
+        ? '<tr><td colspan="7" class="py-8 px-4 text-center"><div class="max-w-md mx-auto space-y-2"><p class="text-sm font-black text-slate-700 dark:text-slate-200">🎯 Belum Ada Episode yang Diselesaikan</p><p class="text-xs text-slate-400">Mulai tonton video materi pada Episode 1 dan selesaikan kuis singkat untuk mendapatkan <strong>+150 XP</strong> serta <strong>Sertifikat Digital ARUNA</strong>!</p><button onclick="resumeNextEpisode()" class="touch-target px-4 py-2 btn-cta-primary rounded-xl text-xs font-black">🚀 Kerjakan Episode Pertama (+150 XP)</button></div></td></tr>'
+        : appState.submissions.map(function (s, idx) {
+            return '<tr class="hover:bg-blue-500/5"><td class="py-2.5 px-3 font-mono text-xs font-bold">' + s.subId + '</td><td class="py-2.5 px-3 font-bold text-blue-500">' + s.modId + '</td><td class="py-2.5 px-3 font-black">' + s.score + '</td><td class="py-2.5 px-3 font-bold text-amber-400">+' + s.xp + ' XP</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-[11px] font-bold">' + s.certCode + '</span></td><td class="py-2.5 px-3 text-[11px] text-slate-400">' + s.date + '</td><td class="py-2.5 px-3 text-right"><button onclick="openCertificatePreview(' + idx + ')" class="px-2.5 py-1 rounded-lg btn-cta-primary text-xs font-black">🎓 Lihat Sertifikat</button></td></tr>';
+          }).join('');
+
+      renderModulesTab();
+      renderProjectArunaTab();
+
+      document.getElementById('arunalink-dynamic-grid').innerHTML = (appState.links || []).map(function (l, idx) {
+        return '<div style="--stagger:' + idx + '" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl flex flex-col justify-between"><div><div class="flex justify-between items-center mb-2.5"><span class="text-[11px] bg-blue-500/15 text-blue-400 border border-blue-500/30 px-2.5 py-0.5 rounded-md font-extrabold">' + l.category + '</span><span class="text-[10px] text-slate-400 font-mono">' + l.updatedAt + '</span></div><h3 class="font-black text-slate-900 dark:text-white text-base">' + l.title + '</h3><p class="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">' + l.description + '</p></div><div class="mt-4 pt-2.5 border-t border-slate-200/50 dark:border-slate-800"><a href="' + l.url + '" target="_blank" class="touch-target w-full btn-cta-primary font-black py-2 rounded-xl text-xs flex items-center justify-center">Buka Dokumen ↗</a></div></div>';
+      }).join('');
+
+      document.getElementById('syllabus-dynamic-list').innerHTML = (appState.courses || []).map(function (c) {
+        return '<div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-blue-500/20 space-y-1.5"><div class="flex justify-between items-center"><p class="font-black text-xs sm:text-sm text-blue-500">' + c.badgeCode + ': ' + c.title + '</p><span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-400">' + c.progressPct + '% Selesai</span></div><div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div><p class="text-xs text-slate-600 dark:text-slate-300">' + c.description + '</p><p class="text-[10px] font-bold text-slate-400 uppercase">EP 1 – EP ' + c.totalModules + ' • ' + c.totalDuration + ' Menit</p></div>';
+      }).join('');
+    }
+
+    function renderModulesTab() {
+      var courses = appState.courses || [];
+      var cats = ['ALL'].concat(Array.from(new Set(courses.map(function (c) { return c.category; }))));
+      document.getElementById('module-category-pills').innerHTML = cats.map(function (cat) {
+        var count = cat === 'ALL' ? courses.length : courses.filter(function (c) { return c.category === cat; }).length;
+        var cls = selectedCategory === cat ? 'btn-cta-primary font-black' : 'premium-card text-slate-700 dark:text-slate-200 font-bold';
+        return '<button onclick="filterCategory(\'' + cat + '\')" class="touch-target ' + cls + ' text-xs px-3.5 py-1.5 rounded-lg">' + (cat === 'ALL' ? 'Semua Modul (' + count + ')' : cat + ' (' + count + ')') + '</button>';
+      }).join('');
+
+      var filtered = selectedCategory === 'ALL' ? courses : courses.filter(function (c) { return c.category === selectedCategory; });
+      document.getElementById('courses-dynamic-grid').innerHTML = filtered.map(function (c, idx) {
+        var epPills = c.modules.map(function (m, i) {
+          var hasVid = Boolean(m.url && m.url.trim() && m.url !== 'https://developers.google.com/apps-script');
+          var st = m.completed ? 'bg-blue-500/20 text-blue-400 border-blue-500/45 ep-active-glow' : (hasVid ? 'bg-amber-500/15 text-amber-400 border-amber-500/45 ep-active-glow' : 'bg-slate-100 dark:bg-slate-900/70 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800');
+          return '<button type="button" onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="ep-btn-bounce py-1 px-1 rounded-md border text-[10px] font-extrabold hover:border-blue-500 ' + st + '">EP ' + (i + 1) + (m.completed ? ' ✓' : (hasVid ? ' ▶' : '')) + '</button>';
+        }).join('');
+        var firstInc = c.modules.find(function (m) { return !m.completed; }) || c.modules[0];
+        return '<div style="--stagger:' + idx + '" class="premium-card stagger-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between"><div><div class="flex justify-between items-center mb-2.5"><span class="bg-blue-500/15 text-blue-500 dark:text-blue-400 border border-blue-500/30 text-[11px] font-black px-2.5 py-0.5 rounded-md">' + c.badgeCode + '</span><span class="text-[11px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-md font-bold">' + c.category + '</span></div><div class="mb-2.5"><div class="flex justify-between text-[11px] font-extrabold text-blue-500 mb-1"><span>' + c.completedModules + '/' + c.totalModules + ' Episode Selesai</span><span>' + c.progressPct + '%</span></div><div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div></div><h3 class="text-base font-black text-slate-900 dark:text-white">' + c.title + '</h3><p class="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">' + c.description + '</p><div class="mt-3.5 pt-3 border-t border-slate-200/50 dark:border-slate-800 space-y-1.5"><div class="flex justify-between text-[10px] font-bold uppercase text-slate-400"><span>PILIH EPISODE (EP 1–10):</span><span>' + c.totalModules + ' EP</span></div><div class="grid grid-cols-5 gap-1">' + epPills + '</div></div></div><div class="mt-4 pt-2.5 border-t border-slate-200/50 dark:border-slate-800 flex items-center justify-between gap-2.5"><span class="text-[11px] font-bold text-slate-400">EP 1–10 • ' + c.totalDuration + 'm</span><button onclick="openModuleDetail(\'' + c.id + '\', \'' + (firstInc ? firstInc.id : '') + '\')" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-xl text-xs">Masuk Modul ></button></div></div>';
+      }).join('');
+    }
+
+    function filterCategory(cat) { triggerTopShimmer(); selectedCategory = cat; renderModulesTab(); }
+
+    function convertVideoUrlToEmbed(rawUrl) {
+      var url = String(rawUrl || '').trim();
+      if (!url || url === '#') return { isPlayable: false, mode: 'none', embedUrl: '', provider: 'Belum Ada Video' };
+      var yt = url.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/|shorts\/|live\/)|youtu\.be\/)([a-zA-Z0-9_-]{6,})/);
+      if (yt && yt[1]) return { isPlayable: true, mode: 'iframe', embedUrl: 'https://www.youtube.com/embed/' + yt[1] + '?rel=0&modestbranding=1', provider: 'YouTube Player ✓' };
+      var gd = url.match(/(?:drive|docs)\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/(?:drive|docs)\.google\.com\/(?:open|uc|file).*?[?&]id=([a-zA-Z0-9_-]+)/);
+      if (gd && gd[1]) return { isPlayable: true, mode: 'iframe', embedUrl: 'https://drive.google.com/file/d/' + gd[1] + '/preview', provider: 'Google Drive Player ✓' };
+      if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(url)) return { isPlayable: true, mode: 'html5', embedUrl: url, provider: 'Direct Video ✓' };
+      return { isPlayable: false, mode: 'external', embedUrl: url, provider: 'Tautan Materi' };
+    }
+
+    function updateModalVideoPlayer(rawUrl) {
+      var info = convertVideoUrlToEmbed(rawUrl);
+      var box = document.getElementById('modal-video-player-box'), empty = document.getElementById('modal-video-empty-state');
+      var iframe = document.getElementById('modal-video-iframe'), html5 = document.getElementById('modal-video-html5');
+      document.getElementById('modal-mod-link').href = rawUrl && rawUrl.trim() ? rawUrl.trim() : '#';
+      document.getElementById('modal-video-source-badge').innerText = info.provider;
+      if (info.isPlayable) {
+        box.classList.remove('hidden'); empty.classList.add('hidden');
+        if (info.mode === 'iframe') {
+          html5.pause(); html5.classList.add('hidden'); iframe.classList.remove('hidden');
+          if (iframe.getAttribute('src') !== info.embedUrl) iframe.setAttribute('src', info.embedUrl);
+        } else {
+          iframe.setAttribute('src', ''); iframe.classList.add('hidden'); html5.classList.remove('hidden');
+          if (html5.getAttribute('src') !== info.embedUrl) html5.setAttribute('src', info.embedUrl);
+        }
+        document.getElementById('input-ep-convert-hint').innerText = '✓ Video siap diputar: ' + info.embedUrl;
+      } else {
+        iframe.setAttribute('src', ''); html5.pause(); box.classList.add('hidden'); empty.classList.remove('hidden');
+        document.getElementById('input-ep-convert-hint').innerText = '💡 Otomatis mengonversi link Google Drive & YouTube menjadi video player.';
+      }
+    }
+
+    function previewEpisodeVideoInput() { updateModalVideoPlayer(document.getElementById('input-ep-video-url').value); }
+
+    function openQuickInputVideoModal() {
+      if (!isAdminUser() || !appState || !appState.courses.length) return;
+      openModuleDetail(appState.courses[0].id, appState.courses[0].modules[0].id);
+      var adminForm = document.getElementById('modal-admin-video-form');
+      if (adminForm) adminForm.open = true;
+    }
+
+    function onModalCourseChange(cId) {
+      var c = appState.courses.find(function (x) { return x.id === cId; });
+      if (c) openModuleDetail(c.id, c.modules[0].id);
+    }
+
+    function openModuleDetail(courseId, modId) {
+      var course = (appState.courses || []).find(function (c) { return c.id === courseId; }) || appState.courses[0];
+      if (!course) return;
+      var mod = (course.modules || []).find(function (m) { return m.id === modId; }) || course.modules[0];
+      document.getElementById('modal-course-selector').innerHTML = appState.courses.map(function (c) {
+        return '<option value="' + c.id + '" ' + (c.id === course.id ? 'selected' : '') + '>' + c.badgeCode + ' — ' + c.title + '</option>';
+      }).join('');
+      document.getElementById('modal-episodes-bar').innerHTML = (course.modules || []).map(function (m, i) {
+        var isSel = m.id === mod.id;
+        var cls = isSel ? 'btn-cta-primary font-black' : 'bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-blue-500/25 font-bold';
+        return '<button type="button" onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="ep-btn-bounce py-1.5 px-1.5 rounded-lg text-xs ' + cls + '">EP ' + (i + 1) + (m.completed ? ' ✓' : '') + '</button>';
+      }).join('');
+
+      var epOrder = Number(mod.order) || Number(mod.epNumber) || 1;
+      activeModContext = { courseId: course.id, modId: mod.id, epOrder: epOrder, quiz: mod.quiz };
+      document.getElementById('modal-mod-badge').innerText = course.badgeCode + ' • ' + course.title;
+      document.getElementById('modal-ep-badge').innerText = 'EP ' + epOrder;
+      document.getElementById('modal-mod-title').innerText = mod.title;
+      document.getElementById('modal-mod-type').innerText = mod.type + ' (' + mod.duration + ' Menit)';
+      document.getElementById('modal-material-content-text').innerText = mod.materialText || '';
+      document.getElementById('input-ep-title').value = mod.title;
+      document.getElementById('input-ep-duration').value = mod.duration || 15;
+      document.getElementById('input-ep-video-url').value = mod.url || '';
+      document.getElementById('input-ep-material-text').value = mod.materialText || '';
+      document.getElementById('modal-status-msg').innerText = '';
+
+      var adminFlag = isAdminUser();
+      var adminForm = document.getElementById('modal-admin-video-form');
+      if (adminForm) adminForm.classList.toggle('hidden', !adminFlag);
+      var emptyDesc = document.getElementById('modal-empty-video-desc');
+      if (emptyDesc) {
+        emptyDesc.innerText = adminFlag
+          ? 'Buka panel "⚙️ Input / Ubah Link Video & Materi (Khusus Admin)" di bawah untuk menempelkan link Google Drive atau YouTube.'
+          : 'Video pembelajaran untuk episode ini sedang disiapkan oleh Admin/Instruktur.';
+      }
+
+      updateModalVideoPlayer(mod.url || '');
+
+      var qBox = document.getElementById('modal-quiz-box');
+      if (mod.quiz) {
+        qBox.classList.remove('hidden');
+        document.getElementById('modal-quiz-question').innerText = mod.quiz.question;
+        document.getElementById('modal-quiz-options').innerHTML = mod.quiz.options.map(function (opt, i) {
+          return '<label class="flex items-center space-x-2.5 p-2.5 rounded-lg bg-white/80 dark:bg-slate-900 border border-blue-500/20 cursor-pointer"><input type="radio" name="quiz-opt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + '><span class="text-xs font-semibold">' + opt + '</span></label>';
+        }).join('');
+      } else { qBox.classList.add('hidden'); }
+
+      var modal = document.getElementById('module-modal');
+      modal.classList.remove('hidden'); modal.classList.add('flex');
+    }
+
+    function saveCurrentEpisodeContent() {
+      if (!isAdminUser() || !activeModContext || !currentUser) return;
+      var t = document.getElementById('input-ep-title').value.trim();
+      var d = Number(document.getElementById('input-ep-duration').value) || 15;
+      var u = document.getElementById('input-ep-video-url').value.trim();
+      var m = document.getElementById('input-ep-material-text').value.trim();
+      var st = document.getElementById('modal-status-msg'), btn = document.getElementById('btn-save-ep-content');
+      triggerTopShimmer(); updateModalVideoPlayer(u);
+      st.innerText = '⏳ Menyimpan ke Sheet Modules...'; btn.disabled = true;
+
+      callBackend('saveModule', {
+        userId: currentUser.id,
+        payload: { courseId: activeModContext.courseId, epOrder: activeModContext.epOrder, modId: activeModContext.modId.indexOf('-EP') !== -1 ? '' : activeModContext.modId, title: t, videoUrl: u, materialText: m, durationMin: d }
+      }, function(res) {
+        btn.disabled = false;
+        if (res && res.success) {
+          appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
+          activeModContext.modId = res.savedModId || activeModContext.modId;
+          openModuleDetail(activeModContext.courseId, activeModContext.modId);
+          document.getElementById('modal-status-msg').innerText = '✓ ' + res.message;
+        } else if (res && res.message) {
+          st.innerText = '⚠️ ' + res.message;
+        }
+      }, function(err) {
+        btn.disabled = false;
+        st.innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
+      });
+    }
+
+    function closeModuleModal() {
+      document.getElementById('modal-video-iframe').setAttribute('src', '');
+      var modal = document.getElementById('module-modal');
+      modal.classList.add('hidden'); modal.classList.remove('flex');
+    }
+
+    function submitActiveModule() {
+      if (!activeModContext || !currentUser) return;
+      var score = 100;
+      if (activeModContext.quiz) {
+        var sel = document.querySelector('input[name="quiz-opt"]:checked');
+        score = (sel && Number(sel.value) === activeModContext.quiz.correctIndex) ? 100 : 70;
+      }
+      var st = document.getElementById('modal-status-msg'), btn = document.getElementById('btn-submit-module');
+      st.innerText = '⏳ Menyimpan progres ke Google Sheets...'; btn.disabled = true;
+
+      callBackend('completeModule', {
+        userId: currentUser.id,
+        courseId: activeModContext.courseId,
+        modId: activeModContext.modId,
+        score: score
+      }, function(res) {
+        btn.disabled = false;
+        if (res && res.success) {
+          appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
+          st.innerText = '✓ Selesai! Skor: ' + score + ' (+150 XP)';
+          setTimeout(closeModuleModal, 800);
+        }
+      }, function(err) {
+        btn.disabled = false;
+        st.innerText = '⚠️ Gagal simpan progres: ' + (err && err.message ? err.message : String(err));
+      });
+    }
+
+    function renderProjectArunaTab() {
+      var projs = appState.projects || [];
+      var adminFlag = isAdminUser();
+      var cats = ['ALL'].concat(Array.from(new Set(projs.map(function (p) { return p.category; }))));
+      document.getElementById('project-category-pills').innerHTML = cats.map(function (cat) {
+        var cnt = cat === 'ALL' ? projs.length : projs.filter(function (p) { return p.category === cat; }).length;
+        var cls = selectedProjectCategory === cat ? 'btn-cta-primary font-black' : 'premium-card text-slate-700 dark:text-slate-200 font-bold';
+        return '<button onclick="filterProjectCategory(\'' + cat + '\')" class="touch-target ' + cls + ' text-xs px-3.5 py-1.5 rounded-lg">' + (cat === 'ALL' ? 'Semua Project (' + cnt + ')' : cat + ' (' + cnt + ')') + '</button>';
+      }).join('');
+      var filtered = selectedProjectCategory === 'ALL' ? projs : projs.filter(function (p) { return p.category === selectedProjectCategory; });
+      document.getElementById('project-dynamic-grid').innerHTML = filtered.map(function (p, idx) {
+        var v = convertVideoUrlToEmbed(p.videoUrl);
+        var vHtml = (v.isPlayable && v.mode === 'iframe') ? '<div class="mt-3 video-player-wrapper border border-blue-500/30"><iframe src="' + v.embedUrl + '" allowfullscreen></iframe></div>' : '';
+        var editBtnHtml = adminFlag ? '<button onclick="openProjectModal(\'' + p.id + '\')" class="touch-target px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Edit</button>' : '';
+        return '<div style="--stagger:' + idx + '" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl flex flex-col justify-between"><div><div class="flex justify-between items-center mb-2.5"><span class="text-[11px] bg-blue-500/15 text-blue-400 px-2.5 py-0.5 rounded-md font-extrabold">' + p.category + '</span><span class="text-[10px] bg-amber-500/15 text-amber-400 px-2 py-0.5 rounded-md font-bold">' + p.status + '</span></div><h3 class="font-black text-slate-900 dark:text-white text-base">' + p.title + '</h3><p class="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">' + p.description + '</p>' + vHtml + '</div><div class="mt-4 pt-2.5 border-t border-slate-200/50 dark:border-slate-800 flex gap-2"><a href="' + (p.resourceUrl || '#') + '" target="_blank" class="touch-target flex-1 btn-cta-primary font-black py-2 px-3.5 rounded-xl text-xs flex items-center justify-center">Buka Project ↗</a>' + editBtnHtml + '</div></div>';
+      }).join('');
+    }
+
+    function filterProjectCategory(cat) { triggerTopShimmer(); selectedProjectCategory = cat; renderProjectArunaTab(); }
+
+    function previewProjectModalVideo() {
+      var v = convertVideoUrlToEmbed(document.getElementById('proj-input-video').value);
+      var box = document.getElementById('project-modal-video-box'), ifr = document.getElementById('project-modal-iframe');
+      if (v.isPlayable && v.mode === 'iframe') { box.classList.remove('hidden'); ifr.setAttribute('src', v.embedUrl); }
+      else { ifr.setAttribute('src', ''); box.classList.add('hidden'); }
+    }
+
+    function openProjectModal(id) {
+      if (!isAdminUser()) return;
+      var p = (appState.projects || []).find(function (x) { return x.id === id; });
+      document.getElementById('proj-input-id').value = p ? p.id : '';
+      document.getElementById('proj-input-title').value = p ? p.title : '';
+      document.getElementById('proj-input-cat').value = p ? p.category : 'Web App GAS';
+      document.getElementById('proj-input-desc').value = p ? p.description : '';
+      document.getElementById('proj-input-video').value = p ? (p.videoUrl || '') : '';
+      document.getElementById('proj-input-res').value = p ? (p.resourceUrl || '') : '';
+      document.getElementById('proj-input-status').value = p ? p.status : 'Production';
+      document.getElementById('proj-modal-msg').innerText = '';
+      previewProjectModalVideo();
+      var m = document.getElementById('project-modal'); m.classList.remove('hidden'); m.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('project-modal-iframe').setAttribute('src', '');
+      var m = document.getElementById('project-modal'); m.classList.add('hidden'); m.classList.remove('flex');
+    }
+
+    function saveProjectArunaForm() {
+      if (!isAdminUser() || !currentUser) return;
+      var title = document.getElementById('proj-input-title').value.trim();
+      if (!title) { document.getElementById('proj-modal-msg').innerText = 'Nama Project wajib diisi!'; return; }
+      var btn = document.getElementById('btn-save-project'); btn.disabled = true;
+
+      callBackend('saveProject', {
+        userId: currentUser.id,
+        payload: {
+          projectId: document.getElementById('proj-input-id').value.trim(),
+          title: title, category: document.getElementById('proj-input-cat').value.trim(),
+          description: document.getElementById('proj-input-desc').value.trim(),
+          videoUrl: document.getElementById('proj-input-video').value.trim(),
+          resourceUrl: document.getElementById('proj-input-res').value.trim(),
+          status: document.getElementById('proj-input-status').value
+        }
+      }, function(res) {
+        btn.disabled = false;
+        if (res && res.success) {
+          appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
+          setTimeout(closeProjectModal, 600);
+        } else if (res && res.message) {
+          document.getElementById('proj-modal-msg').innerText = '⚠️ ' + res.message;
+        }
+      }, function(err) {
+        btn.disabled = false;
+        document.getElementById('proj-modal-msg').innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
+      });
+    }
+
+    function openSyllabus() { var m = document.getElementById('syllabus-modal'); m.classList.remove('hidden'); m.classList.add('flex'); }
+    function closeSyllabus() { var m = document.getElementById('syllabus-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+
+    function switchTab(tabName) {
+      triggerTopShimmer();
+      currentActiveTab = tabName;
+      document.querySelectorAll('.tab-content').forEach(function (el) { el.classList.add('hidden'); el.classList.remove('page-animate-enter'); });
+      var t = document.getElementById('tab-' + tabName);
+      if (t) { t.classList.remove('hidden'); void t.offsetWidth; t.classList.add('page-animate-enter'); }
+      var titles = { home: 'Home Hub', dashboard: 'Dashboard Analitik', modul: 'Modul Pembelajaran', project: 'Project Aruna', arunalink: 'ArunaLink Resources' };
+      document.getElementById('current-page-title').innerText = titles[tabName] || 'ARUNA LMS';
+      highlightActivePlanet();
     }
   </script>
-
 </body>
 </html>
