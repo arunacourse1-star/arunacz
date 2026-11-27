@@ -55,6 +55,15 @@
       font-family: 'Space Grotesk', ui-monospace, monospace;
       letter-spacing: -0.01em;
     }
+
+    /* HORIZONTAL SCROLL UTILITIES */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
     
     /* LIGHT MODE BACKGROUND */
     body {
@@ -322,8 +331,10 @@
             <span class="text-[10px] font-extrabold tracking-widest text-blue-600 dark:text-blue-400 uppercase">ROYAL HUB LMS</span>
           </div>
         </div>
-        <button type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script" class="text-xs text-slate-400 hover:text-blue-400 p-1.5 rounded-lg border border-slate-700/50 hover:border-blue-500/40 transition">
-          ⚙️ GAS API
+        <!-- UNIVERSAL PUBLIC LOGIN: HANYA TOMBOL DEMO INSTAN (ANTI-SALAH GUNA) -->
+        <button type="button" onclick="enterInstantDemoMode()" title="Coba langsung tanpa akun" class="text-xs font-bold text-amber-500 dark:text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/35 hover:border-amber-400/60 bg-amber-500/10 transition flex items-center space-x-1.5 shadow-sm">
+          <span>✨</span>
+          <span>Mode Demo</span>
         </button>
       </div>
 
@@ -404,104 +415,178 @@
     </div>
   </div>
 
-  <!-- MODAL 2: DETAIL MODUL, VIDEO PLAYER (EP 1-10) & FORM EDIT MATERI -->
-  <div id="module-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="w-full max-w-3xl premium-card modal-spring-card rounded-2xl p-4 sm:p-6 max-h-[92vh] flex flex-col">
-      <div class="flex items-start justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-500/20">
-        <div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <span id="modal-mod-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500 dark:text-blue-400">MODUL</span>
-            <span id="modal-ep-badge" class="text-[10px] font-black px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-300 border border-blue-500/30">EP 1</span>
+  <!-- MODAL 2: RUANG BELAJAR 2 KOLOM (MATERI TERTULIS, VIDEO PLAYER & PLAYLIST KURIKULUM • GAMBAR 4) -->
+  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/90 backdrop-blur-md p-2 sm:p-5 flex justify-center items-start">
+    <div class="w-full max-w-7xl premium-card modal-spring-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 space-y-6 my-auto shadow-2xl border border-blue-500/30">
+      
+      <!-- TOP NAVIGATION BAR (Gambar 4) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-500/20">
+        <div class="flex items-center space-x-3">
+          <button onclick="closeModuleModal()" class="touch-target px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-xs font-black flex items-center gap-1.5 transition text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer">
+            <span>←</span>
+            <span>Kembali ke Modul</span>
+          </button>
+          <div class="hidden sm:block">
+            <span class="text-[10px] font-black uppercase tracking-wider text-slate-400">ARUNA ROYAL HUB</span>
+            <span class="text-xs text-slate-400 mx-1">•</span>
+            <span class="text-xs font-black text-blue-500 dark:text-blue-400">Ruang Belajar Interaktif</span>
           </div>
-          <h3 id="modal-mod-title" class="text-base sm:text-lg font-black text-slate-900 dark:text-white mt-0.5">Judul Episode</h3>
         </div>
-        <button onclick="closeModuleModal()" class="touch-target px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+
+        <div class="flex items-center space-x-2.5">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[11px] font-bold text-slate-400 hidden md:inline">Ganti Modul:</span>
+            <select id="modal-course-selector" onchange="onModalCourseChange(this.value)"
+              class="px-3 py-1.5 rounded-xl border border-blue-500/30 bg-white dark:bg-slate-800 text-xs font-black text-slate-900 dark:text-white outline-none shadow-sm cursor-pointer"></select>
+          </div>
+          <button onclick="closeModuleModal()" class="touch-target p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white hover:bg-red-500/80 font-bold text-sm transition">✕</button>
+        </div>
       </div>
 
-      <div class="overflow-y-auto my-3 space-y-3 pr-1 text-xs sm:text-sm">
-        <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/75 border border-slate-200 dark:border-blue-500/20 space-y-2">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-            <div class="flex items-center gap-2">
-              <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">Pilih Modul:</span>
-              <select id="modal-course-selector" onchange="onModalCourseChange(this.value)"
-                class="px-2.5 py-1 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-800 text-xs font-bold text-slate-900 dark:text-white outline-none"></select>
+      <!-- MAIN 2-COLUMN GRID (Gambar 4) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- KOLOM KIRI: AREA MATERI TERTULIS & VIDEO (lg:col-span-8) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- EPISODE HEADER -->
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1.5">
+              <span id="modal-mod-badge" class="text-xs font-black uppercase tracking-wider text-blue-500">MODUL 01</span>
+              <span id="modal-ep-badge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">EP 1</span>
+              <span id="modal-mod-type" class="text-xs font-mono font-bold text-slate-400">15 Menit</span>
             </div>
-            <span id="modal-mod-type" class="text-xs font-bold text-blue-600 dark:text-blue-400">Video & Materi</span>
+            <h1 id="modal-mod-title" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-snug">Judul Episode</h1>
           </div>
-          <div id="modal-episodes-bar" class="grid grid-cols-5 sm:grid-cols-10 gap-1 pt-1"></div>
-        </div>
 
-        <div id="modal-video-section" class="space-y-1.5">
-          <div id="modal-video-player-box" class="video-player-wrapper shadow-lg border border-blue-500/30 hidden">
-            <iframe id="modal-video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
-            <video id="modal-video-html5" controls class="hidden"></video>
+          <!-- MATERI PENJELASAN BERUPA TULISAN (Gambar 4) -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-blue-500/20 shadow-sm space-y-3.5">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-blue-500/20">
+              <span class="text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                <span>📖</span>
+                <span>Panduan & Penjelasan Materi</span>
+              </span>
+              <span class="text-[10px] font-mono text-slate-400 font-bold">Langkah Pembelajaran</span>
+            </div>
+            <div id="modal-material-content-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed space-y-3"></div>
           </div>
-          <div id="modal-video-empty-state" class="p-5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-dashed border-slate-300 dark:border-blue-500/30 text-center space-y-1">
-            <p class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">🎬 Belum Ada Link Video pada Episode Ini</p>
-            <p id="modal-empty-video-desc" class="text-[11px] text-slate-500 dark:text-slate-400">Video pembelajaran untuk episode ini sedang disiapkan oleh Admin/Instruktur.</p>
-          </div>
-          <div class="flex flex-wrap items-center justify-between gap-2 px-1">
-            <span id="modal-video-source-badge" class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Sumber Video: Otomatis</span>
-            <a id="modal-mod-link" href="#" target="_blank" class="text-[11px] font-bold text-blue-600 dark:text-blue-400 hover:underline">Buka Link Video di Tab Baru ↗</a>
-          </div>
-        </div>
 
-        <div class="p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-slate-200 dark:border-blue-500/20 space-y-1.5">
-          <div class="flex items-center justify-between">
-            <h4 class="text-[11px] font-black uppercase tracking-wider text-blue-600 dark:text-blue-400">📖 Materi Pembelajaran Episode Ini</h4>
-            <span class="text-[10px] text-slate-500 font-mono">Sheet: Modules</span>
-          </div>
-          <div id="modal-material-content-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed whitespace-pre-line"></div>
-        </div>
+          <!-- VIDEO PEMBELAJARAN (Gambar 4) -->
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
+                <span>🎬 Langsung aja ditonton videonya:</span>
+              </h3>
+              <span id="modal-video-source-badge" class="text-[10px] font-semibold text-slate-400">Sumber: Otomatis</span>
+            </div>
 
-        <details id="modal-admin-video-form" class="hidden group rounded-xl bg-blue-500/5 dark:bg-blue-600/10 border border-blue-500/25 p-3.5">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-xs font-black text-blue-600 dark:text-blue-300">
-            <span>⚙️ Input / Ubah Link Video Google Drive, YouTube & Isi Materi (Khusus Admin)</span>
-            <span class="text-[11px] font-bold underline">Buka Form ▾</span>
-          </summary>
-          <div class="mt-3 pt-2.5 border-t border-blue-500/20 space-y-2.5">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <div class="sm:col-span-2">
-                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Judul Episode</label>
-                <input id="input-ep-title" type="text" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
-              </div>
-              <div>
-                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Durasi (Menit)</label>
-                <input id="input-ep-duration" type="number" min="1" value="15" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
-              </div>
+            <div id="modal-video-player-box" class="video-player-wrapper shadow-2xl rounded-2xl overflow-hidden border border-blue-500/30 bg-black hidden">
+              <iframe id="modal-video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+              <video id="modal-video-html5" controls class="hidden"></video>
             </div>
-            <div>
-              <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video (Google Drive / YouTube / MP4)</label>
-              <input id="input-ep-video-url" type="url" oninput="previewEpisodeVideoInput()" placeholder="https://drive.google.com/file/d/.../view atau https://www.youtube.com/watch?v=..."
-                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
-              <p id="input-ep-convert-hint" class="text-[10px] text-blue-600 dark:text-blue-300 mt-1 font-medium">💡 Otomatis mengonversi link Google Drive & YouTube menjadi video player.</p>
+
+            <div id="modal-video-empty-state" class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-dashed border-slate-300 dark:border-blue-500/30 text-center space-y-2">
+              <p class="text-sm sm:text-base font-bold text-slate-700 dark:text-slate-200">🎬 Video Pembelajaran Segera Hadir</p>
+              <p id="modal-empty-video-desc" class="text-xs text-slate-400">Video pembelajaran sedang disiapkan oleh Admin/Instruktur.</p>
             </div>
-            <div>
-              <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Isi Materi Pembelajaran / Catatan Episode</label>
-              <textarea id="input-ep-material-text" rows="3" placeholder="Tuliskan ringkasan materi, langkah praktik, atau instruksi tugas..."
-                class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
-            </div>
+
             <div class="flex justify-end">
-              <button id="btn-save-ep-content" onclick="saveCurrentEpisodeContent()" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-lg text-xs">
-                💾 Simpan Video & Materi ke Spreadsheet
+              <a id="modal-mod-link" href="#" target="_blank" class="text-xs font-bold text-blue-500 dark:text-blue-400 hover:underline">Buka Link Video di Tab Baru ↗</a>
+            </div>
+          </div>
+
+          <!-- ACTION BUTTONS: PREV, SELESAIKAN, NEXT -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-blue-500/20">
+            <button id="btn-study-prev" type="button" onclick="navigateStudyEpisode(-1)" class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
+              ← Episode Sebelumnya
+            </button>
+            <div class="flex items-center gap-2">
+              <button id="btn-submit-module" type="button" onclick="completeCurrentEpisodeAction()" class="touch-target px-5 py-2.5 btn-cta-primary font-black rounded-xl text-xs flex items-center gap-2 shadow-lg cursor-pointer">
+                <span>✓</span>
+                <span>Tandai Selesai & Lanjut</span>
+              </button>
+              <button id="btn-study-next" type="button" onclick="navigateStudyEpisode(1)" class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
+                Episode Berikutnya →
               </button>
             </div>
           </div>
-        </details>
+          <p id="modal-status-msg" class="text-xs font-bold text-center text-blue-500 min-h-[16px]"></p>
 
-        <div id="modal-quiz-box" class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25 space-y-2">
-          <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-300">EVALUASI KUIS (SHEET QUIZZES)</span>
-          <p id="modal-quiz-question" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Pertanyaan Kuis</p>
-          <div id="modal-quiz-options" class="space-y-1.5"></div>
+          <!-- EVALUASI KUIS (SHEET QUIZZES) -->
+          <div id="modal-quiz-box" class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 space-y-2.5 hidden">
+            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-300">EVALUASI KUIS (SHEET QUIZZES)</span>
+            <p id="modal-quiz-question" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Pertanyaan Kuis</p>
+            <div id="modal-quiz-options" class="space-y-1.5"></div>
+          </div>
+
+          <!-- KHUSUS ADMIN: FORM EDIT VIDEO & MATERI TERTULIS -->
+          <details id="modal-admin-video-form" class="hidden group rounded-xl bg-blue-500/5 dark:bg-blue-600/10 border border-blue-500/25 p-4">
+            <summary class="cursor-pointer list-none flex items-center justify-between text-xs font-black text-blue-600 dark:text-blue-300">
+              <span>⚙️ Panel Admin: Edit Video & Materi Tulisan (Google Sheets)</span>
+              <span class="text-[11px] font-bold underline">Buka Form ▾</span>
+            </summary>
+            <div class="mt-3 pt-2.5 border-t border-blue-500/20 space-y-2.5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div class="sm:col-span-2">
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Judul Episode</label>
+                  <input id="input-ep-title" type="text" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Durasi (Menit)</label>
+                  <input id="input-ep-duration" type="number" min="1" value="15" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video (Google Drive / YouTube / MP4)</label>
+                <input id="input-ep-video-url" type="url" oninput="previewEpisodeVideoInput()" placeholder="https://drive.google.com/file/d/.../view atau https://www.youtube.com/watch?v=..."
+                  class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+                <p id="input-ep-convert-hint" class="text-[10px] text-blue-600 dark:text-blue-300 mt-1 font-medium">💡 Otomatis mengonversi link Google Drive & YouTube menjadi video player.</p>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Isi Materi Pembelajaran / Panduan Tertulis (Format Langkah-langkah)</label>
+                <textarea id="input-ep-material-text" rows="4" placeholder="Tuliskan materi tertulis, langkah 1, langkah 2, atau instruksi praktik..."
+                  class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
+              </div>
+              <div class="flex justify-end">
+                <button id="btn-save-ep-content" onclick="saveCurrentEpisodeContent()" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-lg text-xs">
+                  💾 Simpan Video & Materi ke Spreadsheet
+                </button>
+              </div>
+            </div>
+          </details>
         </div>
-        <p id="modal-status-msg" class="text-xs font-bold text-center text-blue-500 min-h-[16px]"></p>
-      </div>
 
-      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex flex-col sm:flex-row gap-2 justify-end">
-        <button onclick="closeModuleModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Tutup</button>
-        <button id="btn-submit-module" onclick="submitActiveModule()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">
-          ✓ Selesaikan Episode & Klaim +150 XP
-        </button>
+        <!-- KOLOM KANAN: KURIKULUM KELAS SIDEBAR (Gambar 4 - lg:col-span-4) -->
+        <div class="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
+          <div class="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-blue-500/25 shadow-lg space-y-3">
+            <div class="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-blue-500/20">
+              <span class="font-black text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="text-blue-500">≡</span>
+                <span>Kurikulum Kelas</span>
+              </span>
+              <span id="study-sidebar-progress" class="text-xs font-mono font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                0/10 Selesai
+              </span>
+            </div>
+
+            <!-- Banner Info Modul Aktif -->
+            <div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 dark:bg-blue-500/15 dark:border-blue-500/35 space-y-1">
+              <p id="study-sidebar-course-title" class="text-xs font-black text-blue-700 dark:text-blue-300 uppercase leading-snug line-clamp-2">
+                MODUL 01
+              </p>
+              <p id="study-sidebar-course-stat" class="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                10 Episode Pembelajaran
+              </p>
+            </div>
+
+            <!-- Playlist Episode (Gambar 4) -->
+            <div id="study-sidebar-playlist" class="max-h-[60vh] overflow-y-auto space-y-1.5 pr-1 no-scrollbar"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
       </div>
     </div>
   </div>
@@ -708,6 +793,12 @@
         </div>
         <button onclick="toggleDarkMode()" class="touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25 text-xs font-bold text-slate-800 dark:text-slate-200">
           <span id="theme-icon">🌙</span><span id="theme-label" class="hidden sm:inline">Mode Malam</span>
+        </button>
+
+        <!-- KHUSUS ADMIN: TOMBOL KONFIGURASI GAS API (HANYA MUNCUL JIKA ROLE ADMIN) -->
+        <button id="admin-header-gas-btn" type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script (Khusus Admin)" class="hidden touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-600/15 border border-blue-500/40 text-blue-500 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold shadow-sm">
+          <span>⚙️</span>
+          <span class="hidden sm:inline">GAS API</span>
         </button>
 
         <!-- User Profile Pill in Header -->
@@ -923,17 +1014,37 @@
         </div>
       </div>
 
-      <!-- TAB MODUL PEMBELAJARAN -->
+      <!-- TAB MODUL PEMBELAJARAN (HORIZONTAL SCROLL • GAMBAR 3) -->
       <div id="tab-modul" class="tab-content space-y-4 hidden">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">Pilih modul kurikulum dari Sheet <strong>Courses</strong> & <strong>Modules</strong> (Lengkap EP 1 – EP 10).</p>
+          <div>
+            <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">KURIKULUM RESMI • ARUNA LMS</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1.5">Modul Pembelajaran & Video Interaktif</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Pilih modul kurikulum, ikuti panduan materi tertulis, dan tonton video penjelasannya.</p>
+          </div>
           <div class="flex flex-wrap items-center gap-2">
             <button id="btn-top-input-video" onclick="openQuickInputVideoModal()" class="hidden touch-target btn-cta-primary px-3.5 py-2 rounded-xl text-xs font-black">🎬 + Input Video & Materi (EP 1-10)</button>
-            <button onclick="openSyllabus()" class="touch-target bg-white/80 dark:bg-slate-900/80 border border-blue-500/30 px-3.5 py-2 rounded-xl text-xs font-bold text-blue-500 dark:text-blue-400 hover:border-blue-400 transition">📋 Lihat Silabus Kurikulum</button>
+            <button onclick="openSyllabus()" class="touch-target bg-white/80 dark:bg-slate-900/80 border border-blue-500/30 px-3.5 py-2 rounded-xl text-xs font-bold text-blue-500 dark:text-blue-400 hover:border-blue-400 transition">📋 Lihat Silabus</button>
           </div>
         </div>
-        <div id="module-category-pills" class="flex flex-wrap gap-2 pb-0.5"></div>
-        <div id="courses-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+
+        <!-- CONTROLS: KATEGORI & PANAH HORIZONTAL SCROLL -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1 pb-1 border-b border-slate-200/60 dark:border-blue-500/15">
+          <div id="module-category-pills" class="flex flex-wrap items-center gap-2"></div>
+          
+          <div class="flex items-center space-x-2 self-end sm:self-auto">
+            <span class="text-[11px] font-bold text-slate-400 hidden sm:inline">Geser Modul:</span>
+            <button type="button" onclick="scrollCoursesHorizontal(-1)" title="Geser ke kiri" class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
+              ⟨
+            </button>
+            <button type="button" onclick="scrollCoursesHorizontal(1)" title="Geser ke kanan" class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
+              ⟩
+            </button>
+          </div>
+        </div>
+
+        <!-- HORIZONTAL SCROLL CONTAINER (Gambar 3) -->
+        <div id="courses-dynamic-grid" class="flex overflow-x-auto gap-5 pb-5 pt-1 px-1 snap-x snap-mandatory scroll-smooth no-scrollbar"></div>
       </div>
 
       <!-- TAB PROJECT ARUNA -->
@@ -1272,6 +1383,10 @@
       var hRole = document.getElementById('header-role');
       if (hRole) hRole.innerText = currentUser.role + ' • Active';
 
+      // Kontrol Hak Akses: Tombol GAS API hanya ditampilkan untuk role Admin
+      var adminGasBtn = document.getElementById('admin-header-gas-btn');
+      if (adminGasBtn) adminGasBtn.classList.toggle('hidden', !isAdminUser());
+
       document.getElementById('welcome-banner-text').innerText = 'Selamat Datang, ' + currentUser.name + ' di ARUNA LMS!';
       renderAllConnectedMenus();
       switchTab('home');
@@ -1482,24 +1597,97 @@
       }).join('');
     }
 
+    function scrollCoursesHorizontal(direction) {
+      var el = document.getElementById('courses-dynamic-grid');
+      if (el) {
+        var shift = (el.clientWidth > 600 ? 380 : 320) * direction;
+        el.scrollBy({ left: shift, behavior: 'smooth' });
+      }
+    }
+
     function renderModulesTab() {
       var courses = appState.courses || [];
       var cats = ['ALL'].concat(Array.from(new Set(courses.map(function (c) { return c.category; }))));
       document.getElementById('module-category-pills').innerHTML = cats.map(function (cat) {
         var count = cat === 'ALL' ? courses.length : courses.filter(function (c) { return c.category === cat; }).length;
-        var cls = selectedCategory === cat ? 'btn-cta-primary font-black' : 'premium-card text-slate-700 dark:text-slate-200 font-bold';
-        return '<button onclick="filterCategory(\'' + cat + '\')" class="touch-target ' + cls + ' text-xs px-3.5 py-1.5 rounded-lg">' + (cat === 'ALL' ? 'Semua Modul (' + count + ')' : cat + ' (' + count + ')') + '</button>';
+        var cls = selectedCategory === cat ? 'btn-cta-primary font-black shadow-md' : 'premium-card text-slate-700 dark:text-slate-200 font-bold hover:border-blue-500/40';
+        return '<button onclick="filterCategory(\'' + cat + '\')" class="touch-target ' + cls + ' text-xs px-3.5 py-1.5 rounded-xl transition cursor-pointer">' + (cat === 'ALL' ? 'Semua Modul (' + count + ')' : cat + ' (' + count + ')') + '</button>';
       }).join('');
 
       var filtered = selectedCategory === 'ALL' ? courses : courses.filter(function (c) { return c.category === selectedCategory; });
       document.getElementById('courses-dynamic-grid').innerHTML = filtered.map(function (c, idx) {
-        var epPills = c.modules.map(function (m, i) {
-          var hasVid = Boolean(m.url && m.url.trim() && m.url !== 'https://developers.google.com/apps-script');
-          var st = m.completed ? 'bg-blue-500/20 text-blue-400 border-blue-500/45 ep-active-glow' : (hasVid ? 'bg-amber-500/15 text-amber-400 border-amber-500/45 ep-active-glow' : 'bg-slate-100 dark:bg-slate-900/70 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800');
-          return '<button type="button" onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="ep-btn-bounce py-1 px-1 rounded-md border text-[10px] font-extrabold hover:border-blue-500 ' + st + '">EP ' + (i + 1) + (m.completed ? ' ✓' : (hasVid ? ' ▶' : '')) + '</button>';
-        }).join('');
+        var isRecommended = idx < 2;
+        var isStartHere = idx === 0;
         var firstInc = c.modules.find(function (m) { return !m.completed; }) || c.modules[0];
-        return '<div style="--stagger:' + idx + '" class="premium-card stagger-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between"><div><div class="flex justify-between items-center mb-2.5"><span class="bg-blue-500/15 text-blue-500 dark:text-blue-400 border border-blue-500/30 text-[11px] font-black px-2.5 py-0.5 rounded-md">' + c.badgeCode + '</span><span class="text-[11px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-md font-bold">' + c.category + '</span></div><div class="mb-2.5"><div class="flex justify-between text-[11px] font-extrabold text-blue-500 mb-1"><span>' + c.completedModules + '/' + c.totalModules + ' Episode Selesai</span><span>' + c.progressPct + '%</span></div><div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div></div><h3 class="text-base font-black text-slate-900 dark:text-white">' + c.title + '</h3><p class="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">' + c.description + '</p><div class="mt-3.5 pt-3 border-t border-slate-200/50 dark:border-slate-800 space-y-1.5"><div class="flex justify-between text-[10px] font-bold uppercase text-slate-400"><span>PILIH EPISODE (EP 1–10):</span><span>' + c.totalModules + ' EP</span></div><div class="grid grid-cols-5 gap-1">' + epPills + '</div></div></div><div class="mt-4 pt-2.5 border-t border-slate-200/50 dark:border-slate-800 flex items-center justify-between gap-2.5"><span class="text-[11px] font-bold text-slate-400">EP 1–10 • ' + c.totalDuration + 'm</span><button onclick="openModuleDetail(\'' + c.id + '\', \'' + (firstInc ? firstInc.id : '') + '\')" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-xl text-xs">Masuk Modul ></button></div></div>';
+
+        // Inner List of Episodes (Gambar 3)
+        var lessonsListHtml = c.modules.map(function (m, i) {
+          var epNum = i + 1;
+          var epTitle = m.title || ('EP ' + epNum + ': Pembelajaran Modul');
+          var dur = (m.duration || 15) + 'm';
+
+          if (m.completed) {
+            return '<div onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 cursor-pointer transition text-xs group">' +
+              '<div class="flex items-center space-x-2 truncate pr-2">' +
+                '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
+                '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
+              '</div>' +
+              '<span class="font-mono text-[11px] text-emerald-600 dark:text-emerald-300 font-bold flex-shrink-0">' + dur + '</span>' +
+            '</div>';
+          } else {
+            return '<div onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2 rounded-xl bg-white/60 dark:bg-slate-900/60 hover:bg-blue-500/10 border border-slate-200/60 dark:border-blue-500/10 hover:border-blue-500/30 cursor-pointer transition text-xs group">' +
+              '<div class="flex items-center space-x-2 truncate pr-2">' +
+                '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
+                '<span class="font-medium text-slate-700 dark:text-slate-300 truncate group-hover:text-blue-500 group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
+              '</div>' +
+              '<span class="font-mono text-[11px] text-slate-400 font-bold flex-shrink-0">' + dur + '</span>' +
+            '</div>';
+          }
+        }).join('');
+
+        return '<div style="--stagger:' + idx + '" class="w-[320px] sm:w-[355px] flex-shrink-0 snap-start premium-card stagger-card rounded-2xl sm:rounded-3xl p-5 flex flex-col justify-between border-t-4 ' + (isRecommended ? 'border-t-amber-500' : 'border-t-blue-500') + ' shadow-xl hover:shadow-2xl transition duration-300 space-y-4">' +
+          '<div>' +
+            // TOP BADGES ROW (Gambar 3)
+            '<div class="flex items-center justify-between gap-1 mb-2">' +
+              '<div class="flex flex-wrap items-center gap-1.5">' +
+                (isRecommended ? '<span class="bg-amber-500 text-white font-black text-[10px] px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-sm">★ REKOMENDASI</span>' : '') +
+                '<span class="bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 font-black text-[10px] px-2 py-0.5 rounded-md">' + c.badgeCode + '</span>' +
+              '</div>' +
+              '<button type="button" title="Bookmark Modul" class="p-1 rounded-lg text-slate-400 hover:text-amber-500 transition">' +
+                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>' +
+              '</button>' +
+            '</div>' +
+
+            // SUB BADGES: MULAI DARI SINI / KATEGORI & PROGRES
+            '<div class="flex items-center gap-1.5 mb-2.5">' +
+              (isStartHere ? '<span class="bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 font-extrabold text-[10px] px-2 py-0.5 rounded-md">MULAI DARI SINI</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-[10px] px-2 py-0.5 rounded-md">' + c.category + '</span>') +
+              '<span class="bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 font-mono text-[10px] font-bold px-2 py-0.5 rounded-md">' + c.completedModules + '/' + c.totalModules + ' (' + c.progressPct + '%)</span>' +
+            '</div>' +
+
+            // TITLE & DESCRIPTION
+            '<h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white uppercase leading-snug line-clamp-2 min-h-[48px]">' + c.title + '</h3>' +
+            '<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed line-clamp-2 min-h-[34px]">' + c.description + '</p>' +
+
+            // LESSONS INNER SCROLLABLE BOX (Gambar 3)
+            '<div class="mt-3.5 pt-3 border-t border-slate-200/60 dark:border-blue-500/15 space-y-2">' +
+              '<div class="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-slate-400">' +
+                '<span>MATERI DI MODUL INI:</span>' +
+                '<span class="font-mono">' + c.totalModules + ' MATERI</span>' +
+              '</div>' +
+              '<div class="bg-slate-100/70 dark:bg-slate-900/60 rounded-xl p-2 max-h-48 overflow-y-auto space-y-1.5 border border-slate-200/70 dark:border-blue-500/15 shadow-inner">' +
+                lessonsListHtml +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+          // CARD FOOTER (Gambar 3)
+          '<div class="pt-3 border-t border-slate-200/60 dark:border-blue-500/15 flex items-center justify-between gap-2">' +
+            '<span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">' + c.totalModules + ' Materi • ' + c.totalDuration + ' Menit</span>' +
+            '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (firstInc ? firstInc.id : '') + '\')" class="touch-target px-4 py-2 ' + (c.progressPct > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'btn-cta-primary') + ' font-black rounded-xl text-xs shadow-md transition cursor-pointer">' +
+              (c.progressPct > 0 ? 'Lanjutkan' : 'Masuk Modul') +
+            '</button>' +
+          '</div>' +
+        '</div>';
       }).join('');
     }
 
@@ -1552,55 +1740,218 @@
       if (c) openModuleDetail(c.id, c.modules[0].id);
     }
 
+    function renderFormattedMaterial(rawText, title, epNumber) {
+      if (rawText && rawText.trim()) {
+        var lines = rawText.trim().split('\n');
+        return lines.map(function(line) {
+          line = line.trim();
+          if (!line) return '<div class="h-1"></div>';
+          if (/^(Langkah\s*\d+:|Step\s*\d+:|\d+\.)/i.test(line)) {
+            return '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 font-bold text-slate-900 dark:text-blue-300 text-xs sm:text-sm">' + line + '</div>';
+          }
+          return '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">' + line + '</p>';
+        }).join('');
+      }
+
+      return '<div class="space-y-3.5">' +
+        '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs text-blue-700 dark:text-blue-300 font-bold flex items-center gap-2">' +
+          '<span>💡</span><span>Ikuti panduan langkah demi langkah berikut ini sebelum atau saat menonton video:</span>' +
+        '</div>' +
+        '<div class="space-y-2">' +
+          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 1: Memahami Sasaran Modul</h4>' +
+          '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Pada episode <strong>' + title + '</strong>, pastikan Anda memahami alur arsitektur sistem, struktur data Google Sheets yang digunakan, serta integrasi endpoint.</p>' +
+        '</div>' +
+        '<div class="space-y-2">' +
+          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 2: Menyiapkan Alat & Workspace</h4>' +
+          '<ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">' +
+            '<li>Buka spreadsheet database ARUNACOURSE pada tab browser Anda.</li>' +
+            '<li>Buka editor Google Apps Script jika Anda perlu menyesuaikan formula atau skrip.</li>' +
+            '<li>Gunakan console browser (F12) untuk memantau status komunikasi data jika diperlukan.</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="space-y-2">' +
+          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 3: Tonton Video & Praktikkan</h4>' +
+          '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Putar video pembelajaran interaktif di bawah sampai tuntas. Setelah selesai, klik tombol <strong>"✓ Tandai Selesai & Lanjut"</strong> di bawah untuk otomatis mengklaim +150 XP dan melanjutkan ke materi berikutnya.</p>' +
+        '</div>' +
+      '</div>';
+    }
+
     function openModuleDetail(courseId, modId) {
+      triggerTopShimmer();
       var course = (appState.courses || []).find(function (c) { return c.id === courseId; }) || appState.courses[0];
       if (!course) return;
       var mod = (course.modules || []).find(function (m) { return m.id === modId; }) || course.modules[0];
-      document.getElementById('modal-course-selector').innerHTML = appState.courses.map(function (c) {
-        return '<option value="' + c.id + '" ' + (c.id === course.id ? 'selected' : '') + '>' + c.badgeCode + ' — ' + c.title + '</option>';
-      }).join('');
-      document.getElementById('modal-episodes-bar').innerHTML = (course.modules || []).map(function (m, i) {
-        var isSel = m.id === mod.id;
-        var cls = isSel ? 'btn-cta-primary font-black' : 'bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-blue-500/25 font-bold';
-        return '<button type="button" onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="ep-btn-bounce py-1.5 px-1.5 rounded-lg text-xs ' + cls + '">EP ' + (i + 1) + (m.completed ? ' ✓' : '') + '</button>';
-      }).join('');
+      if (!mod) return;
 
-      var epOrder = Number(mod.order) || Number(mod.epNumber) || 1;
-      activeModContext = { courseId: course.id, modId: mod.id, epOrder: epOrder, quiz: mod.quiz };
-      document.getElementById('modal-mod-badge').innerText = course.badgeCode + ' • ' + course.title;
-      document.getElementById('modal-ep-badge').innerText = 'EP ' + epOrder;
-      document.getElementById('modal-mod-title').innerText = mod.title;
-      document.getElementById('modal-mod-type').innerText = mod.type + ' (' + mod.duration + ' Menit)';
-      document.getElementById('modal-material-content-text').innerText = mod.materialText || '';
-      document.getElementById('input-ep-title').value = mod.title;
-      document.getElementById('input-ep-duration').value = mod.duration || 15;
-      document.getElementById('input-ep-video-url').value = mod.url || '';
-      document.getElementById('input-ep-material-text').value = mod.materialText || '';
-      document.getElementById('modal-status-msg').innerText = '';
+      var epIndex = (course.modules || []).findIndex(function (m) { return m.id === mod.id; });
+      var epNumber = epIndex !== -1 ? (epIndex + 1) : 1;
 
-      var adminFlag = isAdminUser();
-      var adminForm = document.getElementById('modal-admin-video-form');
-      if (adminForm) adminForm.classList.toggle('hidden', !adminFlag);
-      var emptyDesc = document.getElementById('modal-empty-video-desc');
-      if (emptyDesc) {
-        emptyDesc.innerText = adminFlag
-          ? 'Buka panel "⚙️ Input / Ubah Link Video & Materi (Khusus Admin)" di bawah untuk menempelkan link Google Drive atau YouTube.'
-          : 'Video pembelajaran untuk episode ini sedang disiapkan oleh Admin/Instruktur.';
+      activeModContext = {
+        courseId: course.id,
+        modId: mod.id,
+        epOrder: epNumber,
+        epIndex: epIndex,
+        quiz: mod.quiz
+      };
+
+      // 1. Selector Modul di Top Bar
+      var sel = document.getElementById('modal-course-selector');
+      if (sel) {
+        sel.innerHTML = appState.courses.map(function (c) {
+          return '<option value="' + c.id + '" ' + (c.id === course.id ? 'selected' : '') + '>' + c.badgeCode + ' — ' + c.title + '</option>';
+        }).join('');
       }
 
+      // 2. Kolom Kiri: Episode Header
+      document.getElementById('modal-mod-badge').innerText = course.badgeCode + ' • ' + course.category;
+      document.getElementById('modal-ep-badge').innerText = 'EP ' + epNumber;
+      document.getElementById('modal-mod-title').innerText = mod.title;
+      document.getElementById('modal-mod-type').innerText = (mod.duration || 15) + ' Menit';
+
+      // 3. Kolom Kiri: Materi Teks Terstruktur (Gambar 4)
+      var matContent = document.getElementById('modal-material-content-text');
+      if (matContent) {
+        matContent.innerHTML = renderFormattedMaterial(mod.materialText, mod.title, epNumber);
+      }
+
+      // 4. Kolom Kiri: Video Player
       updateModalVideoPlayer(mod.url || '');
 
+      // 5. Kolom Kiri: Evaluasi Kuis (jika ada)
       var qBox = document.getElementById('modal-quiz-box');
       if (mod.quiz) {
         qBox.classList.remove('hidden');
         document.getElementById('modal-quiz-question').innerText = mod.quiz.question;
         document.getElementById('modal-quiz-options').innerHTML = mod.quiz.options.map(function (opt, i) {
-          return '<label class="flex items-center space-x-2.5 p-2.5 rounded-lg bg-white/80 dark:bg-slate-900 border border-blue-500/20 cursor-pointer"><input type="radio" name="quiz-opt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + '><span class="text-xs font-semibold">' + opt + '</span></label>';
+          return '<label class="flex items-center space-x-2.5 p-2.5 rounded-lg bg-white/80 dark:bg-slate-900 border border-blue-500/20 cursor-pointer">' +
+            '<input type="radio" name="quiz-opt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + '>' +
+            '<span class="text-xs font-semibold">' + opt + '</span>' +
+          '</label>';
         }).join('');
-      } else { qBox.classList.add('hidden'); }
+      } else {
+        qBox.classList.add('hidden');
+      }
 
+      // 6. Kolom Kiri: Navigasi Button State
+      var prevBtn = document.getElementById('btn-study-prev');
+      var nextBtn = document.getElementById('btn-study-next');
+      if (prevBtn) prevBtn.disabled = epIndex <= 0;
+      if (nextBtn) nextBtn.disabled = epIndex >= (course.modules.length - 1);
+
+      // 7. Kolom Kiri: Panel Admin Video & Materi
+      var adminFlag = isAdminUser();
+      var adminForm = document.getElementById('modal-admin-video-form');
+      if (adminForm) adminForm.classList.toggle('hidden', !adminFlag);
+      if (adminFlag) {
+        document.getElementById('input-ep-title').value = mod.title || '';
+        document.getElementById('input-ep-duration').value = mod.duration || 15;
+        document.getElementById('input-ep-video-url').value = mod.url || '';
+        document.getElementById('input-ep-material-text').value = mod.materialText || '';
+      }
+      document.getElementById('modal-status-msg').innerText = '';
+
+      // 8. KOLOM KANAN: SIDEBAR KURIKULUM KELAS (Gambar 4)
+      var doneCount = course.modules.filter(function (m) { return m.completed; }).length;
+      document.getElementById('study-sidebar-progress').innerText = doneCount + '/' + course.modules.length + ' Selesai';
+      document.getElementById('study-sidebar-course-title').innerText = course.badgeCode + ': ' + course.title;
+      document.getElementById('study-sidebar-course-stat').innerText = course.modules.length + ' Episode • ' + course.totalDuration + ' Menit Total';
+
+      var playlistContainer = document.getElementById('study-sidebar-playlist');
+      if (playlistContainer) {
+        playlistContainer.innerHTML = course.modules.map(function (m, idx) {
+          var num = idx + 1;
+          var dur = (m.duration || 15) + 'm';
+          var isCurrent = m.id === mod.id;
+
+          if (isCurrent) {
+            // Active Episode (Gambar 4: Border hijau/biru tebal + dot)
+            return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-3 rounded-xl border-2 border-emerald-500 dark:border-blue-400 bg-emerald-500/10 dark:bg-blue-500/20 shadow-md cursor-pointer transition">' +
+              '<div class="flex items-center space-x-2.5 truncate pr-2">' +
+                '<span class="w-3 h-3 rounded-full bg-emerald-500 dark:bg-blue-400 flex-shrink-0 animate-pulse"></span>' +
+                '<span class="font-black text-xs text-emerald-800 dark:text-white truncate">EP' + num + ': ' + m.title + '</span>' +
+              '</div>' +
+              '<span class="font-mono text-[11px] font-bold text-emerald-700 dark:text-blue-300 flex-shrink-0">' + dur + '</span>' +
+            '</div>';
+          } else if (m.completed) {
+            // Completed Episode (Gambar 4: Centang hijau)
+            return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/15 cursor-pointer transition text-xs">' +
+              '<div class="flex items-center space-x-2.5 truncate pr-2">' +
+                '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
+                '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate">EP' + num + ': ' + m.title + '</span>' +
+              '</div>' +
+              '<span class="font-mono text-[11px] text-emerald-600 dark:text-emerald-300 font-bold flex-shrink-0">' + dur + '</span>' +
+            '</div>';
+          } else {
+            // Pending Episode (Gambar 4: Lingkaran abu-abu)
+            return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200/70 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 hover:border-blue-500/40 hover:bg-blue-500/5 cursor-pointer transition text-xs">' +
+              '<div class="flex items-center space-x-2.5 truncate pr-2">' +
+                '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
+                '<span class="font-medium text-slate-700 dark:text-slate-300 truncate">EP' + num + ': ' + m.title + '</span>' +
+              '</div>' +
+              '<span class="font-mono text-[11px] text-slate-400 font-bold flex-shrink-0">' + dur + '</span>' +
+            '</div>';
+          }
+        }).join('');
+      }
+
+      // Tampilkan Modal Ruang Belajar
       var modal = document.getElementById('module-modal');
-      modal.classList.remove('hidden'); modal.classList.add('flex');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function navigateStudyEpisode(direction) {
+      if (!activeModContext || !appState) return;
+      var course = appState.courses.find(function (c) { return c.id === activeModContext.courseId; });
+      if (!course) return;
+      var newIndex = activeModContext.epIndex + direction;
+      if (newIndex >= 0 && newIndex < course.modules.length) {
+        openModuleDetail(course.id, course.modules[newIndex].id);
+      }
+    }
+
+    function completeCurrentEpisodeAction() {
+      if (!activeModContext || !currentUser) return;
+      var score = 100;
+      if (activeModContext.quiz) {
+        var selected = document.querySelector('input[name="quiz-opt"]:checked');
+        score = (selected && Number(selected.value) === activeModContext.quiz.correctIndex) ? 100 : 70;
+      }
+
+      var st = document.getElementById('modal-status-msg'), btn = document.getElementById('btn-submit-module');
+      st.innerText = '⏳ Menyimpan progres ke Google Sheets...';
+      btn.disabled = true;
+
+      callBackend('completeModule', {
+        userId: currentUser.id,
+        courseId: activeModContext.courseId,
+        modId: activeModContext.modId,
+        score: score
+      }, function(res) {
+        btn.disabled = false;
+        if (res && res.success) {
+          appState = res.appData;
+          ensureTenEpisodesPerCourse(appState);
+          renderAllConnectedMenus();
+          st.innerText = '✓ ' + (res.message || 'Episode berhasil diselesaikan! +150 XP');
+
+          // Otomatis lanjut ke episode berikutnya dalam 700ms
+          setTimeout(function() {
+            var course = appState.courses.find(function (c) { return c.id === activeModContext.courseId; });
+            var nextIndex = activeModContext.epIndex + 1;
+            if (course && nextIndex < course.modules.length) {
+              openModuleDetail(course.id, course.modules[nextIndex].id);
+            } else {
+              openModuleDetail(activeModContext.courseId, activeModContext.modId);
+            }
+          }, 700);
+        } else if (res && res.message) {
+          st.innerText = '⚠️ ' + res.message;
+        }
+      }, function(err) {
+        btn.disabled = false;
+        st.innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
+      });
     }
 
     function saveCurrentEpisodeContent() {
@@ -1639,31 +1990,7 @@
     }
 
     function submitActiveModule() {
-      if (!activeModContext || !currentUser) return;
-      var score = 100;
-      if (activeModContext.quiz) {
-        var sel = document.querySelector('input[name="quiz-opt"]:checked');
-        score = (sel && Number(sel.value) === activeModContext.quiz.correctIndex) ? 100 : 70;
-      }
-      var st = document.getElementById('modal-status-msg'), btn = document.getElementById('btn-submit-module');
-      st.innerText = '⏳ Menyimpan progres ke Google Sheets...'; btn.disabled = true;
-
-      callBackend('completeModule', {
-        userId: currentUser.id,
-        courseId: activeModContext.courseId,
-        modId: activeModContext.modId,
-        score: score
-      }, function(res) {
-        btn.disabled = false;
-        if (res && res.success) {
-          appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
-          st.innerText = '✓ Selesai! Skor: ' + score + ' (+150 XP)';
-          setTimeout(closeModuleModal, 800);
-        }
-      }, function(err) {
-        btn.disabled = false;
-        st.innerText = '⚠️ Gagal simpan progres: ' + (err && err.message ? err.message : String(err));
-      });
+      completeCurrentEpisodeAction();
     }
 
     function renderProjectArunaTab() {
