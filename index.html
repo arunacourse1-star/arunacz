@@ -331,11 +331,18 @@
             <span class="text-[10px] font-extrabold tracking-widest text-blue-600 dark:text-blue-400 uppercase">ROYAL HUB LMS</span>
           </div>
         </div>
-        <!-- UNIVERSAL PUBLIC LOGIN: HANYA TOMBOL DEMO INSTAN (ANTI-SALAH GUNA) -->
-        <button type="button" onclick="enterInstantDemoMode()" title="Coba langsung tanpa akun" class="text-xs font-bold text-amber-500 dark:text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/35 hover:border-amber-400/60 bg-amber-500/10 transition flex items-center space-x-1.5 shadow-sm">
-          <span>✨</span>
-          <span>Mode Demo</span>
-        </button>
+        <div class="flex items-center space-x-2">
+          <!-- TOMBOL GAS API: HANYA MUNCUL JIKA USERNAME DIKETIK NAMA ADMIN (SMART REVEAL) -->
+          <button id="login-gas-btn" type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script (Admin)" class="hidden text-xs font-bold text-blue-500 dark:text-blue-400 hover:text-white hover:bg-blue-600 px-2.5 py-1.5 rounded-xl border border-blue-500/35 bg-blue-500/10 transition flex items-center space-x-1 shadow-sm cursor-pointer">
+            <span>⚙️</span>
+            <span>GAS API</span>
+          </button>
+          <!-- TOMBOL DEMO INSTAN -->
+          <button type="button" onclick="enterInstantDemoMode()" title="Coba langsung tanpa akun" class="text-xs font-bold text-amber-500 dark:text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/35 hover:border-amber-400/60 bg-amber-500/10 transition flex items-center space-x-1.5 shadow-sm cursor-pointer">
+            <span>✨</span>
+            <span>Mode Demo</span>
+          </button>
+        </div>
       </div>
 
       <div>
@@ -346,17 +353,17 @@
       <div class="space-y-3.5">
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Email / Username / Nama</label>
-          <input id="login-email" type="text" value="robin@gmail.com" placeholder="Ketik robin@gmail.com atau nama Anda"
+          <input id="login-email" type="text" value="" oninput="detectAdminInput(this.value)" placeholder="Masukkan email atau username Anda"
             class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
         </div>
         <div>
           <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Password</label>
-          <input id="login-pass" type="password" value="admin123" placeholder="Masukkan password"
+          <input id="login-pass" type="password" value="" placeholder="Masukkan password Anda"
             class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
         </div>
         <p id="auth-msg" class="text-xs font-semibold text-blue-600 dark:text-blue-400 min-h-[18px] text-center"></p>
         <button id="auth-submit-btn" onclick="handleLogin()"
-          class="touch-target w-full btn-cta-primary font-black py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center">
+          class="touch-target w-full btn-cta-primary font-black py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center cursor-pointer">
           <span>Masuk ke Sistem</span>
         </button>
       </div>
@@ -365,7 +372,7 @@
         <button id="toggle-auth-btn" onclick="toggleRegisterMode()" class="hover:text-blue-500 font-bold">
           Belum punya akun? <span class="underline text-blue-600 dark:text-blue-400">Daftar Mandiri</span>
         </button>
-        <span class="font-mono text-[11px] text-blue-400">v4.4 • Plus Jakarta Sans</span>
+        <span class="font-mono text-[11px] text-blue-400">v4.6 • Executive Edition</span>
       </div>
     </div>
   </div>
@@ -1080,6 +1087,21 @@
       return Boolean(currentUser && String(currentUser.role || '').trim().toLowerCase() === 'admin');
     }
 
+    // Deteksi input username login: Tombol ⚙️ GAS API hanya muncul jika diketik nama Admin (Smart Admin Reveal)
+    function detectAdminInput(val) {
+      var btn = document.getElementById('login-gas-btn');
+      if (!btn) return;
+      var clean = String(val || '').trim().toLowerCase();
+      var isAdmin = clean === 'robin' || clean === 'admin' || clean === 'robintarigan' || clean === 'idam' || clean.indexOf('admin') !== -1 || clean.indexOf('robin') !== -1;
+      if (isAdmin) {
+        btn.classList.remove('hidden');
+        btn.classList.add('inline-flex');
+      } else {
+        btn.classList.add('hidden');
+        btn.classList.remove('inline-flex');
+      }
+    }
+
     // ====== UNIVERSAL BACKEND BRIDGE (GAS + VERCEL HYBRID) ======
     // URL Web App Google Apps Script resmi yang langsung terhubung ke Sheet ARUNACOURSE:
     var HARDCODED_GAS_URL = 'https://script.google.com/macros/s/AKfycbzc-QIyJ9uk5xGkotgI4UOH3LwA3t9q8pVmOGndOB4XeLLIRq9wrHntRGFaeVYR-S0WLw/exec';
@@ -1740,40 +1762,313 @@
       if (c) openModuleDetail(c.id, c.modules[0].id);
     }
 
-    function renderFormattedMaterial(rawText, title, epNumber) {
-      if (rawText && rawText.trim()) {
-        var lines = rawText.trim().split('\n');
-        return lines.map(function(line) {
-          line = line.trim();
-          if (!line) return '<div class="h-1"></div>';
-          if (/^(Langkah\s*\d+:|Step\s*\d+:|\d+\.)/i.test(line)) {
-            return '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 font-bold text-slate-900 dark:text-blue-300 text-xs sm:text-sm">' + line + '</div>';
+    // ====== SNIPPET CODE TEMPLATES & MODE SELECTOR ======
+    var currentSnippetMode = 'index';
+    var SNIPPET_TEMPLATES = {
+      index: '<!DOCTYPE html>\n<html lang="id">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>ARUNA LMS • Web App Starter</title>\n  <!-- Tailwind CSS & Plus Jakarta Sans Font -->\n  <' + 'script src="https://cdn.tailwindcss.com"></' + 'script>\n  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">\n  <style>\n    body { font-family: "Plus Jakarta Sans", sans-serif; }\n  </style>\n</head>\n<body class="bg-slate-950 text-slate-100 min-h-screen p-4 sm:p-8 flex flex-col justify-center items-center">\n  <div class="w-full max-w-3xl space-y-5 p-6 rounded-2xl bg-slate-900 border border-blue-500/30 shadow-2xl">\n    <div class="flex items-center justify-between border-b border-blue-500/20 pb-3">\n      <h1 class="text-xl font-black text-blue-400">ARUNA ROYAL HUB LMS</h1>\n      <span class="text-xs px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full font-bold">1.index Mode Active</span>\n    </div>\n    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">\n      Template starter client-side yang terintegrasi langsung ke Google Apps Script backend melalui REST API JSON.\n    </p>\n    <button onclick="alert(\'Terhubung ke sistem ARUNA!\')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-xl text-xs transition shadow-lg">\n      🚀 Uji Koneksi API\n    </button>\n  </div>\n</body>\n</html>',
+      
+      backend: '/**\n * ARUNA LMS Backend Engine • Google Apps Script (code.gs)\n * Menghubungkan Google Spreadsheet ke Vercel Frontend\n */\nfunction doGet(e) {\n  var action = (e && e.parameter && e.parameter.action) || "ping";\n  var result = { success: true, timestamp: new Date().toISOString(), message: "ARUNA GAS API Ready" };\n  \n  if (action === "getState") {\n    result.data = getDatabaseState();\n  }\n  \n  return ContentService.createTextOutput(JSON.stringify(result))\n    .setMimeType(ContentService.MimeType.JSON);\n}\n\nfunction doPost(e) {\n  try {\n    var payload = JSON.parse(e.postData.contents);\n    var action = payload.action;\n    var result = { success: true };\n    \n    if (action === "login") {\n      result = handleUserLogin(payload.email, payload.password);\n    } else if (action === "completeEpisode") {\n      result = handleCompleteEpisode(payload.userId, payload.courseId, payload.epNumber);\n    }\n    \n    return ContentService.createTextOutput(JSON.stringify(result))\n      .setMimeType(ContentService.MimeType.JSON);\n  } catch (err) {\n    return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.toString() }))\n      .setMimeType(ContentService.MimeType.JSON);\n  }\n}',
+
+      setup: '/**\n * Setup Skema Database Google Spreadsheet (setup.gs)\n * Membuat sheet otomatis: USERS, COURSES, MODULES, PROJECTARUNA, ARUNALINKS\n */\nfunction initializeArunaDatabase() {\n  var ss = SpreadsheetApp.getActiveSpreadsheet();\n  var requiredSheets = [\n    { name: "USERS", headers: ["User ID", "Email", "Password", "Name", "Role", "XP", "Completed Episodes", "Certificate ID"] },\n    { name: "COURSES", headers: ["Course ID", "Badge Code", "Title", "Category", "Description", "Instructor", "Total EP", "Duration"] },\n    { name: "MODULES", headers: ["Module ID", "Course ID", "EP Number", "EP Code", "Title", "Video URL", "Duration", "Quiz ID", "Material Text"] },\n    { name: "PROJECTARUNA", headers: ["Project ID", "Title", "Category", "Description", "Video URL", "Resource URL", "Status"] },\n    { name: "ARUNALINKS", headers: ["Link ID", "Title", "Category", "Description", "Resource URL", "Icon"] }\n  ];\n\n  requiredSheets.forEach(function(item) {\n    var sheet = ss.getSheetByName(item.name);\n    if (!sheet) {\n      sheet = ss.insertSheet(item.name);\n      sheet.appendRow(item.headers);\n      sheet.setFrozenRows(1);\n      sheet.getRange(1, 1, 1, item.headers.length).setFontWeight("bold");\n      Logger.log("✓ Sheet berhasil dibuat: " + item.name);\n    }\n  });\n  Logger.log("Inisialisasi Database Spreadsheet Selesai 100%!");\n}'
+    };
+
+    function switchSnippetMode(mode) {
+      currentSnippetMode = mode;
+      var modes = ['index', 'backend', 'setup'];
+      modes.forEach(function(m) {
+        var btn = document.getElementById('snip-btn-' + m);
+        if (btn) {
+          if (m === mode) {
+            btn.className = 'touch-target px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-blue-600 text-white shadow-sm';
+          } else {
+            btn.className = 'touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer';
           }
-          return '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">' + line + '</p>';
-        }).join('');
+        }
+      });
+
+      var label = document.getElementById('active-snippet-label');
+      var codeEl = document.getElementById('code-snippet-display');
+      if (label) {
+        if (mode === 'index') label.innerText = '1. index.html • Frontend Monolith Starter';
+        else if (mode === 'backend') label.innerText = '2. code.gs • API Endpoint Google Apps Script';
+        else label.innerText = '3. setup.gs • Skema Database Google Sheets';
+      }
+      if (codeEl) {
+        codeEl.innerText = SNIPPET_TEMPLATES[mode] || '';
+      }
+    }
+
+    function copyCurrentActiveSnippet() {
+      var code = SNIPPET_TEMPLATES[currentSnippetMode] || '';
+      var btn = document.getElementById('btn-copy-snippet');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(function() {
+          flashCopyBtnSuccess(btn);
+        }).catch(function() {
+          fallbackCopySnippet(code, btn);
+        });
+      } else {
+        fallbackCopySnippet(code, btn);
+      }
+    }
+
+    function fallbackCopySnippet(text, btn) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        flashCopyBtnSuccess(btn);
+      } catch (e) {
+        alert('Gagal menyalin kode secara otomatis. Silakan salin manual.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function flashCopyBtnSuccess(btn) {
+      if (!btn) return;
+      var origHtml = btn.innerHTML;
+      btn.innerHTML = '<span>✓</span><span>Tersalin!</span>';
+      btn.classList.add('bg-emerald-600');
+      setTimeout(function() {
+        btn.innerHTML = origHtml;
+        btn.classList.remove('bg-emerald-600');
+      }, 2000);
+    }
+
+    // ====== GENERATOR 5 PARAGRAF LENGKAP & TERSTRUKTUR PER EPISODE ======
+    function getFiveParagraphsForEpisode(epNumber, title, rawText) {
+      var t = String(title || '');
+
+      if (epNumber === 1) {
+        return [
+          {
+            heading: "1. Konsep Fundamental & Urgensi Arsitektur Monolith Web App",
+            content: "Pada episode pertama ini, kita meletakkan fondasi arsitektur sistem ARUNA LMS dengan memanfaatkan Google Apps Script (GAS) sebagai serverless backend dan Google Sheets sebagai basis data relasional. Pendekatan ini memungkinkan institusi maupun praktisi membangun platform pembelajaran mandiri kelas enterprise dengan ketersediaan tinggi tanpa terbebani biaya langganan cloud server bulanan, sekaligus memanfaatkan ekosistem keamanan Google yang teruji andal."
+          },
+          {
+            heading: "2. Arsitektur Aliran Data & Integrasi Hybrid Vercel-GAS",
+            content: "Mekanisme integrasi beroperasi menggunakan pola komunikasi asinkron RESTful. Frontend modern yang di-hosting di Vercel berkomunikasi dua arah dengan endpoint Web App Google Apps Script melalui pertukaran payload JSON. Fungsi doGet() melayani permintaan status database dan verifikasi kesehatan API, sedangkan doPost() memproses aksi terenkripsi seperti login pengguna, penyimpanan progres modul, dan perekaman sertifikat digital secara real-time."
+          },
+          {
+            heading: "3. Prosedur Implementasi Langkah demi Langkah (Step-by-Step)",
+            content: "Langkah awal dimulai dari pembuatan project pada Apps Script Editor yang terikat pada spreadsheet ARUNACOURSE. Salin template 1. index.html dan 2. code.gs dari kotak kode di bawah. Konfigurasikan skema tabel sheet USERS, COURSES, dan MODULES. Lakukan deployment Web App dengan akses 'Anyone' (Siapa saja) agar domain frontend Vercel dapat melakukan pertukaran request tanpa terhalang permission gate."
+          },
+          {
+            heading: "4. Best Practice, Keamanan Enterprise & Penanganan Error",
+            content: "Terapkan validasi sanitasi input pada form login untuk mencegah injeksi payload berbahaya. Optimalkan kuota request harian Google dengan mengaktifkan strategi in-memory caching saat membaca baris spreadsheet. Jika menemukan galat CORS atau status 404, pastikan URL deployment Web App adalah versi terbaru (New Version) dan periksa konsol developer browser (F12) untuk menginspeksi header respons."
+          },
+          {
+            heading: "5. Rangkuman Pembelajaran & Panduan Menyimak Video",
+            content: "Sebagai sintesis materi, simak video tutorial di bawah untuk mengamati demonstrasi langsung proses menghubungkan form login dengan Google Apps Script. Praktikkan langsung pada tab editor Anda. Setelah berhasil melakukan verifikasi login pertama, klik tombol 'Tandai Selesai & Lanjut' di bawah untuk mengklaim +150 XP dan membuka akses episode berikutnya."
+          }
+        ];
       }
 
-      return '<div class="space-y-3.5">' +
-        '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs text-blue-700 dark:text-blue-300 font-bold flex items-center gap-2">' +
-          '<span>💡</span><span>Ikuti panduan langkah demi langkah berikut ini sebelum atau saat menonton video:</span>' +
-        '</div>' +
-        '<div class="space-y-2">' +
-          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 1: Memahami Sasaran Modul</h4>' +
-          '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Pada episode <strong>' + title + '</strong>, pastikan Anda memahami alur arsitektur sistem, struktur data Google Sheets yang digunakan, serta integrasi endpoint.</p>' +
-        '</div>' +
-        '<div class="space-y-2">' +
-          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 2: Menyiapkan Alat & Workspace</h4>' +
-          '<ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">' +
-            '<li>Buka spreadsheet database ARUNACOURSE pada tab browser Anda.</li>' +
-            '<li>Buka editor Google Apps Script jika Anda perlu menyesuaikan formula atau skrip.</li>' +
-            '<li>Gunakan console browser (F12) untuk memantau status komunikasi data jika diperlukan.</li>' +
-          '</ul>' +
-        '</div>' +
-        '<div class="space-y-2">' +
-          '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 3: Tonton Video & Praktikkan</h4>' +
-          '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Putar video pembelajaran interaktif di bawah sampai tuntas. Setelah selesai, klik tombol <strong>"✓ Tandai Selesai & Lanjut"</strong> di bawah untuk otomatis mengklaim +150 XP dan melanjutkan ke materi berikutnya.</p>' +
+      if (epNumber === 2) {
+        return [
+          {
+            heading: "1. Konsep Fundamental: Database Spreadsheet Kebal Geser Kolom",
+            content: "Tantangan terbesar menggunakan spreadsheet sebagai database adalah kerapuhan sistem saat ada penambahan atau pergeseran posisi kolom oleh admin. Pada episode kedua ini, kita mengimplementasikan arsitektur Dynamic Header Index Mapping. Dengan arsitektur ini, seluruh query data dipetakan berdasarkan nama header baris pertama, sehingga aplikasi tetap berjalan 100% normal tanpa risiko salah membaca data meskipun susunan kolom spreadsheet diubah."
+          },
+          {
+            heading: "2. Arsitektur Aliran Data & Pemetaan Kolom Otomatis",
+            content: "Sistem backend membaca baris pertama setiap tabel (Row 1) dan secara dinamis membentuk mapping dictionary antara nama atribut (misalnya 'Course ID', 'Episode Video Link', 'Material Text') dengan indeks kolom numeriknya. Seluruh operasi pengambilan maupun pembaruan data modul merujuk pada dictionary ini, memastikan integritas record antara tab USERS, COURSES, dan MODULES tetap presisi."
+          },
+          {
+            heading: "3. Prosedur Praktik: Setup Skema & Script Mapping",
+            content: "Buka Google Sheets database Anda dan pastikan header utama telah terisi rapi sesuai standar ARUNA. Gunakan template 3. setup.gs di bawah untuk menginisialisasi seluruh tabel secara otomatis dengan satu kali klik. Jalankan fungsi mapping pada Apps Script, lalu verifikasi output logger untuk memastikan seluruh kolom terindeks dengan benar tanpa ada field yang bernilai null."
+          },
+          {
+            heading: "4. Keamanan Sistem, In-Memory Caching & Optimasi Kuota",
+            content: "Hindari pemanggilan fungsi SpreadsheetApp.getActiveSheet().getDataRange().getValues() secara berulang dalam loop baris karena akan memicu latensi tinggi dan menghabiskan kuota harian execution time Google Apps Script. Ambil seluruh data tabel dalam satu kali pembacaan array, proses di memori, dan kembalikan response JSON yang telah di-filter untuk menjamin waktu muat di bawah 200ms."
+          },
+          {
+            heading: "5. Rangkuman Output & Arahan Eksekusi Video Pembelajaran",
+            content: "Tonton video tutorial terlampir untuk menyaksikan simulasi pergeseran kolom di spreadsheet dan pembuktian bahwa sistem frontend tetap membaca video link serta progres modul tanpa gangguan. Lakukan pengujian mandiri di spreadsheet Anda, lalu tandai modul ini selesai untuk menyimpan pencapaian progres ke database."
+          }
+        ];
+      }
+
+      if (epNumber === 3) {
+        return [
+          {
+            heading: "1. Konsep Fundamental: Radial Orbit Solar System Navigation",
+            content: "Episode ketiga memperkenalkan inovasi pengalaman pengguna (UX) terdepan platform ARUNA LMS melalui antarmuka navigasi Radial Orbit Solar System. Menu navigasi dirancang melayang dan terinspirasi dari lintasan tata surya, di mana modul-modul utama mengorbit mengelilingi inti logo ARUNA. Desain ini memberikan kesan futuristik, intuitif, dan sangat ergonomis bagi pengguna mobile maupun desktop."
+          },
+          {
+            heading: "2. Arsitektur Visual: CSS Trigonometri & Single Page App (SPA)",
+            content: "Navigasi orbit dibangun memanfaatkan transformasi trigonometri CSS dan variabel custom properties (--angle). Setiap tombol menu berputar secara proporsional mengelilingi pusat lingkaran. Transisi antar halaman (Home, Dashboard, Modul, Project Aruna, ArunaLink) dikendalikan oleh fungsi SPA terpusat yang mengganti tampilan tanpa memicu reload browser, menjaga kehalusan interaksi pengguna."
+          },
+          {
+            heading: "3. Prosedur Praktik: Implementasi Orbit Melayang & Glassmorphism",
+            content: "Salin potongan kode CSS dan markup HTML navigasi orbit dari kotak template 1. index.html di bawah. Pasang event listener touch-friendly pada perangkat mobile. Uji interaksi hover pada planet orbit untuk memastikan animasi putaran melambat secara elegan saat kursor didekatkan, memberikan kenyamanan maksimal bagi siswa dalam memilih modul."
+          },
+          {
+            heading: "4. Best Practice Mobile Responsiveness & Touch Optimization",
+            content: "Pastikan ukuran area sentuh tombol (touch target) memiliki ukuran minimal 44x44 pixel sesuai standar human interface guidelines. Sediakan tombol floating trigger alternatif di sudut layar bawah agar pengguna smartphone satu tangan dapat membuka menu navigasi orbit secara instan kapan saja tanpa perlu scrolling ke atas."
+          },
+          {
+            heading: "5. Rangkuman Desain & Langkah Penerapan Video",
+            content: "Perhatikan tutorial visual pada video di bawah untuk mempelajari teknik pewarnaan palet Royal Blue, pencahayaan glow ambient neon, dan penataan kartu kurikulum. Terapkan styling ke dalam file proyek Anda, lalu klik tombol 'Tandai Selesai & Lanjut' untuk mengantongi poin evaluasi berikutnya."
+          }
+        ];
+      }
+
+      if (epNumber === 4) {
+        return [
+          {
+            heading: "1. Konsep Fundamental: Universal Video Player Engine",
+            content: "Ketersediaan media pembelajaran multimedia yang lancar merupakan jantung dari platform LMS. Di episode keempat, kita mengintegrasikan Video Player Engine pintar yang secara otomatis mendeteksi dan mengonversi berbagai jenis tautan video: mulai dari video YouTube reguler, YouTube Shorts, Google Drive Video sharing link, hingga file video HTML5 mandiri."
+          },
+          {
+            heading: "2. Arsitektur Parser Tautan: Bypass X-Frame-Options Google Drive",
+            content: "Tautan berbagi Google Drive (/view?usp=sharing) tidak dapat diputar langsung di dalam iframe HTML karena proteksi header Google. Engine ARUNA membedah URL tersebut di sisi klien, mengekstrak file ID unik, dan merekonstruksinya menjadi format preview resmi yang diizinkan untuk di-embed (drive.google.com/file/d/{ID}/preview). Begitu pula dengan tautan YouTube yang diubah ke format embed responsif 16:9."
+          },
+          {
+            heading: "3. Prosedur Praktik: Input Video Mandiri Melalui Dashboard Admin",
+            content: "Gunakan panel input video admin di dashboard untuk memasukkan tautan Google Drive atau YouTube ke dalam episode yang dituju. Klik tombol preview untuk memverifikasi bahwa parser video langsung mengenali sumber media dan menampilkan video player aktif tanpa perlu reload halaman."
+          },
+          {
+            heading: "4. Manajemen Hak Akses File & Troubleshooting Pemutaran",
+            content: "Pastikan setelan privasi video pada Google Drive telah disetel ke 'Anyone with the link can view' (Siapa saja yang memiliki link). Untuk video YouTube, pastikan opsi 'Allow embedding' dalam status aktif di YouTube Studio agar video tidak terhalang oleh pembatasan pemutaran pihak ketiga."
+          },
+          {
+            heading: "5. Rangkuman Fitur & Panduan Melanjutkan Modul",
+            content: "Putar video demonstrasi di bawah untuk mengamati pengujian pemutaran berbagai format tautan video secara langsung. Lakukan verifikasi pada proyek Anda dan tandai modul ini selesai untuk melanjutkan ke episode evaluasi kuis otomatis."
+          }
+        ];
+      }
+
+      if (epNumber === 5) {
+        return [
+          {
+            heading: "1. Konsep Fundamental: Automated Grading & Instant Certificate Engine",
+            content: "Episode kelima mematangkan sistem asesmen kompetensi siswa melalui Quiz Engine otomatis dan generator Sertifikat Digital Kompetensi. Setiap peserta yang menyelesaikan evaluasi materi dengan nilai melampaui passing grade (minimal 80/100) secara otomatis diterbitkan sertifikat digital dengan kode verifikasi unik yang tercatat permanen di Google Sheets."
+          },
+          {
+            heading: "2. Arsitektur Evaluasi: Kalkulasi Skor & Sinkronisasi Real-Time",
+            content: "Struktur kuis terdiri dari pertanyaan pilihan ganda yang disinkronkan dari database spreadsheet. Ketika peserta mengirimkan jawaban, sistem memverifikasi kesesuaian jawaban dengan kunci, menghitung persentase nilai akhir, mengupdate poin XP gamifikasi, dan menyuntikkan catatan kelulusan ke sheet USERS dan MODULES secara asinkron."
+          },
+          {
+            heading: "3. Prosedur Praktik: Pengerjaan Kuis & Pratinjau Sertifikat",
+            content: "Pilih opsi jawaban yang paling tepat pada form kuis interaktif di bawah. Klik tombol submit untuk melihat feedback skor seketika. Jika lulus, modal pratinjau sertifikat digital ARUNA Royal Hub akan muncul lengkap dengan nama peserta, judul modul, skor akhir, dan tombol cetak PDF berkualitas tinggi."
+          },
+          {
+            heading: "4. Standar Keamanan Asesmen & Pencegahan Manipulasi Skor",
+            content: "Pastikan validasi passing grade dilakukan dengan verifikasi integritas data. Kunci jawaban tidak diekspos secara mentah di elemen markup DOM yang mudah diinspeksi. Terapkan proteksi penguncian tombol submit ganda untuk mencegah duplikasi catatan sertifikat di dalam spreadsheet."
+          },
+          {
+            heading: "5. Rangkuman Evaluasi & Rekomendasi Langkah Selanjutnya",
+            content: "Simak video instruksional di bawah untuk memelajari cara mengkustomisasi layout sertifikat digital, menambahkan watermark stempel resmi, dan menyesuaikan bobot passing grade kuis sesuai standar kurikulum institusi Anda."
+          }
+        ];
+      }
+
+      // Default terstruktur untuk Episode 6 sampai 10
+      var epTitleClean = t.replace(/^EP\s*\d+:\s*/i, '');
+      return [
+        {
+          heading: "1. Konsep Fundamental & Urgensi Materi " + epTitleClean,
+          content: "Pada materi Episode " + epNumber + " ini, kita mendalami modul '" + epTitleClean + "' yang dirancang khusus untuk memperkuat kapabilitas arsitektur web aplikasi LMS enterprise ARUNA. Pemahaman mendalam pada topik ini menjadi kunci untuk menghasilkan sistem yang scalable, handal, dan mampu melayani ratusan interaksi peserta didik secara simultan tanpa penurunan performa."
+        },
+        {
+          heading: "2. Arsitektur Data, Relasi Spreadsheet & Komunikasi API",
+          content: "Integrasi data pada modul ini menghubungkan komponen frontend interaktif dengan tabel database Google Sheets secara transparan. Setiap perubahan status progres, pengerjaan tugas, maupun pembaruan data pengguna dikirimkan melalui payload JSON terenkripsi ke backend Google Apps Script, memastikan sinkronisasi data antar device berjalan konsisten tanpa latensi tinggi."
+        },
+        {
+          heading: "3. Prosedur Penerapan Langkah demi Langkah (Hands-on Implementation)",
+          content: "Ikuti langkah praktik sistematis: pertama, pastikan workspace editor Anda telah mengimpor template kode terbaru dari tab 1. index.html dan 2. code.gs di bawah. Kedua, sesuaikan variabel parameter sesuai konfigurasi database Anda. Ketiga, lakukan verifikasi melalui browser developer tools (F12) untuk memastikan setiap request API mengembalikan respons status success."
+        },
+        {
+          heading: "4. Best Practice Keamanan, Isolasi Bug & Troubleshooting",
+          content: "Terapkan prinsip kehati-hatian dalam manajemen hak akses: batasi hak modifikasi konfigurasi sensitif hanya untuk akun dengan role Admin. Jika sistem mengalami kendala konektivitas data, lakukan pengecekan URL Web App Google Apps Script dan pastikan izin deployment berada pada mode 'Anyone' agar tidak terjadi penolakan autentikasi lintas domain."
+        },
+        {
+          heading: "5. Rangkuman Capaian Pembelajaran & Penerapan dalam Video",
+          content: "Tonton dan pelajari seluruh demonstrasi teknis yang disajikan pada video pembelajaran di bawah. Cocokkan langkah-langkah yang ada di video dengan materi tertulis ini. Setelah seluruh alur berhasil Anda kuasai dan implementasikan di sistem Anda, klik tombol 'Tandai Selesai & Lanjut' di bawah untuk mengklaim +150 XP gamifikasi Anda."
+        }
+      ];
+    }
+
+    function renderFormattedMaterial(rawText, title, epNumber) {
+      var paras = getFiveParagraphsForEpisode(epNumber, title, rawText);
+      var html = '<div class="space-y-4">';
+
+      // Jika ada catatan khusus dari admin/sheet yang bukan teks default singkat, tampilkan juga di atas
+      if (rawText && rawText.trim().length > 60 && rawText.indexOf('Materi pembelajaran untuk') === -1) {
+        html += '<div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/30 space-y-1.5">' +
+          '<div class="flex items-center gap-2">' +
+            '<span class="text-sm">📌</span>' +
+            '<span class="text-xs font-black uppercase tracking-wider text-blue-500 dark:text-blue-300">Catatan Khusus Instruktur (Google Sheets Kolom I)</span>' +
+          '</div>' +
+          '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed pl-6">' + rawText.trim() + '</p>' +
+        '</div>';
+      }
+
+      // Header Info Box 5 Paragraf
+      html += '<div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-start gap-2.5">' +
+        '<span class="text-lg">💡</span>' +
+        '<div class="space-y-1">' +
+          '<p class="text-xs font-bold text-blue-600 dark:text-blue-300">Panduan Teori & Praktik Kurikulum • Episode ' + epNumber + '</p>' +
+          '<p class="text-[11px] text-slate-600 dark:text-slate-300">Pelajari secara saksama 5 poin penting berikut ini sebelum menyimak tayangan video pembelajaran interaktif di bawah.</p>' +
         '</div>' +
       '</div>';
+
+      // 5 Paragraf Terstruktur
+      paras.forEach(function(p, idx) {
+        html += '<div class="space-y-1.5 p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-blue-500/15">' +
+          '<div class="flex items-center gap-2">' +
+            '<span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-black text-[10px] flex items-center justify-center flex-shrink-0">' + (idx + 1) + '</span>' +
+            '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">' + p.heading + '</h4>' +
+          '</div>' +
+          '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed pl-7">' + p.content + '</p>' +
+        '</div>';
+      });
+
+      // Kotak Menu Source Code Mode Template dengan 1-Click Copy-Paste (1. index.html)
+      html += '<div class="mt-5 pt-4 border-t border-slate-200 dark:border-blue-500/20 space-y-3">' +
+        '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">' +
+          '<div>' +
+            '<span class="text-[11px] font-black uppercase tracking-wider text-blue-500 flex items-center gap-1.5">' +
+              '<span>💻</span><span>Source Code Starter Template • Mode Copy-Paste</span>' +
+            '</span>' +
+            '<p class="text-[11px] text-slate-500 dark:text-slate-400">Pilih mode template di bawah lalu klik salin untuk langsung diterapkan di workspace Anda:</p>' +
+          '</div>' +
+          '<div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900/90 p-1 rounded-xl border border-blue-500/30 self-start sm:self-auto">' +
+            '<button type="button" onclick="switchSnippetMode(\'index\')" id="snip-btn-index" class="touch-target px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-blue-600 text-white shadow-sm">' +
+              '1. index.html' +
+            '</button>' +
+            '<button type="button" onclick="switchSnippetMode(\'backend\')" id="snip-btn-backend" class="touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer">' +
+              '2. code.gs' +
+            '</button>' +
+            '<button type="button" onclick="switchSnippetMode(\'setup\')" id="snip-btn-setup" class="touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer">' +
+              '3. setup.gs' +
+            '</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="relative rounded-2xl bg-slate-950 border border-blue-500/35 overflow-hidden shadow-2xl">' +
+          '<div class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-blue-500/20">' +
+            '<div class="flex items-center space-x-2">' +
+              '<span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>' +
+              '<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>' +
+              '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>' +
+              '<span id="active-snippet-label" class="text-xs font-mono font-bold text-blue-400 ml-2">1. index.html • Frontend Monolith Starter</span>' +
+            '</div>' +
+            '<button id="btn-copy-snippet" type="button" onclick="copyCurrentActiveSnippet()" class="touch-target px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-black flex items-center gap-1.5 transition shadow-sm cursor-pointer">' +
+              '<span>📋</span>' +
+              '<span>Salin Kode</span>' +
+            '</button>' +
+          '</div>' +
+          '<pre class="p-4 text-xs font-mono text-emerald-300 overflow-x-auto max-h-60 leading-relaxed selection:bg-blue-600"><code id="code-snippet-display"></code></pre>' +
+        '</div>' +
+      '</div>';
+
+      html += '</div>';
+      return html;
     }
 
     function openModuleDetail(courseId, modId) {
@@ -1812,6 +2107,7 @@
       var matContent = document.getElementById('modal-material-content-text');
       if (matContent) {
         matContent.innerHTML = renderFormattedMaterial(mod.materialText, mod.title, epNumber);
+        switchSnippetMode('index');
       }
 
       // 4. Kolom Kiri: Video Player
