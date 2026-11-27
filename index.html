@@ -470,7 +470,7 @@
       <div>
         <h2 id="auth-heading" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Selamat Datang di
           ARUNA LMS</h2>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Masuk dengan akun Google Sheets Anda untuk
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Masuk dengan akun member Anda untuk
           mengakses kurikulum & progres modul.</p>
       </div>
 
@@ -539,14 +539,29 @@
     </div>
   </div>
 
+  <!-- MODAL PENCARIAN GLOBAL (SEARCH BAR) -->
+  <div id="global-search-modal" onclick="if(event.target.id==='global-search-modal') closeGlobalSearchModal()"
+    class="fixed inset-0 z-50 hidden items-start justify-center p-3 sm:p-6 pt-16 sm:pt-24 bg-slate-950/80 backdrop-blur-md">
+    <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-4 sm:p-5 border border-blue-500/35 shadow-2xl space-y-3">
+      <div class="flex items-center space-x-2.5 pb-3 border-b border-slate-200 dark:border-blue-500/20">
+        <span class="text-base">🔍</span>
+        <input id="global-search-input" type="text" oninput="runGlobalSearch(this.value)"
+          placeholder="Cari judul modul, episode, project, atau tautan..."
+          class="flex-1 bg-transparent text-xs sm:text-sm font-semibold text-slate-900 dark:text-white placeholder-slate-400 outline-none">
+        <button type="button" onclick="closeGlobalSearchModal()"
+          class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white text-xs font-bold cursor-pointer">ESC</button>
+      </div>
+      <div id="global-search-results" class="max-h-72 overflow-y-auto space-y-1.5 pr-1"></div>
+    </div>
+  </div>
+
   <!-- MODAL 1: SILABUS KURIKULUM -->
   <div id="syllabus-modal"
     class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
     <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
         <div>
-          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET COURSES &
-            MODULES</span>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">KURIKULUM RESMI • ARUNA ROYAL HUB</span>
           <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Silabus Kurikulum ARUNA LMS</h3>
         </div>
         <button onclick="closeSyllabus()"
@@ -786,8 +801,8 @@
     <div class="w-full max-w-lg premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[90vh] flex flex-col">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
         <div>
-          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET
-            PROJECTARUNA</span>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">ETALASE RESMI •
+            PROJECT ARUNA</span>
           <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Kelola Karya & Project Aruna</h3>
         </div>
         <button onclick="closeProjectModal()"
@@ -1028,7 +1043,34 @@
         <h2 id="current-page-title" class="text-sm sm:text-base font-black text-blue-500 ml-1">Home Hub</h2>
       </div>
 
-      <div class="flex items-center space-x-2.5">
+      <div class="flex items-center space-x-2 relative">
+        <!-- TOMBOL PENCARIAN MATERI (DI SAMPING JAM) -->
+        <button type="button" onclick="openGlobalSearchModal()" title="Cari Materi, Modul & Project (Ctrl+K)"
+          class="touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-600/20 border border-blue-500/25 hover:border-blue-400 text-xs font-bold text-slate-700 dark:text-slate-200 transition cursor-pointer">
+          <span>🔍</span>
+          <span class="hidden sm:inline text-[11px]">Cari...</span>
+        </button>
+
+        <!-- TOMBOL LONCENG NOTIFIKASI (DI SAMPING JAM) -->
+        <button id="header-notif-btn" type="button" onclick="toggleNotifDropdown(event)" title="Notifikasi Pembelajaran"
+          class="relative touch-target flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500/10 hover:bg-blue-600/20 border border-blue-500/25 hover:border-blue-400 text-sm transition cursor-pointer">
+          <span>🔔</span>
+          <span id="header-notif-dot" class="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+        </button>
+
+        <!-- DROPDOWN PANEL NOTIFIKASI -->
+        <div id="header-notif-dropdown"
+          class="hidden absolute right-0 top-12 w-72 sm:w-80 rounded-2xl premium-card border border-blue-500/35 shadow-2xl p-3.5 z-50 space-y-2.5">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-blue-500/20">
+            <span class="text-xs font-black text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span>🔔</span><span>Notifikasi ARUNA</span>
+            </span>
+            <button type="button" onclick="markAllNotificationsRead()"
+              class="text-[10px] font-bold text-blue-500 hover:text-blue-400 cursor-pointer">Tandai dibaca</button>
+          </div>
+          <div id="header-notif-list" class="space-y-2 max-h-64 overflow-y-auto text-xs"></div>
+        </div>
+
         <div
           class="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25">
           <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
@@ -1071,14 +1113,14 @@
         <div class="rounded-2xl sm:rounded-3xl p-5 sm:p-7 premium-card">
           <div
             class="inline-flex items-center space-x-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full border border-blue-500/30">
-            <span>⚡ ARUNA ROYAL HUB • TERHUBUNG KE SPREADSHEET</span>
+            <span>⚡ ARUNA ROYAL HUB • EXECUTIVE LEARNING PLATFORM</span>
           </div>
           <h1 id="welcome-banner-text"
             class="text-xl sm:text-2xl lg:text-3xl font-black animated-welcome leading-snug mt-3">Selamat Datang di
             ARUNA LMS!</h1>
           <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
             Seluruh progres modul pembelajaran (EP 1 – EP 10), evaluasi kuis, poin XP, Project Aruna, hingga koleksi
-            ArunaLink tersinkronisasi otomatis dengan database Google Sheets Anda.
+            ArunaLink tersinkronisasi otomatis secara real-time dengan akun pembelajaran Anda.
           </p>
           <div class="mt-4 flex flex-wrap gap-2.5">
             <button onclick="switchTab('modul')"
@@ -1093,8 +1135,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div onclick="switchTab('modul')" style="--stagger:0"
             class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Modul & Materi Aktif (Sheet
-              Modules)</h3>
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Modul & Materi Aktif</h3>
             <p id="home-stat-modules" class="text-2xl font-black text-blue-500 mt-1.5">0 / 0 Selesai</p>
             <div class="glow-progress-track mt-2.5">
               <div id="home-progress-fill" class="glow-progress-fill" style="width:0%"></div>
@@ -1103,15 +1144,13 @@
           </div>
           <div onclick="switchTab('dashboard')" style="--stagger:1"
             class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Status Sertifikasi (Sheet
-              Enrollments)</h3>
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Status Sertifikasi</h3>
             <p id="home-stat-cert" class="text-2xl font-black text-amber-400 mt-1.5">In Progress</p>
             <p class="text-[11px] text-slate-500 mt-2">Lihat riwayat sertifikat & nilai di Dashboard.</p>
           </div>
           <div onclick="switchTab('arunalink')" style="--stagger:2"
             class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">ArunaLink Resources (Sheet
-              ArunaLinks)</h3>
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">ArunaLink Resources</h3>
             <p id="home-stat-links" class="text-2xl font-black text-cyan-400 mt-1.5">0 Tautan</p>
             <p class="text-[11px] text-slate-500 mt-2">Akses cepat template & asisten AI kerja.</p>
           </div>
@@ -1392,8 +1431,8 @@
           class="premium-card p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <span
-              class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG
-              KE SHEET PROJECTARUNA</span>
+              class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">ETALASE
+              RESMI • PROJECT ARUNA</span>
             <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">Project Aruna — Etalase Karya
               & Sistem</h2>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi project aplikasi web, video
@@ -1411,8 +1450,8 @@
       <div id="tab-arunalink" class="tab-content space-y-4 hidden">
         <div class="premium-card p-5 sm:p-6 rounded-2xl">
           <span
-            class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG
-            KE SHEET ARUNALINKS</span>
+            class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">KOLEKSI
+            RESMI • ARUNALINK</span>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">ArunaLink — Koleksi Tautan &
             Alat Bantu</h2>
           <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi resmi template Google Sheets,
@@ -2104,7 +2143,7 @@
         var blocks = rawText.trim().split(/\n\s*\n/);
         return '<div class="space-y-3.5">' +
           '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs text-blue-700 dark:text-blue-300 font-bold flex items-center gap-2">' +
-            '<span>💡</span><span>Materi Terstruktur (Tersinkronisasi dengan Google Sheets Kolom I) • Episode ' + (epNumber || 1) + '</span>' +
+            '<span>💡</span><span>Panduan Teori & Praktik Kurikulum • Episode ' + (epNumber || 1) + '</span>' +
           '</div>' +
           blocks.map(function (block) {
             var lines = block.trim().split('\n');
@@ -2287,7 +2326,7 @@
       }
 
       var st = document.getElementById('modal-status-msg'), btn = document.getElementById('btn-submit-module');
-      st.innerText = '⏳ Menyimpan progres ke Google Sheets...';
+      st.innerText = '⏳ Menyimpan progres pembelajaran...';
       btn.disabled = true;
 
       callBackend('completeModule', {
@@ -2451,6 +2490,184 @@
       document.getElementById('current-page-title').innerText = titles[tabName] || 'ARUNA LMS';
       highlightActivePlanet();
     }
+
+    // ====== PENCARIAN GLOBAL & NOTIFIKASI LONCENG HEADER ======
+    function openGlobalSearchModal() {
+      var modal = document.getElementById('global-search-modal');
+      var input = document.getElementById('global-search-input');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      if (input) {
+        input.value = '';
+        runGlobalSearch('');
+        setTimeout(function () { input.focus(); }, 60);
+      }
+    }
+
+    function closeGlobalSearchModal() {
+      var modal = document.getElementById('global-search-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function runGlobalSearch(query) {
+      var box = document.getElementById('global-search-results');
+      if (!box || !appState) return;
+      var q = String(query || '').trim().toLowerCase();
+      var items = [];
+
+      (appState.courses || []).forEach(function (c) {
+        (c.modules || []).forEach(function (m) {
+          var hay = (c.title + ' ' + c.badgeCode + ' ' + m.title).toLowerCase();
+          if (!q || hay.indexOf(q) !== -1) {
+            items.push({
+              icon: m.completed ? '✅' : '📖',
+              title: m.title,
+              sub: c.badgeCode + ' • ' + c.title,
+              action: function () { closeGlobalSearchModal(); openModuleDetail(c.id, m.id); }
+            });
+          }
+        });
+      });
+
+      (appState.projects || []).forEach(function (p) {
+        var hay = (p.title + ' ' + p.category + ' ' + p.description).toLowerCase();
+        if (!q || hay.indexOf(q) !== -1) {
+          items.push({
+            icon: '🚀',
+            title: p.title,
+            sub: 'Project Aruna • ' + (p.category || 'System'),
+            action: function () { closeGlobalSearchModal(); switchTab('project'); }
+          });
+        }
+      });
+
+      (appState.links || []).forEach(function (l) {
+        var hay = (l.title + ' ' + l.category + ' ' + l.description).toLowerCase();
+        if (!q || hay.indexOf(q) !== -1) {
+          items.push({
+            icon: '🔗',
+            title: l.title,
+            sub: 'ArunaLink • ' + (l.category || 'Resource'),
+            action: function () { closeGlobalSearchModal(); switchTab('arunalink'); }
+          });
+        }
+      });
+
+      if (!items.length) {
+        box.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">Tidak ada materi atau project yang cocok dengan kata kunci tersebut.</p>';
+        return;
+      }
+
+      window._globalSearchActions = items.slice(0, 15);
+      box.innerHTML = window._globalSearchActions.map(function (it, idx) {
+        return '<button type="button" onclick="window._globalSearchActions[' + idx + '].action()" ' +
+          'class="w-full text-left p-2.5 rounded-xl bg-slate-50/70 dark:bg-slate-900/70 hover:bg-blue-500/15 border border-slate-200 dark:border-blue-500/20 flex items-center justify-between gap-3 transition cursor-pointer">' +
+          '<div class="flex items-center gap-2.5 min-w-0">' +
+            '<span class="text-base flex-shrink-0">' + it.icon + '</span>' +
+            '<div class="min-w-0">' +
+              '<p class="text-xs font-bold text-slate-900 dark:text-white truncate">' + it.title + '</p>' +
+              '<p class="text-[10px] text-slate-500 dark:text-slate-400 truncate">' + it.sub + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<span class="text-[10px] font-bold text-blue-500 flex-shrink-0">Buka →</span>' +
+        '</button>';
+      }).join('');
+    }
+
+    function toggleNotifDropdown(e) {
+      if (e) e.stopPropagation();
+      var dd = document.getElementById('header-notif-dropdown');
+      if (!dd) return;
+      var willShow = dd.classList.contains('hidden');
+      if (willShow) {
+        renderNotificationsList();
+        dd.classList.remove('hidden');
+      } else {
+        dd.classList.add('hidden');
+      }
+    }
+
+    function renderNotificationsList() {
+      var listEl = document.getElementById('header-notif-list');
+      if (!listEl) return;
+      var notifs = [];
+      if (appState && appState.courses && appState.courses.length) {
+        var nextMod = null;
+        for (var i = 0; i < appState.courses.length; i++) {
+          var c = appState.courses[i];
+          var m = (c.modules || []).find(function (x) { return !x.completed; });
+          if (m) { nextMod = { course: c, mod: m }; break; }
+        }
+        if (nextMod) {
+          notifs.push({
+            icon: '🚀',
+            title: 'Lanjutkan Belajar Anda',
+            desc: nextMod.course.badgeCode + ' — ' + nextMod.mod.title,
+            time: 'Aktif Sekarang'
+          });
+        }
+        if (appState.stats) {
+          notifs.push({
+            icon: '⚡',
+            title: 'Total Poin XP: ' + (appState.stats.xp || 0) + ' XP',
+            desc: 'Klaim +150 XP setiap kali menyelesaikan 1 episode.',
+            time: 'Progres Akun'
+          });
+        }
+      }
+      notifs.push({
+        icon: '🎉',
+        title: 'Selamat Datang di ARUNA LMS',
+        desc: 'Semua modul, video pembelajaran & sertifikat siap diakses.',
+        time: 'Info Sistem'
+      });
+
+      listEl.innerHTML = notifs.map(function (n) {
+        return '<div class="p-2.5 rounded-xl bg-slate-50/80 dark:bg-slate-900/75 border border-slate-200 dark:border-blue-500/20 space-y-0.5">' +
+          '<div class="flex items-center justify-between gap-2">' +
+            '<span class="font-bold text-slate-900 dark:text-white flex items-center gap-1.5"><span>' + n.icon + '</span><span>' + n.title + '</span></span>' +
+            '<span class="text-[9px] text-blue-400 font-semibold">' + n.time + '</span>' +
+          '</div>' +
+          '<p class="text-[11px] text-slate-600 dark:text-slate-300 leading-snug">' + n.desc + '</p>' +
+        '</div>';
+      }).join('');
+    }
+
+    function markAllNotificationsRead() {
+      var dot = document.getElementById('header-notif-dot');
+      if (dot) dot.classList.add('hidden');
+      var dd = document.getElementById('header-notif-dropdown');
+      if (dd) dd.classList.add('hidden');
+    }
+
+    document.addEventListener('click', function (e) {
+      var dd = document.getElementById('header-notif-dropdown');
+      var btn = document.getElementById('header-notif-btn');
+      if (dd && !dd.classList.contains('hidden')) {
+        if (!dd.contains(e.target) && (!btn || !btn.contains(e.target))) {
+          dd.classList.add('hidden');
+        }
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        var mainApp = document.getElementById('main-app');
+        if (mainApp && !mainApp.classList.contains('hidden')) {
+          e.preventDefault();
+          openGlobalSearchModal();
+        }
+      } else if (e.key === 'Escape') {
+        closeGlobalSearchModal();
+        var dd = document.getElementById('header-notif-dropdown');
+        if (dd) dd.classList.add('hidden');
+      }
+    });
   </script>
 </body>
 
