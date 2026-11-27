@@ -10,12 +10,22 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="favicon.png">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='50%25' stop-color='%232563EB'/%3E%3Cstop offset='100%25' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='23' fill='%230B132B' stroke='%2338BDF8' stroke-width='2.5'/%3E%3Cpath d='M32 16L18 48H25.5L28.6 40.5H35.4L38.5 48H46L32 16ZM30.3 34.5L32 28.5L33.7 34.5H30.3Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
+
+  <!-- GOOGLE FONTS: PLUS JAKARTA SANS & SPACE GROTESK (Typography Elegan, Human-Designed, Anti AI-Slop) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'ui-monospace', 'monospace']
+          },
           colors: {
             orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 300: '#FDBA74', 400: '#FB923C', 500: '#F97316', 600: '#EA580C', 700: '#C2410C', 800: '#9A3412', 900: '#7C2D12' },
             gold: { 400: '#FACC15', 500: '#D4AF37', 600: '#B48A1E' },
@@ -26,7 +36,25 @@
     }
   </script>
   <style>
+    * {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
     .touch-target { min-height: 40px; min-width: 40px; }
+    
+    /* TYPOGRAPHY REFINEMENTS */
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      letter-spacing: -0.015em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, .font-black, .font-bold {
+      letter-spacing: -0.025em;
+    }
+    .font-mono, [class*="font-mono"] {
+      font-family: 'Space Grotesk', ui-monospace, monospace;
+      letter-spacing: -0.01em;
+    }
     
     /* LIGHT MODE BACKGROUND */
     body {
@@ -326,7 +354,7 @@
         <button id="toggle-auth-btn" onclick="toggleRegisterMode()" class="hover:text-blue-500 font-bold">
           Belum punya akun? <span class="underline text-blue-600 dark:text-blue-400">Daftar Mandiri</span>
         </button>
-        <span class="font-mono text-[11px]">Deep Blue v4.2</span>
+        <span class="font-mono text-[11px] text-blue-400">v4.4 • Plus Jakarta Sans</span>
       </div>
     </div>
   </div>
@@ -950,7 +978,9 @@
     }
 
     function getSavedGasUrl() {
-      return HARDCODED_GAS_URL.trim() || localStorage.getItem('ARUNA_GAS_URL') || '';
+      var saved = localStorage.getItem('ARUNA_GAS_URL');
+      if (saved && saved.trim()) return saved.trim();
+      return HARDCODED_GAS_URL.trim() || '';
     }
 
     function openGasConfigModal() {
@@ -967,17 +997,20 @@
 
     function saveGasUrlConfig() {
       var val = document.getElementById('cfg-gas-url').value.trim();
-      if (!val) {
-        alert('Masukkan URL Web App Apps Script (contoh: https://script.google.com/macros/s/.../exec)');
+      if (!val || val.indexOf('script.google.com') === -1) {
+        alert('Masukkan URL Web App Google Apps Script yang valid (contoh: https://script.google.com/macros/s/.../exec)');
         return;
       }
       localStorage.setItem('ARUNA_GAS_URL', val);
       closeGasConfigModal();
       var msg = document.getElementById('auth-msg');
       if (msg) {
-        msg.className = 'text-xs text-center text-green-400 font-bold min-h-[18px]';
-        msg.innerText = '✓ URL Google Apps Script tersimpan! Silakan klik Masuk.';
+        msg.className = 'text-xs text-center text-emerald-400 font-bold min-h-[18px]';
+        msg.innerText = '✓ URL Google Apps Script tersimpan! Menghubungkan ulang...';
       }
+      setTimeout(function() {
+        handleLogin();
+      }, 400);
     }
 
     // Mode Demo Instan untuk preview cepat di Vercel tanpa perlu setup
@@ -1069,19 +1102,32 @@
       })
       .then(function(res) {
         clearTimeout(timeoutId);
+        if (!res.ok) {
+          throw new Error('HTTP_' + res.status);
+        }
         return res.json();
       })
       .then(function(data) {
         onSuccess(data);
       })
       .catch(function(err) {
+        if (err && (err.message === 'HTTP_404' || String(err).indexOf('404') !== -1)) {
+          clearTimeout(timeoutId);
+          console.error('GAS URL 404 Not Found:', gasUrl);
+          if (onFailure) onFailure(new Error('URL_404'));
+          return;
+        }
+
         // Fallback ke POST jika GET terkena limit ukuran
         fetch(gasUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         })
-        .then(function(res2) { return res2.json(); })
+        .then(function(res2) {
+          if (!res2.ok) throw new Error('HTTP_' + res2.status);
+          return res2.json();
+        })
         .then(function(data2) {
           clearTimeout(timeoutId);
           onSuccess(data2);
@@ -1254,9 +1300,15 @@
       }, function(err) {
         btn.disabled = false;
         msg.className = 'text-xs text-center text-red-400 font-semibold min-h-[18px]';
-        msg.innerText = isRunningInAppsScript()
-          ? 'Error: ' + (err && err.message ? err.message : String(err))
-          : 'Belum terhubung ke Apps Script. Klik ⚙️ GAS API di atas atau coba Mode Demo.';
+        var is404 = err && (err.message === 'URL_404' || String(err).indexOf('404') !== -1);
+        if (is404) {
+          msg.innerHTML = '⚠️ URL Apps Script tidak aktif (404). <button type="button" onclick="openGasConfigModal()" class="text-blue-400 underline font-bold">Klik ⚙️ GAS API</button> untuk memasukkan URL Web App terbaru.';
+          openGasConfigModal();
+        } else {
+          msg.innerHTML = isRunningInAppsScript()
+            ? 'Error: ' + (err && err.message ? err.message : String(err))
+            : 'Belum terhubung ke Apps Script. <button type="button" onclick="openGasConfigModal()" class="text-blue-400 underline font-bold">Klik ⚙️ GAS API</button> atau coba <button type="button" onclick="enterInstantDemoMode()" class="text-amber-400 underline font-bold">Mode Demo</button>.';
+        }
       });
     }
 
