@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="id" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>ARUNA LMS - Deep Blue Glassy Radial Edition</title>
-  
+
   <!-- ARUNA ROYAL HUB OFFICIAL FAVICON (Tab Browser) -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
   <link rel="apple-touch-icon" sizes="192x192" href="favicon.png">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='50%25' stop-color='%232563EB'/%3E%3Cstop offset='100%25' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='23' fill='%230B132B' stroke='%2338BDF8' stroke-width='2.5'/%3E%3Cpath d='M32 16L18 48H25.5L28.6 40.5H35.4L38.5 48H46L32 16ZM30.3 34.5L32 28.5L33.7 34.5H30.3Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233B82F6'/%3E%3Cstop offset='50%25' stop-color='%232563EB'/%3E%3Cstop offset='100%25' stop-color='%23F97316'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='23' fill='%230B132B' stroke='%2338BDF8' stroke-width='2.5'/%3E%3Cpath d='M32 16L18 48H25.5L28.6 40.5H35.4L38.5 48H46L32 16ZM30.3 34.5L32 28.5L33.7 34.5H30.3Z' fill='%23FFFFFF'/%3E%3C/svg%3E">
 
   <!-- GOOGLE FONTS: PLUS JAKARTA SANS & SPACE GROTESK (Typography Elegan, Human-Designed, Anti AI-Slop) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -39,8 +43,12 @@
     * {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    .touch-target { min-height: 40px; min-width: 40px; }
-    
+
+    .touch-target {
+      min-height: 40px;
+      min-width: 40px;
+    }
+
     /* TYPOGRAPHY REFINEMENTS */
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -48,10 +56,18 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    h1, h2, h3, h4, .font-black, .font-bold {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-black,
+    .font-bold {
       letter-spacing: -0.025em;
     }
-    .font-mono, [class*="font-mono"] {
+
+    .font-mono,
+    [class*="font-mono"] {
       font-family: 'Space Grotesk', ui-monospace, monospace;
       letter-spacing: -0.01em;
     }
@@ -60,11 +76,12 @@
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
+
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    
+
     /* LIGHT MODE BACKGROUND */
     body {
       background-color: #F8FAFC;
@@ -89,9 +106,19 @@
     }
 
     @keyframes executiveWave {
-      0%, 100% { background-position: 0% 50%; transform: translateY(0px); }
-      50% { background-position: 100% 50%; transform: translateY(-1.5px); }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+        transform: translateY(0px);
+      }
+
+      50% {
+        background-position: 100% 50%;
+        transform: translateY(-1.5px);
+      }
     }
+
     .animated-welcome {
       background: linear-gradient(90deg, #EA580C, #F97316, #2563EB, #0284C7, #EA580C);
       background-size: 300% 300%;
@@ -100,6 +127,7 @@
       animation: executiveWave 6s ease-in-out infinite;
       display: inline-block;
     }
+
     .dark .animated-welcome {
       background: linear-gradient(90deg, #60A5FA, #38BDF8, #FDBA74, #93C5FD, #60A5FA);
       background-size: 300% 300%;
@@ -111,13 +139,14 @@
       background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #F97316 100%);
       box-shadow: 0 6px 18px rgba(37, 99, 235, 0.40);
     }
-    
+
     .glass-surface {
       background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(20px) saturate(160%);
       -webkit-backdrop-filter: blur(20px) saturate(160%);
       border-color: rgba(59, 130, 246, 0.15);
     }
+
     .dark .glass-surface {
       background: rgba(8, 16, 33, 0.82);
       backdrop-filter: blur(24px) saturate(170%);
@@ -135,11 +164,13 @@
       box-shadow: 0 10px 24px -6px rgba(15, 23, 42, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
       transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     .premium-card:hover {
       transform: translateY(-2px);
       border-color: rgba(59, 130, 246, 0.45);
       box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
     }
+
     .dark .premium-card {
       background: linear-gradient(145deg, rgba(11, 23, 46, 0.82) 0%, rgba(6, 13, 27, 0.92) 100%);
       backdrop-filter: blur(20px);
@@ -147,10 +178,12 @@
       border: 1px solid rgba(59, 130, 246, 0.22);
       box-shadow: 0 12px 28px -6px rgba(2, 6, 23, 0.70), inset 0 1px 0 0 rgba(96, 165, 250, 0.16);
     }
+
     .dark .premium-card:hover {
       border-color: rgba(96, 165, 250, 0.55);
       box-shadow: 0 18px 36px -8px rgba(37, 99, 235, 0.30), inset 0 1px 0 0 rgba(147, 197, 253, 0.28);
     }
+
     .premium-card::before {
       content: "";
       position: absolute;
@@ -161,8 +194,15 @@
       pointer-events: none;
       z-index: 0;
     }
-    .premium-card:hover::before { opacity: 1; }
-    .premium-card > * { position: relative; z-index: 2; }
+
+    .premium-card:hover::before {
+      opacity: 1;
+    }
+
+    .premium-card>* {
+      position: relative;
+      z-index: 2;
+    }
 
     .btn-cta-primary {
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #F97316 100%);
@@ -170,18 +210,33 @@
       box-shadow: 0 6px 18px -3px rgba(37, 99, 235, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
       transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .btn-cta-primary:hover {
       background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #EA580C 100%);
       box-shadow: 0 10px 24px -3px rgba(37, 99, 235, 0.60);
       transform: translateY(-1.5px) scale(1.01);
     }
-    .btn-cta-primary:active { transform: scale(0.98); }
+
+    .btn-cta-primary:active {
+      transform: scale(0.98);
+    }
 
     @keyframes tabFadeSlideUp {
-      0% { opacity: 0; transform: translateY(10px) scale(0.99); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.99);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
-    .page-animate-enter { animation: tabFadeSlideUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+    .page-animate-enter {
+      animation: tabFadeSlideUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     .stagger-card {
       opacity: 0;
       animation: tabFadeSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -189,26 +244,68 @@
     }
 
     @keyframes floatAmbientOrb {
-      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-      33% { transform: translate3d(24px, -20px, 0) scale(1.06); }
-      66% { transform: translate3d(-18px, 16px, 0) scale(0.96); }
+
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate3d(24px, -20px, 0) scale(1.06);
+      }
+
+      66% {
+        transform: translate3d(-18px, 16px, 0) scale(0.96);
+      }
     }
-    .ambient-orb-1 { animation: floatAmbientOrb 14s ease-in-out infinite; }
-    .ambient-orb-2 { animation: floatAmbientOrb 18s ease-in-out infinite reverse; }
+
+    .ambient-orb-1 {
+      animation: floatAmbientOrb 14s ease-in-out infinite;
+    }
+
+    .ambient-orb-2 {
+      animation: floatAmbientOrb 18s ease-in-out infinite reverse;
+    }
 
     @keyframes modalSpringPop {
-      0% { opacity: 0; transform: scale(0.94) translateY(14px); }
-      100% { opacity: 1; transform: scale(1) translateY(0); }
+      0% {
+        opacity: 0;
+        transform: scale(0.94) translateY(14px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
-    .modal-spring-card { animation: modalSpringPop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+    .modal-spring-card {
+      animation: modalSpringPop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
 
     @keyframes epPulseGlow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.45); }
-      50% { box-shadow: 0 0 12px 2.5px rgba(59, 130, 246, 0.30); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.45);
+      }
+
+      50% {
+        box-shadow: 0 0 12px 2.5px rgba(59, 130, 246, 0.30);
+      }
     }
-    .ep-active-glow { animation: epPulseGlow 2.4s infinite ease-in-out; }
-    .ep-btn-bounce { transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .ep-btn-bounce:hover { transform: translateY(-1.5px) scale(1.05); }
+
+    .ep-active-glow {
+      animation: epPulseGlow 2.4s infinite ease-in-out;
+    }
+
+    .ep-btn-bounce {
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .ep-btn-bounce:hover {
+      transform: translateY(-1.5px) scale(1.05);
+    }
 
     .glow-progress-track {
       height: 6px;
@@ -216,6 +313,7 @@
       background: rgba(59, 130, 246, 0.16);
       overflow: hidden;
     }
+
     .glow-progress-fill {
       height: 100%;
       border-radius: 9999px;
@@ -224,11 +322,13 @@
       box-shadow: 0 0 10px rgba(59, 130, 246, 0.65);
       transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
     .donut-ring-circle {
       transition: stroke-dashoffset 0.9s cubic-bezier(0.22, 1, 0.36, 1);
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
     }
+
     #top-transition-bar {
       position: fixed;
       top: 0;
@@ -241,6 +341,7 @@
       opacity: 0;
       pointer-events: none;
     }
+
     .video-player-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -249,6 +350,7 @@
       border-radius: 0.875rem;
       background: #040813;
     }
+
     .video-player-wrapper iframe,
     .video-player-wrapper video {
       position: absolute;
@@ -261,19 +363,33 @@
 
     /* ====== ORBITAL SOLAR SYSTEM RADIAL MENU ANIMATIONS ====== */
     @keyframes solarOrbit {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
+
     @keyframes solarCounterOrbit {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(-360deg); }
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(-360deg);
+      }
     }
+
     .orbit-stage-track {
       animation: solarOrbit 26s linear infinite;
     }
+
     .orbit-stage-track:hover {
       animation-play-state: paused;
     }
+
     .planet-carrier {
       position: absolute;
       top: 50%;
@@ -282,25 +398,30 @@
       height: 0;
       transform: rotate(calc(var(--angle) * 1deg)) translate(130px) rotate(calc(var(--angle) * -1deg));
     }
+
     @media (min-width: 640px) {
       .planet-carrier {
         transform: rotate(calc(var(--angle) * 1deg)) translate(160px) rotate(calc(var(--angle) * -1deg));
       }
     }
+
     .planet-item {
       position: absolute;
       transform: translate(-50%, -50%);
       animation: solarCounterOrbit 26s linear infinite;
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
     }
+
     .orbit-stage-track:hover .planet-item {
       animation-play-state: paused;
     }
+
     .planet-item:hover {
       transform: translate(-50%, -50%) scale(1.15);
       box-shadow: 0 0 22px rgba(59, 130, 246, 0.8), inset 0 0 12px rgba(147, 197, 253, 0.4);
       border-color: #60A5FA;
     }
+
     .planet-active-glow {
       box-shadow: 0 0 20px rgba(59, 130, 246, 0.75);
       border-color: #3B82F6 !important;
@@ -308,11 +429,16 @@
     }
   </style>
 </head>
+
 <body class="font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
   <div id="top-transition-bar"></div>
   <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="ambient-orb-1 absolute -top-24 -left-24 w-80 h-80 rounded-full bg-blue-500/10 dark:bg-blue-600/20 blur-3xl"></div>
-    <div class="ambient-orb-2 absolute bottom-0 right-0 w-96 h-96 rounded-full bg-cyan-500/10 dark:bg-cyan-600/15 blur-3xl"></div>
+    <div
+      class="ambient-orb-1 absolute -top-24 -left-24 w-80 h-80 rounded-full bg-blue-500/10 dark:bg-blue-600/20 blur-3xl">
+    </div>
+    <div
+      class="ambient-orb-2 absolute bottom-0 right-0 w-96 h-96 rounded-full bg-cyan-500/10 dark:bg-cyan-600/15 blur-3xl">
+    </div>
   </div>
 
   <!-- VIEW 1: LOGIN & REGISTER -->
@@ -322,114 +448,130 @@
         <div class="flex items-center space-x-3">
           <div class="w-11 h-11 rounded-xl royal-logo-box flex items-center justify-center flex-shrink-0">
             <svg class="w-7 h-7" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
-              <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+              <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B" />
+              <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8" />
             </svg>
           </div>
           <div>
-            <span class="font-black text-lg tracking-tight text-slate-900 dark:text-white block leading-none">ARUNA</span>
-            <span class="text-[10px] font-extrabold tracking-widest text-blue-600 dark:text-blue-400 uppercase">ROYAL HUB LMS</span>
+            <span
+              class="font-black text-lg tracking-tight text-slate-900 dark:text-white block leading-none">ARUNA</span>
+            <span class="text-[10px] font-extrabold tracking-widest text-blue-600 dark:text-blue-400 uppercase">ROYAL
+              HUB LMS</span>
           </div>
         </div>
-        <div class="flex items-center space-x-2">
-          <!-- TOMBOL GAS API: HANYA MUNCUL JIKA USERNAME DIKETIK NAMA ADMIN (SMART REVEAL) -->
-          <button id="login-gas-btn" type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script (Admin)" class="hidden text-xs font-bold text-blue-500 dark:text-blue-400 hover:text-white hover:bg-blue-600 px-2.5 py-1.5 rounded-xl border border-blue-500/35 bg-blue-500/10 transition flex items-center space-x-1 shadow-sm cursor-pointer">
-            <span>⚙️</span>
-            <span>GAS API</span>
-          </button>
-          <!-- TOMBOL DEMO INSTAN -->
-          <button type="button" onclick="enterInstantDemoMode()" title="Coba langsung tanpa akun" class="text-xs font-bold text-amber-500 dark:text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/35 hover:border-amber-400/60 bg-amber-500/10 transition flex items-center space-x-1.5 shadow-sm cursor-pointer">
-            <span>✨</span>
-            <span>Mode Demo</span>
-          </button>
-        </div>
+        <!-- UNIVERSAL PUBLIC LOGIN: HANYA TOMBOL DEMO INSTAN (ANTI-SALAH GUNA) -->
+        <button type="button" onclick="enterInstantDemoMode()" title="Coba langsung tanpa akun"
+          class="text-xs font-bold text-amber-500 dark:text-amber-400 hover:text-amber-300 px-3 py-1.5 rounded-xl border border-amber-500/35 hover:border-amber-400/60 bg-amber-500/10 transition flex items-center space-x-1.5 shadow-sm">
+          <span>✨</span>
+          <span>Mode Demo</span>
+        </button>
       </div>
 
       <div>
-        <h2 id="auth-heading" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Selamat Datang di ARUNA LMS</h2>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Masuk dengan akun Google Sheets Anda untuk mengakses kurikulum & progres modul.</p>
+        <h2 id="auth-heading" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">Selamat Datang di
+          ARUNA LMS</h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">Masuk dengan akun Google Sheets Anda untuk
+          mengakses kurikulum & progres modul.</p>
       </div>
 
       <div class="space-y-3.5">
         <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Email / Username / Nama</label>
-          <input id="login-email" type="text" value="" oninput="detectAdminInput(this.value)" placeholder="Masukkan email atau username Anda"
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Email
+            / Username / Nama</label>
+          <input id="login-email" type="text" value="robin@gmail.com" placeholder="Ketik robin@gmail.com atau nama Anda"
             class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
         </div>
         <div>
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Password</label>
-          <input id="login-pass" type="password" value="" placeholder="Masukkan password Anda"
+          <label
+            class="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1">Password</label>
+          <input id="login-pass" type="password" value="admin123" placeholder="Masukkan password"
             class="touch-target w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-blue-500/25 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 outline-none">
         </div>
         <p id="auth-msg" class="text-xs font-semibold text-blue-600 dark:text-blue-400 min-h-[18px] text-center"></p>
         <button id="auth-submit-btn" onclick="handleLogin()"
-          class="touch-target w-full btn-cta-primary font-black py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center cursor-pointer">
+          class="touch-target w-full btn-cta-primary font-black py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center">
           <span>Masuk ke Sistem</span>
         </button>
       </div>
 
-      <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+      <div
+        class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
         <button id="toggle-auth-btn" onclick="toggleRegisterMode()" class="hover:text-blue-500 font-bold">
           Belum punya akun? <span class="underline text-blue-600 dark:text-blue-400">Daftar Mandiri</span>
         </button>
-        <span class="font-mono text-[11px] text-blue-400">v4.6 • Executive Edition</span>
+        <span class="font-mono text-[11px] text-blue-400">v4.4 • Plus Jakarta Sans</span>
       </div>
     </div>
   </div>
 
   <!-- MODAL KONFIGURASI URL GAS (UNTUK PENGGUNA VERCEL / EKSTERNAL) -->
-  <div id="gas-config-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
+  <div id="gas-config-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
     <div class="w-full max-w-lg premium-card modal-spring-card rounded-2xl p-5 sm:p-6 space-y-4">
       <div class="flex items-center justify-between pb-2 border-b border-blue-500/20">
         <h3 class="text-base font-black text-slate-900 dark:text-white">⚙️ Hubungkan Vercel ke Google Sheets</h3>
-        <button onclick="closeGasConfigModal()" class="text-slate-400 hover:text-white font-bold text-sm px-2">✕</button>
+        <button onclick="closeGasConfigModal()"
+          class="text-slate-400 hover:text-white font-bold text-sm px-2">✕</button>
       </div>
       <p class="text-xs text-slate-400 leading-relaxed">
-        Jika Web App dibuka dari domain eksternal seperti <strong>arunacz.vercel.app</strong>, masukkan URL Web App Google Apps Script (Deploy > Web app) agar login dapat terhubung langsung ke Google Sheets.
+        Jika Web App dibuka dari domain eksternal seperti <strong>arunacz.vercel.app</strong>, masukkan URL Web App
+        Google Apps Script (Deploy > Web app) agar login dapat terhubung langsung ke Google Sheets.
       </p>
       <div class="space-y-2">
         <label class="block text-[11px] font-bold uppercase text-slate-300">URL Web App Google Apps Script</label>
         <input id="cfg-gas-url" type="url" placeholder="https://script.google.com/macros/s/.../exec"
           class="w-full px-3 py-2 rounded-lg border border-blue-500/30 bg-slate-900 text-xs text-white outline-none">
-        <p class="text-[10px] text-blue-400">💡 Dapatkan dari: Apps Script Editor > Deploy > Manage deployments > Web app URL.</p>
+        <p class="text-[10px] text-blue-400">💡 Dapatkan dari: Apps Script Editor > Deploy > Manage deployments > Web
+          app URL.</p>
       </div>
       <div class="flex items-center justify-between pt-2 border-t border-blue-500/20">
-        <button onclick="enterInstantDemoMode()" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-bold">
+        <button onclick="enterInstantDemoMode()"
+          class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs font-bold">
           ✨ Mode Demo Instan
         </button>
         <div class="flex gap-2">
-          <button onclick="closeGasConfigModal()" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-400 font-bold">Tutup</button>
-          <button onclick="saveGasUrlConfig()" class="px-4 py-1.5 btn-cta-primary rounded-lg text-xs font-black">💾 Simpan URL</button>
+          <button onclick="closeGasConfigModal()"
+            class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-400 font-bold">Tutup</button>
+          <button onclick="saveGasUrlConfig()" class="px-4 py-1.5 btn-cta-primary rounded-lg text-xs font-black">💾
+            Simpan URL</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- MODAL 1: SILABUS KURIKULUM -->
-  <div id="syllabus-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
+  <div id="syllabus-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
     <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
         <div>
-          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET COURSES & MODULES</span>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET COURSES &
+            MODULES</span>
           <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Silabus Kurikulum ARUNA LMS</h3>
         </div>
-        <button onclick="closeSyllabus()" class="touch-target p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+        <button onclick="closeSyllabus()"
+          class="touch-target p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
       </div>
       <div id="syllabus-dynamic-list" class="overflow-y-auto my-3 space-y-2.5 pr-1"></div>
       <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex justify-end">
-        <button onclick="closeSyllabus()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">Tutup Silabus</button>
+        <button onclick="closeSyllabus()"
+          class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">Tutup Silabus</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL 2: RUANG BELAJAR 2 KOLOM (MATERI TERTULIS, VIDEO PLAYER & PLAYLIST KURIKULUM • GAMBAR 4) -->
-  <div id="module-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/90 backdrop-blur-md p-2 sm:p-5 flex justify-center items-start">
-    <div class="w-full max-w-7xl premium-card modal-spring-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 space-y-6 my-auto shadow-2xl border border-blue-500/30">
-      
+  <div id="module-modal"
+    class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-950/90 backdrop-blur-md p-2 sm:p-5 flex justify-center items-start">
+    <div
+      class="w-full max-w-7xl premium-card modal-spring-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 space-y-6 my-auto shadow-2xl border border-blue-500/30">
+
       <!-- TOP NAVIGATION BAR (Gambar 4) -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-500/20">
+      <div
+        class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-blue-500/20">
         <div class="flex items-center space-x-3">
-          <button onclick="closeModuleModal()" class="touch-target px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-xs font-black flex items-center gap-1.5 transition text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer">
+          <button onclick="closeModuleModal()"
+            class="touch-target px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-xs font-black flex items-center gap-1.5 transition text-slate-800 dark:text-slate-200 shadow-sm cursor-pointer">
             <span>←</span>
             <span>Kembali ke Modul</span>
           </button>
@@ -446,36 +588,44 @@
             <select id="modal-course-selector" onchange="onModalCourseChange(this.value)"
               class="px-3 py-1.5 rounded-xl border border-blue-500/30 bg-white dark:bg-slate-800 text-xs font-black text-slate-900 dark:text-white outline-none shadow-sm cursor-pointer"></select>
           </div>
-          <button onclick="closeModuleModal()" class="touch-target p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white hover:bg-red-500/80 font-bold text-sm transition">✕</button>
+          <button onclick="closeModuleModal()"
+            class="touch-target p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-white hover:bg-red-500/80 font-bold text-sm transition">✕</button>
         </div>
       </div>
 
       <!-- MAIN 2-COLUMN GRID (Gambar 4) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
+
         <!-- KOLOM KIRI: AREA MATERI TERTULIS & VIDEO (lg:col-span-8) -->
         <div class="lg:col-span-8 space-y-6">
-          
+
           <!-- EPISODE HEADER -->
           <div>
             <div class="flex flex-wrap items-center gap-2 mb-1.5">
-              <span id="modal-mod-badge" class="text-xs font-black uppercase tracking-wider text-blue-500">MODUL 01</span>
-              <span id="modal-ep-badge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">EP 1</span>
+              <span id="modal-mod-badge" class="text-xs font-black uppercase tracking-wider text-blue-500">MODUL
+                01</span>
+              <span id="modal-ep-badge"
+                class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">EP
+                1</span>
               <span id="modal-mod-type" class="text-xs font-mono font-bold text-slate-400">15 Menit</span>
             </div>
-            <h1 id="modal-mod-title" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-snug">Judul Episode</h1>
+            <h1 id="modal-mod-title" class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-snug">
+              Judul Episode</h1>
           </div>
 
           <!-- MATERI PENJELASAN BERUPA TULISAN (Gambar 4) -->
-          <div class="p-5 sm:p-6 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-blue-500/20 shadow-sm space-y-3.5">
+          <div
+            class="p-5 sm:p-6 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-blue-500/20 shadow-sm space-y-3.5">
             <div class="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-blue-500/20">
-              <span class="text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+              <span
+                class="text-xs font-black uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
                 <span>📖</span>
                 <span>Panduan & Penjelasan Materi</span>
               </span>
               <span class="text-[10px] font-mono text-slate-400 font-bold">Langkah Pembelajaran</span>
             </div>
-            <div id="modal-material-content-text" class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed space-y-3"></div>
+            <div id="modal-material-content-text"
+              class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed space-y-3"></div>
           </div>
 
           <!-- VIDEO PEMBELAJARAN (Gambar 4) -->
@@ -484,35 +634,48 @@
               <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white flex items-center gap-2">
                 <span>🎬 Langsung aja ditonton videonya:</span>
               </h3>
-              <span id="modal-video-source-badge" class="text-[10px] font-semibold text-slate-400">Sumber: Otomatis</span>
+              <span id="modal-video-source-badge" class="text-[10px] font-semibold text-slate-400">Sumber:
+                Otomatis</span>
             </div>
 
-            <div id="modal-video-player-box" class="video-player-wrapper shadow-2xl rounded-2xl overflow-hidden border border-blue-500/30 bg-black hidden">
-              <iframe id="modal-video-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            <div id="modal-video-player-box"
+              class="video-player-wrapper shadow-2xl rounded-2xl overflow-hidden border border-blue-500/30 bg-black hidden">
+              <iframe id="modal-video-iframe" src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
               <video id="modal-video-html5" controls class="hidden"></video>
             </div>
 
-            <div id="modal-video-empty-state" class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-dashed border-slate-300 dark:border-blue-500/30 text-center space-y-2">
-              <p class="text-sm sm:text-base font-bold text-slate-700 dark:text-slate-200">🎬 Video Pembelajaran Segera Hadir</p>
-              <p id="modal-empty-video-desc" class="text-xs text-slate-400">Video pembelajaran sedang disiapkan oleh Admin/Instruktur.</p>
+            <div id="modal-video-empty-state"
+              class="p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-dashed border-slate-300 dark:border-blue-500/30 text-center space-y-2">
+              <p class="text-sm sm:text-base font-bold text-slate-700 dark:text-slate-200">🎬 Video Pembelajaran Segera
+                Hadir</p>
+              <p id="modal-empty-video-desc" class="text-xs text-slate-400">Video pembelajaran sedang disiapkan oleh
+                Admin/Instruktur.</p>
             </div>
 
             <div class="flex justify-end">
-              <a id="modal-mod-link" href="#" target="_blank" class="text-xs font-bold text-blue-500 dark:text-blue-400 hover:underline">Buka Link Video di Tab Baru ↗</a>
+              <a id="modal-mod-link" href="#" target="_blank"
+                class="text-xs font-bold text-blue-500 dark:text-blue-400 hover:underline">Buka Link Video di Tab Baru
+                ↗</a>
             </div>
           </div>
 
           <!-- ACTION BUTTONS: PREV, SELESAIKAN, NEXT -->
-          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-blue-500/20">
-            <button id="btn-study-prev" type="button" onclick="navigateStudyEpisode(-1)" class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
+          <div
+            class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-200 dark:border-blue-500/20">
+            <button id="btn-study-prev" type="button" onclick="navigateStudyEpisode(-1)"
+              class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
               ← Episode Sebelumnya
             </button>
             <div class="flex items-center gap-2">
-              <button id="btn-submit-module" type="button" onclick="completeCurrentEpisodeAction()" class="touch-target px-5 py-2.5 btn-cta-primary font-black rounded-xl text-xs flex items-center gap-2 shadow-lg cursor-pointer">
+              <button id="btn-submit-module" type="button" onclick="completeCurrentEpisodeAction()"
+                class="touch-target px-5 py-2.5 btn-cta-primary font-black rounded-xl text-xs flex items-center gap-2 shadow-lg cursor-pointer">
                 <span>✓</span>
                 <span>Tandai Selesai & Lanjut</span>
               </button>
-              <button id="btn-study-next" type="button" onclick="navigateStudyEpisode(1)" class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
+              <button id="btn-study-next" type="button" onclick="navigateStudyEpisode(1)"
+                class="touch-target px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:border-blue-500 transition border border-transparent cursor-pointer">
                 Episode Berikutnya →
               </button>
             </div>
@@ -521,41 +684,56 @@
 
           <!-- EVALUASI KUIS (SHEET QUIZZES) -->
           <div id="modal-quiz-box" class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/25 space-y-2.5 hidden">
-            <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-300">EVALUASI KUIS (SHEET QUIZZES)</span>
-            <p id="modal-quiz-question" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Pertanyaan Kuis</p>
+            <span
+              class="text-[10px] font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-300">EVALUASI
+              KUIS (SHEET QUIZZES)</span>
+            <p id="modal-quiz-question" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Pertanyaan
+              Kuis</p>
             <div id="modal-quiz-options" class="space-y-1.5"></div>
           </div>
 
           <!-- KHUSUS ADMIN: FORM EDIT VIDEO & MATERI TERTULIS -->
-          <details id="modal-admin-video-form" class="hidden group rounded-xl bg-blue-500/5 dark:bg-blue-600/10 border border-blue-500/25 p-4">
-            <summary class="cursor-pointer list-none flex items-center justify-between text-xs font-black text-blue-600 dark:text-blue-300">
+          <details id="modal-admin-video-form"
+            class="hidden group rounded-xl bg-blue-500/5 dark:bg-blue-600/10 border border-blue-500/25 p-4">
+            <summary
+              class="cursor-pointer list-none flex items-center justify-between text-xs font-black text-blue-600 dark:text-blue-300">
               <span>⚙️ Panel Admin: Edit Video & Materi Tulisan (Google Sheets)</span>
               <span class="text-[11px] font-bold underline">Buka Form ▾</span>
             </summary>
             <div class="mt-3 pt-2.5 border-t border-blue-500/20 space-y-2.5">
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 <div class="sm:col-span-2">
-                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Judul Episode</label>
-                  <input id="input-ep-title" type="text" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Judul
+                    Episode</label>
+                  <input id="input-ep-title" type="text"
+                    class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
                 </div>
                 <div>
-                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Durasi (Menit)</label>
-                  <input id="input-ep-duration" type="number" min="1" value="15" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+                  <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Durasi
+                    (Menit)</label>
+                  <input id="input-ep-duration" type="number" min="1" value="15"
+                    class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
                 </div>
               </div>
               <div>
-                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video (Google Drive / YouTube / MP4)</label>
-                <input id="input-ep-video-url" type="url" oninput="previewEpisodeVideoInput()" placeholder="https://drive.google.com/file/d/.../view atau https://www.youtube.com/watch?v=..."
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video
+                  (Google Drive / YouTube / MP4)</label>
+                <input id="input-ep-video-url" type="url" oninput="previewEpisodeVideoInput()"
+                  placeholder="https://drive.google.com/file/d/.../view atau https://www.youtube.com/watch?v=..."
                   class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
-                <p id="input-ep-convert-hint" class="text-[10px] text-blue-600 dark:text-blue-300 mt-1 font-medium">💡 Otomatis mengonversi link Google Drive & YouTube menjadi video player.</p>
+                <p id="input-ep-convert-hint" class="text-[10px] text-blue-600 dark:text-blue-300 mt-1 font-medium">💡
+                  Otomatis mengonversi link Google Drive & YouTube menjadi video player.</p>
               </div>
               <div>
-                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Isi Materi Pembelajaran / Panduan Tertulis (Format Langkah-langkah)</label>
-                <textarea id="input-ep-material-text" rows="4" placeholder="Tuliskan materi tertulis, langkah 1, langkah 2, atau instruksi praktik..."
+                <label class="block text-[10px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Isi Materi
+                  Pembelajaran / Panduan Tertulis (Format Langkah-langkah)</label>
+                <textarea id="input-ep-material-text" rows="4"
+                  placeholder="Tuliskan materi tertulis, langkah 1, langkah 2, atau instruksi praktik..."
                   class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
               </div>
               <div class="flex justify-end">
-                <button id="btn-save-ep-content" onclick="saveCurrentEpisodeContent()" class="touch-target px-4 py-2 btn-cta-primary font-black rounded-lg text-xs">
+                <button id="btn-save-ep-content" onclick="saveCurrentEpisodeContent()"
+                  class="touch-target px-4 py-2 btn-cta-primary font-black rounded-lg text-xs">
                   💾 Simpan Video & Materi ke Spreadsheet
                 </button>
               </div>
@@ -565,20 +743,24 @@
 
         <!-- KOLOM KANAN: KURIKULUM KELAS SIDEBAR (Gambar 4 - lg:col-span-4) -->
         <div class="lg:col-span-4 space-y-4 lg:sticky lg:top-4">
-          <div class="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-blue-500/25 shadow-lg space-y-3">
+          <div
+            class="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-blue-500/25 shadow-lg space-y-3">
             <div class="flex items-center justify-between pb-2.5 border-b border-slate-200 dark:border-blue-500/20">
               <span class="font-black text-sm text-slate-900 dark:text-white flex items-center gap-2">
                 <span class="text-blue-500">≡</span>
                 <span>Kurikulum Kelas</span>
               </span>
-              <span id="study-sidebar-progress" class="text-xs font-mono font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+              <span id="study-sidebar-progress"
+                class="text-xs font-mono font-bold text-emerald-500 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full">
                 0/10 Selesai
               </span>
             </div>
 
             <!-- Banner Info Modul Aktif -->
-            <div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 dark:bg-blue-500/15 dark:border-blue-500/35 space-y-1">
-              <p id="study-sidebar-course-title" class="text-xs font-black text-blue-700 dark:text-blue-300 uppercase leading-snug line-clamp-2">
+            <div
+              class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 dark:bg-blue-500/15 dark:border-blue-500/35 space-y-1">
+              <p id="study-sidebar-course-title"
+                class="text-xs font-black text-blue-700 dark:text-blue-300 uppercase leading-snug line-clamp-2">
                 MODUL 01
               </p>
               <p id="study-sidebar-course-stat" class="text-[11px] font-bold text-slate-500 dark:text-slate-400">
@@ -594,51 +776,67 @@
       </div>
     </div>
   </div>
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
 
   <!-- MODAL 3: TAMBAH / EDIT PROJECT ARUNA -->
-  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
+  <div id="project-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
     <div class="w-full max-w-lg premium-card modal-spring-card rounded-2xl p-5 sm:p-6 max-h-[90vh] flex flex-col">
       <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-blue-500/20">
         <div>
-          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET PROJECTARUNA</span>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-500">TERHUBUNG KE SHEET
+            PROJECTARUNA</span>
           <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">Kelola Karya & Project Aruna</h3>
         </div>
-        <button onclick="closeProjectModal()" class="touch-target px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
+        <button onclick="closeProjectModal()"
+          class="touch-target px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">✕</button>
       </div>
       <div class="overflow-y-auto my-3 space-y-2.5 pr-1 text-xs">
         <input id="proj-input-id" type="hidden" value="">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Nama Project</label>
-            <input id="proj-input-title" type="text" placeholder="Contoh: Sistem Kasir GAS" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Nama
+              Project</label>
+            <input id="proj-input-title" type="text" placeholder="Contoh: Sistem Kasir GAS"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Kategori Project</label>
-            <input id="proj-input-cat" type="text" value="Web App GAS" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Kategori
+              Project</label>
+            <input id="proj-input-cat" type="text" value="Web App GAS"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
           </div>
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Deskripsi & Fitur Project</label>
-          <textarea id="proj-input-desc" rows="3" placeholder="Jelaskan fitur utama project..." class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
+          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Deskripsi & Fitur
+            Project</label>
+          <textarea id="proj-input-desc" rows="3" placeholder="Jelaskan fitur utama project..."
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white"></textarea>
         </div>
         <div>
-          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video Demo (Google Drive / YouTube)</label>
-          <input id="proj-input-video" type="url" oninput="previewProjectModalVideo()" placeholder="https://drive.google.com/file/d/.../view" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+          <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Video Demo
+            (Google Drive / YouTube)</label>
+          <input id="proj-input-video" type="url" oninput="previewProjectModalVideo()"
+            placeholder="https://drive.google.com/file/d/.../view"
+            class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
         </div>
         <div id="project-modal-video-box" class="video-player-wrapper hidden border border-blue-500/30">
           <iframe id="project-modal-iframe" src="" allowfullscreen></iframe>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Aplikasi / Source Code</label>
-            <input id="proj-input-res" type="url" placeholder="https://script.google.com/..." class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Link Aplikasi /
+              Source Code</label>
+            <input id="proj-input-res" type="url" placeholder="https://script.google.com/..."
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
           </div>
           <div>
-            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Status Project</label>
-            <select id="proj-input-status" class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
+            <label class="block text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300 mb-1">Status
+              Project</label>
+            <select id="proj-input-status"
+              class="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-blue-500/30 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-white">
               <option value="Production">Production</option>
               <option value="Ready Template">Ready Template</option>
               <option value="In Development">In Development</option>
@@ -648,94 +846,124 @@
         <p id="proj-modal-msg" class="text-xs font-bold text-center text-blue-500 min-h-[16px]"></p>
       </div>
       <div class="pt-3 border-t border-slate-200 dark:border-blue-500/20 flex justify-end gap-2">
-        <button onclick="closeProjectModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Batal</button>
-        <button id="btn-save-project" onclick="saveProjectArunaForm()" class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">💾 Simpan Project</button>
+        <button onclick="closeProjectModal()"
+          class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs">Batal</button>
+        <button id="btn-save-project" onclick="saveProjectArunaForm()"
+          class="touch-target px-5 py-2 btn-cta-primary font-black rounded-xl text-xs">💾 Simpan Project</button>
       </div>
     </div>
   </div>
 
   <!-- MODAL 4: PRATINJAU SERTIFIKAT DIGITAL ARUNA ROYAL HUB -->
-  <div id="certificate-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 border-2 border-blue-400/40 text-center space-y-4">
+  <div id="certificate-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+    <div
+      class="w-full max-w-xl premium-card modal-spring-card rounded-2xl p-5 sm:p-6 border-2 border-blue-400/40 text-center space-y-4">
       <div class="flex justify-between items-center border-b border-blue-500/20 pb-2.5">
-        <span class="text-[11px] font-black tracking-widest uppercase text-blue-400">🏆 SERTIFIKAT KOMPETENSI DIGITAL • ARUNA ROYAL HUB</span>
-        <button onclick="closeCertificateModal()" class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-400 font-bold text-xs">✕</button>
+        <span class="text-[11px] font-black tracking-widest uppercase text-blue-400">🏆 SERTIFIKAT KOMPETENSI DIGITAL •
+          ARUNA ROYAL HUB</span>
+        <button onclick="closeCertificateModal()"
+          class="px-2.5 py-1 rounded-lg bg-blue-500/15 text-blue-400 font-bold text-xs">✕</button>
       </div>
-      <div class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-blue-600/10 via-cyan-500/5 to-slate-900/60 border border-blue-400/30 space-y-2.5">
-        <div class="w-12 h-12 mx-auto rounded-xl royal-logo-box flex items-center justify-center font-black text-xl text-white">A</div>
+      <div
+        class="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-blue-600/10 via-cyan-500/5 to-slate-900/60 border border-blue-400/30 space-y-2.5">
+        <div
+          class="w-12 h-12 mx-auto rounded-xl royal-logo-box flex items-center justify-center font-black text-xl text-white">
+          A</div>
         <p class="text-[11px] font-extrabold uppercase tracking-widest text-slate-400">Diberikan Kepada:</p>
         <h3 id="cert-modal-name" class="text-xl sm:text-2xl font-black animated-welcome">Nama Peserta</h3>
-        <p class="text-xs text-slate-400">Telah menyelesaikan evaluasi modul pembelajaran dengan predikat Sangat Memuaskan:</p>
+        <p class="text-xs text-slate-400">Telah menyelesaikan evaluasi modul pembelajaran dengan predikat Sangat
+          Memuaskan:</p>
         <p id="cert-modal-module" class="text-sm sm:text-base font-black text-blue-400">MODUL — Judul Episode</p>
         <div class="pt-2 flex flex-wrap justify-center gap-2.5 text-xs font-bold">
-          <span id="cert-modal-score" class="px-3 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/30">Skor: 100 / 100</span>
-          <span id="cert-modal-code" class="px-3 py-1 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 font-mono">CERT-2026-001</span>
+          <span id="cert-modal-score"
+            class="px-3 py-1 rounded-lg bg-blue-500/15 text-blue-300 border border-blue-500/30">Skor: 100 / 100</span>
+          <span id="cert-modal-code"
+            class="px-3 py-1 rounded-lg bg-amber-500/15 text-amber-300 border border-amber-500/30 font-mono">CERT-2026-001</span>
           <span id="cert-modal-date" class="px-3 py-1 rounded-lg bg-slate-800 text-slate-300">Tanggal</span>
         </div>
       </div>
       <div class="flex justify-end gap-2.5">
-        <button onclick="closeCertificateModal()" class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Tutup</button>
-        <button onclick="window.print()" class="touch-target px-5 py-2 btn-cta-primary rounded-xl text-xs font-black">🖨️ Cetak / Simpan PDF</button>
+        <button onclick="closeCertificateModal()"
+          class="touch-target px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-bold">Tutup</button>
+        <button onclick="window.print()"
+          class="touch-target px-5 py-2 btn-cta-primary rounded-xl text-xs font-black">🖨️ Cetak / Simpan PDF</button>
       </div>
     </div>
   </div>
 
   <!-- ====== RADIAL ORBITAL SOLAR SYSTEM OVERLAY ====== -->
-  <div id="radial-orbit-overlay" onclick="onOrbitBackdropClick(event)" class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-md bg-slate-950/85 p-4 transition-all duration-300">
+  <div id="radial-orbit-overlay" onclick="onOrbitBackdropClick(event)"
+    class="fixed inset-0 z-50 hidden items-center justify-center backdrop-blur-md bg-slate-950/85 p-4 transition-all duration-300">
     <div class="relative flex items-center justify-center w-full max-w-lg h-[460px] sm:h-[500px]">
-      
+
       <!-- Outer ambient glow & orbital tracks -->
       <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none"></div>
-      <div class="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full border border-blue-500/15 pointer-events-none"></div>
-      
+      <div
+        class="absolute w-[360px] h-[360px] sm:w-[420px] sm:h-[420px] rounded-full border border-blue-500/15 pointer-events-none">
+      </div>
+
       <!-- Rotating Orbital Ring Track with 6 Planets -->
-      <div id="solar-orbit-track" class="orbit-stage-track relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full border border-dashed border-blue-500/35 shadow-2xl flex items-center justify-center">
-        
+      <div id="solar-orbit-track"
+        class="orbit-stage-track relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] rounded-full border border-dashed border-blue-500/35 shadow-2xl flex items-center justify-center">
+
         <!-- Planet 1: Home (Angle 270 / Top) -->
         <div class="planet-carrier" style="--angle: 270;">
-          <button type="button" onclick="switchTabAndCloseOrbit('home')" id="planet-btn-home" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <button type="button" onclick="switchTabAndCloseOrbit('home')" id="planet-btn-home"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🏠</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Home</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Home</span>
           </button>
         </div>
 
         <!-- Planet 2: Dashboard (Angle 330 / Top-Right) -->
         <div class="planet-carrier" style="--angle: 330;">
-          <button type="button" onclick="switchTabAndCloseOrbit('dashboard')" id="planet-btn-dashboard" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <button type="button" onclick="switchTabAndCloseOrbit('dashboard')" id="planet-btn-dashboard"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">📊</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Dashboard</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Dashboard</span>
           </button>
         </div>
 
         <!-- Planet 3: Modul (Angle 30 / Bottom-Right) -->
         <div class="planet-carrier" style="--angle: 30;">
-          <button type="button" onclick="switchTabAndCloseOrbit('modul')" id="planet-btn-modul" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <button type="button" onclick="switchTabAndCloseOrbit('modul')" id="planet-btn-modul"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">📖</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Modul</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Modul</span>
           </button>
         </div>
 
         <!-- Planet 4: Project Aruna (Angle 90 / Bottom) -->
         <div class="planet-carrier" style="--angle: 90;">
-          <button type="button" onclick="switchTabAndCloseOrbit('project')" id="planet-btn-project" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <button type="button" onclick="switchTabAndCloseOrbit('project')" id="planet-btn-project"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🚀</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Project</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">Project</span>
           </button>
         </div>
 
         <!-- Planet 5: ArunaLink (Angle 150 / Bottom-Left) -->
         <div class="planet-carrier" style="--angle: 150;">
-          <button type="button" onclick="switchTabAndCloseOrbit('arunalink')" id="planet-btn-arunalink" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <button type="button" onclick="switchTabAndCloseOrbit('arunalink')" id="planet-btn-arunalink"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">🔗</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">ArunaLink</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">ArunaLink</span>
           </button>
         </div>
 
         <!-- Planet 6: WhatsApp (Angle 210 / Top-Left) -->
         <div class="planet-carrier" style="--angle: 210;">
-          <a href="https://wa.me/6285723476832" target="_blank" rel="noopener noreferrer" class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
+          <a href="https://wa.me/6285723476832" target="_blank" rel="noopener noreferrer"
+            class="planet-item group flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl premium-card border border-blue-500/40 hover:border-blue-400 shadow-xl">
             <span class="text-lg sm:text-xl group-hover:scale-125 transition-transform">💬</span>
-            <span class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">WhatsApp</span>
+            <span
+              class="text-[9px] sm:text-[10px] font-black text-slate-900 dark:text-white mt-0.5 group-hover:text-blue-400">WhatsApp</span>
           </a>
         </div>
 
@@ -743,17 +971,19 @@
 
       <!-- Center Sun / ARUNA Core Button -->
       <div class="absolute z-20 flex flex-col items-center justify-center">
-        <button type="button" onclick="toggleRadialOrbit(false)" title="Tutup Menu" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full royal-logo-box flex flex-col items-center justify-center shadow-2xl border-2 sm:border-3 border-blue-400/80 hover:scale-105 active:scale-95 transition cursor-pointer group">
+        <button type="button" onclick="toggleRadialOrbit(false)" title="Tutup Menu"
+          class="w-16 h-16 sm:w-20 sm:h-20 rounded-full royal-logo-box flex flex-col items-center justify-center shadow-2xl border-2 sm:border-3 border-blue-400/80 hover:scale-105 active:scale-95 transition cursor-pointer group">
           <svg class="w-8 h-8 group-hover:rotate-90 transition-transform duration-500" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
-            <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+            <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B" />
+            <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8" />
           </svg>
           <span class="text-[8px] sm:text-[9px] font-black tracking-widest text-white uppercase mt-0.5">TUTUP ✕</span>
         </button>
       </div>
 
       <div class="absolute -bottom-9 sm:-bottom-11 text-center pointer-events-none">
-        <p class="text-[10px] sm:text-xs font-bold text-blue-300 bg-slate-900/90 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-lg">
+        <p
+          class="text-[10px] sm:text-xs font-bold text-blue-300 bg-slate-900/90 px-3.5 py-1 rounded-full border border-blue-500/30 shadow-lg">
           🪐 Hover planet untuk pause • Klik planet untuk berpindah menu
         </p>
       </div>
@@ -766,93 +996,122 @@
     <button type="button" onclick="toggleRadialOrbit(true)" title="Buka Menu"
       class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full royal-logo-box flex items-center justify-center shadow-xl border-2 border-blue-400/60 hover:scale-110 active:scale-95 transition cursor-pointer group ep-active-glow">
       <div class="absolute inset-0 rounded-full bg-blue-500/25 animate-ping pointer-events-none"></div>
-      <svg class="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B"/>
-        <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8"/>
+      <svg class="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-45 transition-transform duration-500" viewBox="0 0 64 64"
+        fill="none">
+        <circle cx="32" cy="32" r="28" stroke="#FFFFFF" stroke-width="3" fill="#0B132B" />
+        <path d="M32 14L17 48H24.5L27.8 40H36.2L39.5 48H47L32 14ZM29.8 34L32 27.5L34.2 34H29.8Z" fill="#38BDF8" />
       </svg>
     </button>
-    <div onclick="toggleRadialOrbit(true)" class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-blue-500/35 text-xs font-black text-blue-400 shadow-xl cursor-pointer hover:border-blue-400 transition">
+    <div onclick="toggleRadialOrbit(true)"
+      class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md border border-blue-500/35 text-xs font-black text-blue-400 shadow-xl cursor-pointer hover:border-blue-400 transition">
       <span>🪐</span><span>Menu</span>
     </div>
   </div>
 
   <!-- VIEW 2: MAIN APPLICATION (100% PROPORTIONAL MODERN LAYOUT) -->
   <div id="main-app" class="flex-1 flex flex-col min-h-screen hidden relative z-10">
-    
+
     <!-- TOP HEADER BAR (COMPACT & BALANCED) -->
     <header class="h-16 glass-surface border-b px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
       <div class="flex items-center space-x-3">
         <!-- TOMBOL MENU: HANYA TULISAN "MENU" -->
-        <button type="button" onclick="toggleRadialOrbit(true)" class="touch-target px-3 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/35 text-blue-500 dark:text-blue-400 font-black text-xs sm:text-sm flex items-center space-x-1.5 hover:bg-blue-600 hover:text-white transition shadow-sm">
+        <button type="button" onclick="toggleRadialOrbit(true)"
+          class="touch-target px-3 py-1.5 rounded-xl bg-blue-600/15 border border-blue-500/35 text-blue-500 dark:text-blue-400 font-black text-xs sm:text-sm flex items-center space-x-1.5 hover:bg-blue-600 hover:text-white transition shadow-sm">
           <span>🪐</span><span class="font-black">Menu</span>
         </button>
         <div class="hidden sm:flex items-center space-x-2 pl-2 border-l border-blue-500/20">
-          <div class="w-7 h-7 rounded-lg royal-logo-box flex items-center justify-center font-black text-xs text-white">A</div>
-          <span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide">ARUNA ROYAL HUB</span>
+          <div class="w-7 h-7 rounded-lg royal-logo-box flex items-center justify-center font-black text-xs text-white">
+            A</div>
+          <span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide">ARUNA ROYAL
+            HUB</span>
         </div>
         <h2 id="current-page-title" class="text-sm sm:text-base font-black text-blue-500 ml-1">Home Hub</h2>
       </div>
 
       <div class="flex items-center space-x-2.5">
-        <div class="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25">
+        <div
+          class="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25">
           <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-          <span id="realtime-clock" class="font-mono text-[11px] font-bold text-blue-600 dark:text-blue-300">--:--:-- WIB</span>
+          <span id="realtime-clock" class="font-mono text-[11px] font-bold text-blue-600 dark:text-blue-300">--:--:--
+            WIB</span>
         </div>
-        <button onclick="toggleDarkMode()" class="touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25 text-xs font-bold text-slate-800 dark:text-slate-200">
+        <button onclick="toggleDarkMode()"
+          class="touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/25 text-xs font-bold text-slate-800 dark:text-slate-200">
           <span id="theme-icon">🌙</span><span id="theme-label" class="hidden sm:inline">Mode Malam</span>
         </button>
 
         <!-- KHUSUS ADMIN: TOMBOL KONFIGURASI GAS API (HANYA MUNCUL JIKA ROLE ADMIN) -->
-        <button id="admin-header-gas-btn" type="button" onclick="openGasConfigModal()" title="Konfigurasi URL Google Apps Script (Khusus Admin)" class="hidden touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-600/15 border border-blue-500/40 text-blue-500 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold shadow-sm">
+        <button id="admin-header-gas-btn" type="button" onclick="openGasConfigModal()"
+          title="Konfigurasi URL Google Apps Script (Khusus Admin)"
+          class="hidden touch-target flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-blue-600/15 border border-blue-500/40 text-blue-500 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold shadow-sm">
           <span>⚙️</span>
           <span class="hidden sm:inline">GAS API</span>
         </button>
 
         <!-- User Profile Pill in Header -->
         <div class="flex items-center space-x-2 pl-2 border-l border-blue-500/20">
-          <div id="header-user-initial" class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-black text-xs">AR</div>
+          <div id="header-user-initial"
+            class="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-black text-xs">
+            AR</div>
           <div class="hidden lg:block text-left">
             <p id="header-username" class="text-xs font-bold text-slate-900 dark:text-white leading-tight">Memuat...</p>
             <p id="header-role" class="text-[10px] text-blue-400 font-semibold">Active</p>
           </div>
-          <button onclick="location.reload()" title="Keluar Akun" class="p-1.5 text-slate-400 hover:text-blue-500 font-bold text-sm">↪</button>
+          <button onclick="location.reload()" title="Keluar Akun"
+            class="p-1.5 text-slate-400 hover:text-blue-500 font-bold text-sm">↪</button>
         </div>
       </div>
     </header>
 
     <!-- MAIN DASHBOARD & TABS CONTENT (COMPACT PROPORTIONAL VIEWPORT) -->
     <main class="flex-1 p-3 sm:p-6 max-w-7xl w-full mx-auto space-y-5 pb-20">
-      
+
       <!-- TAB HOME -->
       <div id="tab-home" class="tab-content page-animate-enter space-y-5">
         <div class="rounded-2xl sm:rounded-3xl p-5 sm:p-7 premium-card">
-          <div class="inline-flex items-center space-x-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full border border-blue-500/30">
+          <div
+            class="inline-flex items-center space-x-2 bg-blue-500/15 text-blue-600 dark:text-blue-400 text-[11px] sm:text-xs font-extrabold px-3 py-1 rounded-full border border-blue-500/30">
             <span>⚡ ARUNA ROYAL HUB • TERHUBUNG KE SPREADSHEET</span>
           </div>
-          <h1 id="welcome-banner-text" class="text-xl sm:text-2xl lg:text-3xl font-black animated-welcome leading-snug mt-3">Selamat Datang di ARUNA LMS!</h1>
+          <h1 id="welcome-banner-text"
+            class="text-xl sm:text-2xl lg:text-3xl font-black animated-welcome leading-snug mt-3">Selamat Datang di
+            ARUNA LMS!</h1>
           <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm mt-2 max-w-2xl leading-relaxed">
-            Seluruh progres modul pembelajaran (EP 1 – EP 10), evaluasi kuis, poin XP, Project Aruna, hingga koleksi ArunaLink tersinkronisasi otomatis dengan database Google Sheets Anda.
+            Seluruh progres modul pembelajaran (EP 1 – EP 10), evaluasi kuis, poin XP, Project Aruna, hingga koleksi
+            ArunaLink tersinkronisasi otomatis dengan database Google Sheets Anda.
           </p>
           <div class="mt-4 flex flex-wrap gap-2.5">
-            <button onclick="switchTab('modul')" class="touch-target btn-cta-primary font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm">🚀 Mulai Belajar Gratis</button>
-            <button onclick="openSyllabus()" class="touch-target bg-blue-500/10 dark:bg-slate-800/80 border border-blue-500/30 text-slate-800 dark:text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm hover:border-blue-500 transition">📋 Lihat Silabus</button>
+            <button onclick="switchTab('modul')"
+              class="touch-target btn-cta-primary font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm">🚀 Mulai Belajar
+              Gratis</button>
+            <button onclick="openSyllabus()"
+              class="touch-target bg-blue-500/10 dark:bg-slate-800/80 border border-blue-500/30 text-slate-800 dark:text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm hover:border-blue-500 transition">📋
+              Lihat Silabus</button>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div onclick="switchTab('modul')" style="--stagger:0" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Modul & Materi Aktif (Sheet Modules)</h3>
+          <div onclick="switchTab('modul')" style="--stagger:0"
+            class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Modul & Materi Aktif (Sheet
+              Modules)</h3>
             <p id="home-stat-modules" class="text-2xl font-black text-blue-500 mt-1.5">0 / 0 Selesai</p>
-            <div class="glow-progress-track mt-2.5"><div id="home-progress-fill" class="glow-progress-fill" style="width:0%"></div></div>
+            <div class="glow-progress-track mt-2.5">
+              <div id="home-progress-fill" class="glow-progress-fill" style="width:0%"></div>
+            </div>
             <p class="text-[11px] text-slate-500 mt-2">Klik untuk melanjutkan modul pembelajaran.</p>
           </div>
-          <div onclick="switchTab('dashboard')" style="--stagger:1" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Status Sertifikasi (Sheet Enrollments)</h3>
+          <div onclick="switchTab('dashboard')" style="--stagger:1"
+            class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Status Sertifikasi (Sheet
+              Enrollments)</h3>
             <p id="home-stat-cert" class="text-2xl font-black text-amber-400 mt-1.5">In Progress</p>
             <p class="text-[11px] text-slate-500 mt-2">Lihat riwayat sertifikat & nilai di Dashboard.</p>
           </div>
-          <div onclick="switchTab('arunalink')" style="--stagger:2" class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
-            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">ArunaLink Resources (Sheet ArunaLinks)</h3>
+          <div onclick="switchTab('arunalink')" style="--stagger:2"
+            class="premium-card stagger-card p-4 sm:p-5 rounded-2xl cursor-pointer">
+            <h3 class="font-bold text-slate-500 dark:text-slate-400 text-xs sm:text-sm">ArunaLink Resources (Sheet
+              ArunaLinks)</h3>
             <p id="home-stat-links" class="text-2xl font-black text-cyan-400 mt-1.5">0 Tautan</p>
             <p class="text-[11px] text-slate-500 mt-2">Akses cepat template & asisten AI kerja.</p>
           </div>
@@ -865,25 +1124,37 @@
         <div class="premium-card p-5 sm:p-6 rounded-2xl sm:rounded-3xl">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div class="flex items-start sm:items-center gap-3.5">
-              <div id="dash-user-initial" class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl royal-logo-box flex items-center justify-center text-white font-black text-xl flex-shrink-0">AR</div>
+              <div id="dash-user-initial"
+                class="w-13 h-13 sm:w-14 sm:h-14 rounded-xl royal-logo-box flex items-center justify-center text-white font-black text-xl flex-shrink-0">
+                AR</div>
               <div>
                 <div class="flex flex-wrap items-center gap-1.5">
-                  <span id="dash-rank-badge" class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40">🌱 Rookie Learner • Lv. 1</span>
-                  <span id="dash-role-pill" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-400">Member</span>
+                  <span id="dash-rank-badge"
+                    class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/40">🌱
+                    Rookie Learner • Lv. 1</span>
+                  <span id="dash-role-pill"
+                    class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-400">Member</span>
                 </div>
-                <h2 id="dash-user-name" class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-1">Statistik & Capaian Kompetensi</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Pantau level XP, progres episode per modul, dan sertifikat kelulusan Anda secara realtime.</p>
+                <h2 id="dash-user-name" class="text-lg sm:text-xl font-black text-slate-900 dark:text-white mt-1">
+                  Statistik & Capaian Kompetensi</h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Pantau level XP, progres episode per modul, dan
+                  sertifikat kelulusan Anda secara realtime.</p>
               </div>
             </div>
-            <div class="w-full lg:w-72 p-3.5 rounded-xl bg-blue-500/10 dark:bg-slate-900/70 border border-blue-500/25 space-y-1.5">
+            <div
+              class="w-full lg:w-72 p-3.5 rounded-xl bg-blue-500/10 dark:bg-slate-900/70 border border-blue-500/25 space-y-1.5">
               <div class="flex justify-between items-center text-xs font-extrabold">
                 <span id="dash-xp-level-text" class="text-blue-400">Progress Level XP</span>
                 <span id="dash-xp-next-text" class="text-amber-400 font-mono">0 / 300 XP</span>
               </div>
-              <div class="glow-progress-track"><div id="dash-xp-progress-fill" class="glow-progress-fill" style="width:5%"></div></div>
+              <div class="glow-progress-track">
+                <div id="dash-xp-progress-fill" class="glow-progress-fill" style="width:5%"></div>
+              </div>
               <div class="pt-1 flex justify-between items-center">
-                <span id="dash-next-ep-label" class="text-[10px] text-slate-400 truncate max-w-[155px]">Siap mulai belajar</span>
-                <button onclick="resumeNextEpisode()" class="px-2.5 py-1 btn-cta-primary rounded-lg text-[10px] font-black">🚀 Lanjut Episode ></button>
+                <span id="dash-next-ep-label" class="text-[10px] text-slate-400 truncate max-w-[155px]">Siap mulai
+                  belajar</span>
+                <button onclick="resumeNextEpisode()"
+                  class="px-2.5 py-1 btn-cta-primary rounded-lg text-[10px] font-black">🚀 Lanjut Episode ></button>
               </div>
             </div>
           </div>
@@ -893,25 +1164,41 @@
         <div id="dash-admin-overview" class="hidden premium-card p-4 sm:p-5 rounded-2xl border border-amber-500/35">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">👑 PANEL KONTROL EKSEKUTIF ADMIN</span>
-              <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white mt-1.5">Ringkasan Konten Spreadsheet ARUNACOURSE</h3>
+              <span
+                class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">👑
+                PANEL KONTROL EKSEKUTIF ADMIN</span>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 dark:text-white mt-1.5">Ringkasan Konten
+                Spreadsheet ARUNACOURSE</h3>
             </div>
             <div class="flex flex-wrap gap-2">
-              <button onclick="openQuickInputVideoModal()" class="touch-target px-3.5 py-1.5 btn-cta-primary rounded-lg text-xs font-black">🎬 + Input Video (EP 1-10)</button>
-              <button onclick="switchTab('project'); openProjectModal('')" class="touch-target px-3.5 py-1.5 rounded-lg bg-blue-500/15 text-blue-400 border border-blue-500/35 text-xs font-black hover:bg-blue-600 hover:text-white transition">🚀 + Tambah Project</button>
+              <button onclick="openQuickInputVideoModal()"
+                class="touch-target px-3.5 py-1.5 btn-cta-primary rounded-lg text-xs font-black">🎬 + Input Video (EP
+                1-10)</button>
+              <button onclick="switchTab('project'); openProjectModal('')"
+                class="touch-target px-3.5 py-1.5 rounded-lg bg-blue-500/15 text-blue-400 border border-blue-500/35 text-xs font-black hover:bg-blue-600 hover:text-white transition">🚀
+                + Tambah Project</button>
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
-              <div><span class="text-[10px] font-bold uppercase text-slate-400">Episode Ber-Video Aktif</span><p id="dash-admin-videos" class="text-lg font-black text-blue-400 mt-0.5">0 Video</p></div>
+            <div
+              class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Episode Ber-Video Aktif</span>
+                <p id="dash-admin-videos" class="text-lg font-black text-blue-400 mt-0.5">0 Video</p>
+              </div>
               <span class="text-xl">🎬</span>
             </div>
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
-              <div><span class="text-[10px] font-bold uppercase text-slate-400">Karya Project Aruna</span><p id="dash-admin-projects" class="text-lg font-black text-amber-400 mt-0.5">0 Project</p></div>
+            <div
+              class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Karya Project Aruna</span>
+                <p id="dash-admin-projects" class="text-lg font-black text-amber-400 mt-0.5">0 Project</p>
+              </div>
               <span class="text-xl">🚀</span>
             </div>
-            <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
-              <div><span class="text-[10px] font-bold uppercase text-slate-400">Koleksi ArunaLink</span><p id="dash-admin-links" class="text-lg font-black text-cyan-400 mt-0.5">0 Tautan</p></div>
+            <div
+              class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex items-center justify-between">
+              <div><span class="text-[10px] font-bold uppercase text-slate-400">Koleksi ArunaLink</span>
+                <p id="dash-admin-links" class="text-lg font-black text-cyan-400 mt-0.5">0 Tautan</p>
+              </div>
               <span class="text-xl">🔗</span>
             </div>
           </div>
@@ -922,40 +1209,52 @@
           <div style="--stagger:0" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-[11px] font-extrabold uppercase text-slate-400">Total Durasi Belajar</span>
-              <span class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⏱️</span>
+              <span
+                class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⏱️</span>
             </div>
             <p id="dash-stat-hours" class="text-xl sm:text-2xl font-black text-blue-500">0 Menit</p>
-            <div class="glow-progress-track"><div id="dash-dur-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <div class="glow-progress-track">
+              <div id="dash-dur-bar" class="glow-progress-fill" style="width:0%"></div>
+            </div>
             <p id="dash-dur-sub" class="text-[10px] text-slate-400 font-semibold">Akumulasi durasi tuntas</p>
           </div>
 
           <div style="--stagger:1" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-[11px] font-extrabold uppercase text-slate-400">Rata-rata Skor Kuis</span>
-              <span class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🎯</span>
+              <span
+                class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🎯</span>
             </div>
             <p id="dash-stat-score" class="text-xl sm:text-2xl font-black text-amber-400">0.0 / 100</p>
-            <div class="glow-progress-track"><div id="dash-score-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <div class="glow-progress-track">
+              <div id="dash-score-bar" class="glow-progress-fill" style="width:0%"></div>
+            </div>
             <p id="dash-score-sub" class="text-[10px] text-slate-400 font-semibold">Passing Grade: Min. 80 / 100</p>
           </div>
 
           <div style="--stagger:2" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-[11px] font-extrabold uppercase text-slate-400">Total Poin Gamifikasi</span>
-              <span class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⚡</span>
+              <span
+                class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-sm">⚡</span>
             </div>
             <p id="dash-stat-xp" class="text-xl sm:text-2xl font-black text-cyan-400">0 XP</p>
-            <div class="glow-progress-track"><div id="dash-xp-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <div class="glow-progress-track">
+              <div id="dash-xp-bar" class="glow-progress-fill" style="width:0%"></div>
+            </div>
             <p class="text-[10px] text-slate-400 font-semibold">+150 XP tiap episode selesai</p>
           </div>
 
           <div style="--stagger:3" class="premium-card stagger-card p-4 rounded-2xl space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-[11px] font-extrabold uppercase text-slate-400">Episode & Sertifikat</span>
-              <span class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🏅</span>
+              <span
+                class="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-sm">🏅</span>
             </div>
             <p id="dash-stat-ep-cert" class="text-xl sm:text-2xl font-black text-blue-400">0 / 40 EP</p>
-            <div class="glow-progress-track"><div id="dash-ep-bar" class="glow-progress-fill" style="width:0%"></div></div>
+            <div class="glow-progress-track">
+              <div id="dash-ep-bar" class="glow-progress-fill" style="width:0%"></div>
+            </div>
             <p id="dash-ep-sub" class="text-[10px] text-slate-400 font-semibold">0 Sertifikat Digital Terbit</p>
           </div>
         </div>
@@ -970,11 +1269,13 @@
             <div class="relative w-36 h-36 my-3 flex items-center justify-center">
               <svg class="w-full h-full" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="40" stroke="rgba(59,130,246,0.16)" stroke-width="9" fill="none"></circle>
-                <circle id="dash-donut-circle" class="donut-ring-circle" cx="50" cy="50" r="40" stroke="url(#blueCyanGrad)" stroke-width="9" stroke-linecap="round" fill="none" stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
+                <circle id="dash-donut-circle" class="donut-ring-circle" cx="50" cy="50" r="40"
+                  stroke="url(#blueCyanGrad)" stroke-width="9" stroke-linecap="round" fill="none"
+                  stroke-dasharray="251.2" stroke-dashoffset="251.2"></circle>
                 <defs>
                   <linearGradient id="blueCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#3B82F6"/>
-                    <stop offset="100%" stop-color="#0EA5E9"/>
+                    <stop offset="0%" stop-color="#3B82F6" />
+                    <stop offset="100%" stop-color="#0EA5E9" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -984,18 +1285,24 @@
               </div>
             </div>
             <div class="w-full space-y-1.5">
-              <span id="dash-donut-status" class="inline-block text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">Status: In Progress</span>
-              <p class="text-[11px] text-slate-400">Selesaikan seluruh episode untuk predikat <strong>Royal Grandmaster</strong>.</p>
+              <span id="dash-donut-status"
+                class="inline-block text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">Status:
+                In Progress</span>
+              <p class="text-[11px] text-slate-400">Selesaikan seluruh episode untuk predikat <strong>Royal
+                  Grandmaster</strong>.</p>
             </div>
           </div>
 
           <div class="lg:col-span-2 premium-card p-4 sm:p-5 rounded-2xl flex flex-col justify-between">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
               <div>
-                <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-400">PETA KURIKULUM (EP 1 – EP 10)</span>
-                <h3 class="text-base font-black text-slate-900 dark:text-white mt-0.5">Rincian Progres Per Modul Pembelajaran</h3>
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-400">PETA KURIKULUM (EP 1 –
+                  EP 10)</span>
+                <h3 class="text-base font-black text-slate-900 dark:text-white mt-0.5">Rincian Progres Per Modul
+                  Pembelajaran</h3>
               </div>
-              <button onclick="switchTab('modul')" class="text-xs font-black text-blue-400 hover:underline">Lihat Semua Modul ↗</button>
+              <button onclick="switchTab('modul')" class="text-xs font-black text-blue-400 hover:underline">Lihat Semua
+                Modul ↗</button>
             </div>
             <div id="dash-course-breakdown-list" class="space-y-2.5"></div>
           </div>
@@ -1005,15 +1312,28 @@
         <div class="premium-card p-4 sm:p-6 rounded-2xl">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
             <div>
-              <h3 class="text-base font-black text-slate-900 dark:text-white">🏆 Riwayat Nilai, Evaluasi & Sertifikat Digital</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Klik tombol <strong>🎓 Lihat Sertifikat</strong> untuk mencetak sertifikat resmi Anda.</p>
+              <h3 class="text-base font-black text-slate-900 dark:text-white">🏆 Riwayat Nilai, Evaluasi & Sertifikat
+                Digital</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Klik tombol <strong>🎓 Lihat Sertifikat</strong>
+                untuk mencetak sertifikat resmi Anda.</p>
             </div>
-            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/25">Sheet: Submissions</span>
+            <span
+              class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/25">Sheet:
+              Submissions</span>
           </div>
           <div class="overflow-x-auto rounded-xl border border-blue-500/20">
             <table class="w-full text-left text-xs sm:text-sm">
-              <thead class="bg-slate-100/90 dark:bg-slate-900/90 text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300">
-                <tr><th class="py-2.5 px-3">ID Submission</th><th class="py-2.5 px-3">ID Episode / Modul</th><th class="py-2.5 px-3">Skor</th><th class="py-2.5 px-3">XP</th><th class="py-2.5 px-3">Kode Sertifikat</th><th class="py-2.5 px-3">Waktu</th><th class="py-2.5 px-3 text-right">Aksi</th></tr>
+              <thead
+                class="bg-slate-100/90 dark:bg-slate-900/90 text-[11px] font-bold uppercase text-slate-600 dark:text-slate-300">
+                <tr>
+                  <th class="py-2.5 px-3">ID Submission</th>
+                  <th class="py-2.5 px-3">ID Episode / Modul</th>
+                  <th class="py-2.5 px-3">Skor</th>
+                  <th class="py-2.5 px-3">XP</th>
+                  <th class="py-2.5 px-3">Kode Sertifikat</th>
+                  <th class="py-2.5 px-3">Waktu</th>
+                  <th class="py-2.5 px-3 text-right">Aksi</th>
+                </tr>
               </thead>
               <tbody id="dash-submissions-tbody" class="divide-y divide-slate-200/50 dark:divide-slate-800"></tbody>
             </table>
@@ -1025,44 +1345,63 @@
       <div id="tab-modul" class="tab-content space-y-4 hidden">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
-            <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">KURIKULUM RESMI • ARUNA LMS</span>
-            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1.5">Modul Pembelajaran & Video Interaktif</h2>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Pilih modul kurikulum, ikuti panduan materi tertulis, dan tonton video penjelasannya.</p>
+            <span
+              class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">KURIKULUM
+              RESMI • ARUNA LMS</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1.5">Modul Pembelajaran & Video
+              Interaktif</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Pilih modul kurikulum, ikuti panduan
+              materi tertulis, dan tonton video penjelasannya.</p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <button id="btn-top-input-video" onclick="openQuickInputVideoModal()" class="hidden touch-target btn-cta-primary px-3.5 py-2 rounded-xl text-xs font-black">🎬 + Input Video & Materi (EP 1-10)</button>
-            <button onclick="openSyllabus()" class="touch-target bg-white/80 dark:bg-slate-900/80 border border-blue-500/30 px-3.5 py-2 rounded-xl text-xs font-bold text-blue-500 dark:text-blue-400 hover:border-blue-400 transition">📋 Lihat Silabus</button>
+            <button id="btn-top-input-video" onclick="openQuickInputVideoModal()"
+              class="hidden touch-target btn-cta-primary px-3.5 py-2 rounded-xl text-xs font-black">🎬 + Input Video &
+              Materi (EP 1-10)</button>
+            <button onclick="openSyllabus()"
+              class="touch-target bg-white/80 dark:bg-slate-900/80 border border-blue-500/30 px-3.5 py-2 rounded-xl text-xs font-bold text-blue-500 dark:text-blue-400 hover:border-blue-400 transition">📋
+              Lihat Silabus</button>
           </div>
         </div>
 
         <!-- CONTROLS: KATEGORI & PANAH HORIZONTAL SCROLL -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1 pb-1 border-b border-slate-200/60 dark:border-blue-500/15">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1 pb-1 border-b border-slate-200/60 dark:border-blue-500/15">
           <div id="module-category-pills" class="flex flex-wrap items-center gap-2"></div>
-          
+
           <div class="flex items-center space-x-2 self-end sm:self-auto">
             <span class="text-[11px] font-bold text-slate-400 hidden sm:inline">Geser Modul:</span>
-            <button type="button" onclick="scrollCoursesHorizontal(-1)" title="Geser ke kiri" class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
+            <button type="button" onclick="scrollCoursesHorizontal(-1)" title="Geser ke kiri"
+              class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
               ⟨
             </button>
-            <button type="button" onclick="scrollCoursesHorizontal(1)" title="Geser ke kanan" class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
+            <button type="button" onclick="scrollCoursesHorizontal(1)" title="Geser ke kanan"
+              class="touch-target w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white border border-slate-300 dark:border-blue-500/30 text-slate-700 dark:text-slate-300 flex items-center justify-center font-bold text-base transition shadow-sm cursor-pointer">
               ⟩
             </button>
           </div>
         </div>
 
         <!-- HORIZONTAL SCROLL CONTAINER (Gambar 3) -->
-        <div id="courses-dynamic-grid" class="flex overflow-x-auto gap-5 pb-5 pt-1 px-1 snap-x snap-mandatory scroll-smooth no-scrollbar"></div>
+        <div id="courses-dynamic-grid"
+          class="flex overflow-x-auto gap-5 pb-5 pt-1 px-1 snap-x snap-mandatory scroll-smooth no-scrollbar"></div>
       </div>
 
       <!-- TAB PROJECT ARUNA -->
       <div id="tab-project" class="tab-content space-y-4 hidden">
-        <div class="premium-card p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div
+          class="premium-card p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG KE SHEET PROJECTARUNA</span>
-            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">Project Aruna — Etalase Karya & Sistem</h2>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi project aplikasi web, video demo Google Drive / YouTube, dan template sistem ARUNA.</p>
+            <span
+              class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG
+              KE SHEET PROJECTARUNA</span>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">Project Aruna — Etalase Karya
+              & Sistem</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi project aplikasi web, video
+              demo Google Drive / YouTube, dan template sistem ARUNA.</p>
           </div>
-          <button id="btn-top-add-project" onclick="openProjectModal('')" class="hidden touch-target btn-cta-primary px-4 py-2.5 rounded-xl text-xs font-black flex-shrink-0">+ Tambah Project Aruna</button>
+          <button id="btn-top-add-project" onclick="openProjectModal('')"
+            class="hidden touch-target btn-cta-primary px-4 py-2.5 rounded-xl text-xs font-black flex-shrink-0">+ Tambah
+            Project Aruna</button>
         </div>
         <div id="project-category-pills" class="flex flex-wrap gap-2 pb-0.5"></div>
         <div id="project-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
@@ -1071,9 +1410,13 @@
       <!-- TAB ARUNALINK -->
       <div id="tab-arunalink" class="tab-content space-y-4 hidden">
         <div class="premium-card p-5 sm:p-6 rounded-2xl">
-          <span class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG KE SHEET ARUNALINKS</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">ArunaLink — Koleksi Tautan & Alat Bantu</h2>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi resmi template Google Sheets, starter code, dan tools untuk member ARUNA.</p>
+          <span
+            class="text-[11px] bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-extrabold px-2.5 py-0.5 rounded-full">TERHUBUNG
+            KE SHEET ARUNALINKS</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-2">ArunaLink — Koleksi Tautan &
+            Alat Bantu</h2>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">Koleksi resmi template Google Sheets,
+            starter code, dan tools untuk member ARUNA.</p>
         </div>
         <div id="arunalink-dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
       </div>
@@ -1085,21 +1428,6 @@
 
     function isAdminUser() {
       return Boolean(currentUser && String(currentUser.role || '').trim().toLowerCase() === 'admin');
-    }
-
-    // Deteksi input username login: Tombol ⚙️ GAS API hanya muncul jika diketik nama Admin (Smart Admin Reveal)
-    function detectAdminInput(val) {
-      var btn = document.getElementById('login-gas-btn');
-      if (!btn) return;
-      var clean = String(val || '').trim().toLowerCase();
-      var isAdmin = clean === 'robin' || clean === 'admin' || clean === 'robintarigan' || clean === 'idam' || clean.indexOf('admin') !== -1 || clean.indexOf('robin') !== -1;
-      if (isAdmin) {
-        btn.classList.remove('hidden');
-        btn.classList.add('inline-flex');
-      } else {
-        btn.classList.add('hidden');
-        btn.classList.remove('inline-flex');
-      }
     }
 
     // ====== UNIVERSAL BACKEND BRIDGE (GAS + VERCEL HYBRID) ======
@@ -1141,7 +1469,7 @@
         msg.className = 'text-xs text-center text-emerald-400 font-bold min-h-[18px]';
         msg.innerText = '✓ URL Google Apps Script tersimpan! Menghubungkan ulang...';
       }
-      setTimeout(function() {
+      setTimeout(function () {
         handleLogin();
       }, 400);
     }
@@ -1202,7 +1530,7 @@
         var runner = google.script.run
           .withSuccessHandler(onSuccess)
           .withFailureHandler(onFailure);
-        
+
         if (actionName === 'login') runner.apiLogin(params.email, params.password);
         else if (actionName === 'register') runner.apiRegister(params.name, params.email, params.password);
         else if (actionName === 'saveModule') runner.apiSaveModuleEpisode(params.userId, params.payload);
@@ -1221,10 +1549,10 @@
 
       var payload = Object.assign({ action: actionName }, params);
       var controller = new AbortController();
-      var timeoutId = setTimeout(function() { controller.abort(); }, 12000);
+      var timeoutId = setTimeout(function () { controller.abort(); }, 12000);
 
       // Buat query string untuk pemanggilan GET yang kilat dan bebas CORS
-      var queryString = Object.keys(payload).map(function(k) {
+      var queryString = Object.keys(payload).map(function (k) {
         var v = typeof payload[k] === 'object' ? JSON.stringify(payload[k]) : payload[k];
         return encodeURIComponent(k) + '=' + encodeURIComponent(v);
       }).join('&');
@@ -1233,44 +1561,44 @@
         method: 'GET',
         signal: controller.signal
       })
-      .then(function(res) {
-        clearTimeout(timeoutId);
-        if (!res.ok) {
-          throw new Error('HTTP_' + res.status);
-        }
-        return res.json();
-      })
-      .then(function(data) {
-        onSuccess(data);
-      })
-      .catch(function(err) {
-        if (err && (err.message === 'HTTP_404' || String(err).indexOf('404') !== -1)) {
+        .then(function (res) {
           clearTimeout(timeoutId);
-          console.error('GAS URL 404 Not Found:', gasUrl);
-          if (onFailure) onFailure(new Error('URL_404'));
-          return;
-        }
+          if (!res.ok) {
+            throw new Error('HTTP_' + res.status);
+          }
+          return res.json();
+        })
+        .then(function (data) {
+          onSuccess(data);
+        })
+        .catch(function (err) {
+          if (err && (err.message === 'HTTP_404' || String(err).indexOf('404') !== -1)) {
+            clearTimeout(timeoutId);
+            console.error('GAS URL 404 Not Found:', gasUrl);
+            if (onFailure) onFailure(new Error('URL_404'));
+            return;
+          }
 
-        // Fallback ke POST jika GET terkena limit ukuran
-        fetch(gasUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        })
-        .then(function(res2) {
-          if (!res2.ok) throw new Error('HTTP_' + res2.status);
-          return res2.json();
-        })
-        .then(function(data2) {
-          clearTimeout(timeoutId);
-          onSuccess(data2);
-        })
-        .catch(function(err2) {
-          clearTimeout(timeoutId);
-          console.error('GAS Fetch Error:', err2);
-          if (onFailure) onFailure(err2);
+          // Fallback ke POST jika GET terkena limit ukuran
+          fetch(gasUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payload)
+          })
+            .then(function (res2) {
+              if (!res2.ok) throw new Error('HTTP_' + res2.status);
+              return res2.json();
+            })
+            .then(function (data2) {
+              clearTimeout(timeoutId);
+              onSuccess(data2);
+            })
+            .catch(function (err2) {
+              clearTimeout(timeoutId);
+              console.error('GAS Fetch Error:', err2);
+              if (onFailure) onFailure(err2);
+            });
         });
-      });
     }
 
     /* ====== ORBITAL RADIAL MENU CONTROLS ====== */
@@ -1395,7 +1723,7 @@
       ensureTenEpisodesPerCourse(appState);
       document.getElementById('auth-view').classList.add('hidden');
       document.getElementById('main-app').classList.remove('hidden');
-      
+
       // Set User info in Header
       var initial = currentUser.name.substring(0, 2).toUpperCase();
       var hInitial = document.getElementById('header-user-initial');
@@ -1420,13 +1748,13 @@
       var msg = document.getElementById('auth-msg');
       var btn = document.getElementById('auth-submit-btn');
       if (!email || !pass) { msg.innerText = 'Email dan password wajib diisi!'; return; }
-      
+
       triggerTopShimmer();
       msg.className = 'text-xs text-center text-blue-500 font-bold min-h-[18px]';
       msg.innerText = '⏳ Memverifikasi akun & memuat data...';
       btn.disabled = true;
 
-      callBackend('login', { email: email, password: pass }, function(res) {
+      callBackend('login', { email: email, password: pass }, function (res) {
         btn.disabled = false;
         if (res && res.success) {
           applyLoginSuccess(res.user, res.appData);
@@ -1434,7 +1762,7 @@
           msg.className = 'text-xs text-center text-red-500 font-semibold min-h-[18px]';
           msg.innerText = (res && res.message) ? res.message : 'Login gagal.';
         }
-      }, function(err) {
+      }, function (err) {
         btn.disabled = false;
         msg.className = 'text-xs text-center text-red-400 font-semibold min-h-[18px]';
         var is404 = err && (err.message === 'URL_404' || String(err).indexOf('404') !== -1);
@@ -1458,11 +1786,11 @@
       msg.innerText = '⏳ Menyimpan ke Sheet Users...';
       btn.disabled = true;
 
-      callBackend('register', { name: email.split('@')[0], email: email, password: pass }, function(res) {
+      callBackend('register', { name: email.split('@')[0], email: email, password: pass }, function (res) {
         btn.disabled = false;
         msg.innerText = res ? res.message : 'Selesai.';
         if (res && res.success) setTimeout(toggleRegisterMode, 1500);
-      }, function(err) {
+      }, function (err) {
         btn.disabled = false;
         msg.innerText = 'Gagal daftar: ' + (err && err.message ? err.message : String(err));
       });
@@ -1585,18 +1913,18 @@
         var nextM = c.modules.find(function (m) { return !m.completed; }) || c.modules[0];
         return '<div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/65 border border-blue-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">' +
           '<div class="flex-1 space-y-1">' +
-            '<div class="flex flex-wrap items-center gap-1.5">' +
-              '<span class="text-[10px] font-black px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 border border-blue-500/30">' + c.badgeCode + '</span>' +
-              '<span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">' + c.title + '</span>' +
-              '<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400">🎬 ' + vidCnt + ' Video</span>' +
-            '</div>' +
-            '<div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div>' +
+          '<div class="flex flex-wrap items-center gap-1.5">' +
+          '<span class="text-[10px] font-black px-2 py-0.5 rounded-md bg-blue-500/15 text-blue-400 border border-blue-500/30">' + c.badgeCode + '</span>' +
+          '<span class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">' + c.title + '</span>' +
+          '<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-400">🎬 ' + vidCnt + ' Video</span>' +
+          '</div>' +
+          '<div class="glow-progress-track"><div class="glow-progress-fill" style="width:' + c.progressPct + '%"></div></div>' +
           '</div>' +
           '<div class="flex items-center justify-between sm:justify-end gap-2.5 flex-shrink-0">' +
-            '<div class="text-right"><p class="text-[11px] font-black text-blue-400">' + c.completedModules + '/' + c.totalModules + ' EP</p><p class="text-[9px] font-bold text-slate-400">' + c.progressPct + '% Selesai</p></div>' +
-            '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (nextM ? nextM.id : '') + '\')" class="px-3 py-1.5 btn-cta-primary rounded-lg text-xs font-black">Buka ></button>' +
+          '<div class="text-right"><p class="text-[11px] font-black text-blue-400">' + c.completedModules + '/' + c.totalModules + ' EP</p><p class="text-[9px] font-bold text-slate-400">' + c.progressPct + '% Selesai</p></div>' +
+          '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (nextM ? nextM.id : '') + '\')" class="px-3 py-1.5 btn-cta-primary rounded-lg text-xs font-black">Buka ></button>' +
           '</div>' +
-        '</div>';
+          '</div>';
       }).join('');
 
       // 4. Tabel Riwayat Nilai & Sertifikat Digital
@@ -1604,8 +1932,8 @@
       tbody.innerHTML = (appState.submissions || []).length === 0
         ? '<tr><td colspan="7" class="py-8 px-4 text-center"><div class="max-w-md mx-auto space-y-2"><p class="text-sm font-black text-slate-700 dark:text-slate-200">🎯 Belum Ada Episode yang Diselesaikan</p><p class="text-xs text-slate-400">Mulai tonton video materi pada Episode 1 dan selesaikan kuis singkat untuk mendapatkan <strong>+150 XP</strong> serta <strong>Sertifikat Digital ARUNA</strong>!</p><button onclick="resumeNextEpisode()" class="touch-target px-4 py-2 btn-cta-primary rounded-xl text-xs font-black">🚀 Kerjakan Episode Pertama (+150 XP)</button></div></td></tr>'
         : appState.submissions.map(function (s, idx) {
-            return '<tr class="hover:bg-blue-500/5"><td class="py-2.5 px-3 font-mono text-xs font-bold">' + s.subId + '</td><td class="py-2.5 px-3 font-bold text-blue-500">' + s.modId + '</td><td class="py-2.5 px-3 font-black">' + s.score + '</td><td class="py-2.5 px-3 font-bold text-amber-400">+' + s.xp + ' XP</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-[11px] font-bold">' + s.certCode + '</span></td><td class="py-2.5 px-3 text-[11px] text-slate-400">' + s.date + '</td><td class="py-2.5 px-3 text-right"><button onclick="openCertificatePreview(' + idx + ')" class="px-2.5 py-1 rounded-lg btn-cta-primary text-xs font-black">🎓 Lihat Sertifikat</button></td></tr>';
-          }).join('');
+          return '<tr class="hover:bg-blue-500/5"><td class="py-2.5 px-3 font-mono text-xs font-bold">' + s.subId + '</td><td class="py-2.5 px-3 font-bold text-blue-500">' + s.modId + '</td><td class="py-2.5 px-3 font-black">' + s.score + '</td><td class="py-2.5 px-3 font-bold text-amber-400">+' + s.xp + ' XP</td><td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-blue-500/15 text-blue-400 font-mono text-[11px] font-bold">' + s.certCode + '</span></td><td class="py-2.5 px-3 text-[11px] text-slate-400">' + s.date + '</td><td class="py-2.5 px-3 text-right"><button onclick="openCertificatePreview(' + idx + ')" class="px-2.5 py-1 rounded-lg btn-cta-primary text-xs font-black">🎓 Lihat Sertifikat</button></td></tr>';
+        }).join('');
 
       renderModulesTab();
       renderProjectArunaTab();
@@ -1651,65 +1979,65 @@
           if (m.completed) {
             return '<div onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 cursor-pointer transition text-xs group">' +
               '<div class="flex items-center space-x-2 truncate pr-2">' +
-                '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
-                '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
+              '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
+              '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
               '</div>' +
               '<span class="font-mono text-[11px] text-emerald-600 dark:text-emerald-300 font-bold flex-shrink-0">' + dur + '</span>' +
-            '</div>';
+              '</div>';
           } else {
             return '<div onclick="openModuleDetail(\'' + c.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2 rounded-xl bg-white/60 dark:bg-slate-900/60 hover:bg-blue-500/10 border border-slate-200/60 dark:border-blue-500/10 hover:border-blue-500/30 cursor-pointer transition text-xs group">' +
               '<div class="flex items-center space-x-2 truncate pr-2">' +
-                '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
-                '<span class="font-medium text-slate-700 dark:text-slate-300 truncate group-hover:text-blue-500 group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
+              '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
+              '<span class="font-medium text-slate-700 dark:text-slate-300 truncate group-hover:text-blue-500 group-hover:underline">' + epNum + '. ' + epTitle + '</span>' +
               '</div>' +
               '<span class="font-mono text-[11px] text-slate-400 font-bold flex-shrink-0">' + dur + '</span>' +
-            '</div>';
+              '</div>';
           }
         }).join('');
 
         return '<div style="--stagger:' + idx + '" class="w-[320px] sm:w-[355px] flex-shrink-0 snap-start premium-card stagger-card rounded-2xl sm:rounded-3xl p-5 flex flex-col justify-between border-t-4 ' + (isRecommended ? 'border-t-amber-500' : 'border-t-blue-500') + ' shadow-xl hover:shadow-2xl transition duration-300 space-y-4">' +
           '<div>' +
-            // TOP BADGES ROW (Gambar 3)
-            '<div class="flex items-center justify-between gap-1 mb-2">' +
-              '<div class="flex flex-wrap items-center gap-1.5">' +
-                (isRecommended ? '<span class="bg-amber-500 text-white font-black text-[10px] px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-sm">★ REKOMENDASI</span>' : '') +
-                '<span class="bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 font-black text-[10px] px-2 py-0.5 rounded-md">' + c.badgeCode + '</span>' +
-              '</div>' +
-              '<button type="button" title="Bookmark Modul" class="p-1 rounded-lg text-slate-400 hover:text-amber-500 transition">' +
-                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>' +
-              '</button>' +
-            '</div>' +
+          // TOP BADGES ROW (Gambar 3)
+          '<div class="flex items-center justify-between gap-1 mb-2">' +
+          '<div class="flex flex-wrap items-center gap-1.5">' +
+          (isRecommended ? '<span class="bg-amber-500 text-white font-black text-[10px] px-2.5 py-0.5 rounded-md uppercase tracking-wider shadow-sm">★ REKOMENDASI</span>' : '') +
+          '<span class="bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30 font-black text-[10px] px-2 py-0.5 rounded-md">' + c.badgeCode + '</span>' +
+          '</div>' +
+          '<button type="button" title="Bookmark Modul" class="p-1 rounded-lg text-slate-400 hover:text-amber-500 transition">' +
+          '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>' +
+          '</button>' +
+          '</div>' +
 
-            // SUB BADGES: MULAI DARI SINI / KATEGORI & PROGRES
-            '<div class="flex items-center gap-1.5 mb-2.5">' +
-              (isStartHere ? '<span class="bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 font-extrabold text-[10px] px-2 py-0.5 rounded-md">MULAI DARI SINI</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-[10px] px-2 py-0.5 rounded-md">' + c.category + '</span>') +
-              '<span class="bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 font-mono text-[10px] font-bold px-2 py-0.5 rounded-md">' + c.completedModules + '/' + c.totalModules + ' (' + c.progressPct + '%)</span>' +
-            '</div>' +
+          // SUB BADGES: MULAI DARI SINI / KATEGORI & PROGRES
+          '<div class="flex items-center gap-1.5 mb-2.5">' +
+          (isStartHere ? '<span class="bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 font-extrabold text-[10px] px-2 py-0.5 rounded-md">MULAI DARI SINI</span>' : '<span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-[10px] px-2 py-0.5 rounded-md">' + c.category + '</span>') +
+          '<span class="bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 font-mono text-[10px] font-bold px-2 py-0.5 rounded-md">' + c.completedModules + '/' + c.totalModules + ' (' + c.progressPct + '%)</span>' +
+          '</div>' +
 
-            // TITLE & DESCRIPTION
-            '<h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white uppercase leading-snug line-clamp-2 min-h-[48px]">' + c.title + '</h3>' +
-            '<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed line-clamp-2 min-h-[34px]">' + c.description + '</p>' +
+          // TITLE & DESCRIPTION
+          '<h3 class="text-base sm:text-lg font-black text-slate-900 dark:text-white uppercase leading-snug line-clamp-2 min-h-[48px]">' + c.title + '</h3>' +
+          '<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed line-clamp-2 min-h-[34px]">' + c.description + '</p>' +
 
-            // LESSONS INNER SCROLLABLE BOX (Gambar 3)
-            '<div class="mt-3.5 pt-3 border-t border-slate-200/60 dark:border-blue-500/15 space-y-2">' +
-              '<div class="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-slate-400">' +
-                '<span>MATERI DI MODUL INI:</span>' +
-                '<span class="font-mono">' + c.totalModules + ' MATERI</span>' +
-              '</div>' +
-              '<div class="bg-slate-100/70 dark:bg-slate-900/60 rounded-xl p-2 max-h-48 overflow-y-auto space-y-1.5 border border-slate-200/70 dark:border-blue-500/15 shadow-inner">' +
-                lessonsListHtml +
-              '</div>' +
-            '</div>' +
+          // LESSONS INNER SCROLLABLE BOX (Gambar 3)
+          '<div class="mt-3.5 pt-3 border-t border-slate-200/60 dark:border-blue-500/15 space-y-2">' +
+          '<div class="flex justify-between items-center text-[10px] font-black uppercase tracking-wider text-slate-400">' +
+          '<span>MATERI DI MODUL INI:</span>' +
+          '<span class="font-mono">' + c.totalModules + ' MATERI</span>' +
+          '</div>' +
+          '<div class="bg-slate-100/70 dark:bg-slate-900/60 rounded-xl p-2 max-h-48 overflow-y-auto space-y-1.5 border border-slate-200/70 dark:border-blue-500/15 shadow-inner">' +
+          lessonsListHtml +
+          '</div>' +
+          '</div>' +
           '</div>' +
 
           // CARD FOOTER (Gambar 3)
           '<div class="pt-3 border-t border-slate-200/60 dark:border-blue-500/15 flex items-center justify-between gap-2">' +
-            '<span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">' + c.totalModules + ' Materi • ' + c.totalDuration + ' Menit</span>' +
-            '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (firstInc ? firstInc.id : '') + '\')" class="touch-target px-4 py-2 ' + (c.progressPct > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'btn-cta-primary') + ' font-black rounded-xl text-xs shadow-md transition cursor-pointer">' +
-              (c.progressPct > 0 ? 'Lanjutkan' : 'Masuk Modul') +
-            '</button>' +
+          '<span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">' + c.totalModules + ' Materi • ' + c.totalDuration + ' Menit</span>' +
+          '<button onclick="openModuleDetail(\'' + c.id + '\', \'' + (firstInc ? firstInc.id : '') + '\')" class="touch-target px-4 py-2 ' + (c.progressPct > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'btn-cta-primary') + ' font-black rounded-xl text-xs shadow-md transition cursor-pointer">' +
+          (c.progressPct > 0 ? 'Lanjutkan' : 'Masuk Modul') +
+          '</button>' +
           '</div>' +
-        '</div>';
+          '</div>';
       }).join('');
     }
 
@@ -1762,313 +2090,58 @@
       if (c) openModuleDetail(c.id, c.modules[0].id);
     }
 
-    // ====== SNIPPET CODE TEMPLATES & MODE SELECTOR ======
-    var currentSnippetMode = 'index';
-    var SNIPPET_TEMPLATES = {
-      index: '<!DOCTYPE html>\n<html lang="id">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>ARUNA LMS • Web App Starter</title>\n  <!-- Tailwind CSS & Plus Jakarta Sans Font -->\n  <' + 'script src="https://cdn.tailwindcss.com"></' + 'script>\n  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">\n  <style>\n    body { font-family: "Plus Jakarta Sans", sans-serif; }\n  </style>\n</head>\n<body class="bg-slate-950 text-slate-100 min-h-screen p-4 sm:p-8 flex flex-col justify-center items-center">\n  <div class="w-full max-w-3xl space-y-5 p-6 rounded-2xl bg-slate-900 border border-blue-500/30 shadow-2xl">\n    <div class="flex items-center justify-between border-b border-blue-500/20 pb-3">\n      <h1 class="text-xl font-black text-blue-400">ARUNA ROYAL HUB LMS</h1>\n      <span class="text-xs px-3 py-1 bg-blue-500/15 text-blue-400 rounded-full font-bold">1.index Mode Active</span>\n    </div>\n    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">\n      Template starter client-side yang terintegrasi langsung ke Google Apps Script backend melalui REST API JSON.\n    </p>\n    <button onclick="alert(\'Terhubung ke sistem ARUNA!\')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-xl text-xs transition shadow-lg">\n      🚀 Uji Koneksi API\n    </button>\n  </div>\n</body>\n</html>',
-      
-      backend: '/**\n * ARUNA LMS Backend Engine • Google Apps Script (code.gs)\n * Menghubungkan Google Spreadsheet ke Vercel Frontend\n */\nfunction doGet(e) {\n  var action = (e && e.parameter && e.parameter.action) || "ping";\n  var result = { success: true, timestamp: new Date().toISOString(), message: "ARUNA GAS API Ready" };\n  \n  if (action === "getState") {\n    result.data = getDatabaseState();\n  }\n  \n  return ContentService.createTextOutput(JSON.stringify(result))\n    .setMimeType(ContentService.MimeType.JSON);\n}\n\nfunction doPost(e) {\n  try {\n    var payload = JSON.parse(e.postData.contents);\n    var action = payload.action;\n    var result = { success: true };\n    \n    if (action === "login") {\n      result = handleUserLogin(payload.email, payload.password);\n    } else if (action === "completeEpisode") {\n      result = handleCompleteEpisode(payload.userId, payload.courseId, payload.epNumber);\n    }\n    \n    return ContentService.createTextOutput(JSON.stringify(result))\n      .setMimeType(ContentService.MimeType.JSON);\n  } catch (err) {\n    return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.toString() }))\n      .setMimeType(ContentService.MimeType.JSON);\n  }\n}',
-
-      setup: '/**\n * Setup Skema Database Google Spreadsheet (setup.gs)\n * Membuat sheet otomatis: USERS, COURSES, MODULES, PROJECTARUNA, ARUNALINKS\n */\nfunction initializeArunaDatabase() {\n  var ss = SpreadsheetApp.getActiveSpreadsheet();\n  var requiredSheets = [\n    { name: "USERS", headers: ["User ID", "Email", "Password", "Name", "Role", "XP", "Completed Episodes", "Certificate ID"] },\n    { name: "COURSES", headers: ["Course ID", "Badge Code", "Title", "Category", "Description", "Instructor", "Total EP", "Duration"] },\n    { name: "MODULES", headers: ["Module ID", "Course ID", "EP Number", "EP Code", "Title", "Video URL", "Duration", "Quiz ID", "Material Text"] },\n    { name: "PROJECTARUNA", headers: ["Project ID", "Title", "Category", "Description", "Video URL", "Resource URL", "Status"] },\n    { name: "ARUNALINKS", headers: ["Link ID", "Title", "Category", "Description", "Resource URL", "Icon"] }\n  ];\n\n  requiredSheets.forEach(function(item) {\n    var sheet = ss.getSheetByName(item.name);\n    if (!sheet) {\n      sheet = ss.insertSheet(item.name);\n      sheet.appendRow(item.headers);\n      sheet.setFrozenRows(1);\n      sheet.getRange(1, 1, 1, item.headers.length).setFontWeight("bold");\n      Logger.log("✓ Sheet berhasil dibuat: " + item.name);\n    }\n  });\n  Logger.log("Inisialisasi Database Spreadsheet Selesai 100%!");\n}'
-    };
-
-    function switchSnippetMode(mode) {
-      currentSnippetMode = mode;
-      var modes = ['index', 'backend', 'setup'];
-      modes.forEach(function(m) {
-        var btn = document.getElementById('snip-btn-' + m);
-        if (btn) {
-          if (m === mode) {
-            btn.className = 'touch-target px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-blue-600 text-white shadow-sm';
-          } else {
-            btn.className = 'touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer';
-          }
-        }
-      });
-
-      var label = document.getElementById('active-snippet-label');
-      var codeEl = document.getElementById('code-snippet-display');
-      if (label) {
-        if (mode === 'index') label.innerText = '1. index.html • Frontend Monolith Starter';
-        else if (mode === 'backend') label.innerText = '2. code.gs • API Endpoint Google Apps Script';
-        else label.innerText = '3. setup.gs • Skema Database Google Sheets';
-      }
-      if (codeEl) {
-        codeEl.innerText = SNIPPET_TEMPLATES[mode] || '';
-      }
-    }
-
-    function copyCurrentActiveSnippet() {
-      var code = SNIPPET_TEMPLATES[currentSnippetMode] || '';
-      var btn = document.getElementById('btn-copy-snippet');
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(code).then(function() {
-          flashCopyBtnSuccess(btn);
-        }).catch(function() {
-          fallbackCopySnippet(code, btn);
-        });
-      } else {
-        fallbackCopySnippet(code, btn);
-      }
-    }
-
-    function fallbackCopySnippet(text, btn) {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        document.execCommand('copy');
-        flashCopyBtnSuccess(btn);
-      } catch (e) {
-        alert('Gagal menyalin kode secara otomatis. Silakan salin manual.');
-      }
-      document.body.removeChild(ta);
-    }
-
-    function flashCopyBtnSuccess(btn) {
-      if (!btn) return;
-      var origHtml = btn.innerHTML;
-      btn.innerHTML = '<span>✓</span><span>Tersalin!</span>';
-      btn.classList.add('bg-emerald-600');
-      setTimeout(function() {
-        btn.innerHTML = origHtml;
-        btn.classList.remove('bg-emerald-600');
-      }, 2000);
-    }
-
-    // ====== GENERATOR 5 PARAGRAF LENGKAP & TERSTRUKTUR PER EPISODE ======
-    function getFiveParagraphsForEpisode(epNumber, title, rawText) {
-      var t = String(title || '');
-
-      if (epNumber === 1) {
-        return [
-          {
-            heading: "1. Konsep Fundamental & Urgensi Arsitektur Monolith Web App",
-            content: "Pada episode pertama ini, kita meletakkan fondasi arsitektur sistem ARUNA LMS dengan memanfaatkan Google Apps Script (GAS) sebagai serverless backend dan Google Sheets sebagai basis data relasional. Pendekatan ini memungkinkan institusi maupun praktisi membangun platform pembelajaran mandiri kelas enterprise dengan ketersediaan tinggi tanpa terbebani biaya langganan cloud server bulanan, sekaligus memanfaatkan ekosistem keamanan Google yang teruji andal."
-          },
-          {
-            heading: "2. Arsitektur Aliran Data & Integrasi Hybrid Vercel-GAS",
-            content: "Mekanisme integrasi beroperasi menggunakan pola komunikasi asinkron RESTful. Frontend modern yang di-hosting di Vercel berkomunikasi dua arah dengan endpoint Web App Google Apps Script melalui pertukaran payload JSON. Fungsi doGet() melayani permintaan status database dan verifikasi kesehatan API, sedangkan doPost() memproses aksi terenkripsi seperti login pengguna, penyimpanan progres modul, dan perekaman sertifikat digital secara real-time."
-          },
-          {
-            heading: "3. Prosedur Implementasi Langkah demi Langkah (Step-by-Step)",
-            content: "Langkah awal dimulai dari pembuatan project pada Apps Script Editor yang terikat pada spreadsheet ARUNACOURSE. Salin template 1. index.html dan 2. code.gs dari kotak kode di bawah. Konfigurasikan skema tabel sheet USERS, COURSES, dan MODULES. Lakukan deployment Web App dengan akses 'Anyone' (Siapa saja) agar domain frontend Vercel dapat melakukan pertukaran request tanpa terhalang permission gate."
-          },
-          {
-            heading: "4. Best Practice, Keamanan Enterprise & Penanganan Error",
-            content: "Terapkan validasi sanitasi input pada form login untuk mencegah injeksi payload berbahaya. Optimalkan kuota request harian Google dengan mengaktifkan strategi in-memory caching saat membaca baris spreadsheet. Jika menemukan galat CORS atau status 404, pastikan URL deployment Web App adalah versi terbaru (New Version) dan periksa konsol developer browser (F12) untuk menginspeksi header respons."
-          },
-          {
-            heading: "5. Rangkuman Pembelajaran & Panduan Menyimak Video",
-            content: "Sebagai sintesis materi, simak video tutorial di bawah untuk mengamati demonstrasi langsung proses menghubungkan form login dengan Google Apps Script. Praktikkan langsung pada tab editor Anda. Setelah berhasil melakukan verifikasi login pertama, klik tombol 'Tandai Selesai & Lanjut' di bawah untuk mengklaim +150 XP dan membuka akses episode berikutnya."
-          }
-        ];
-      }
-
-      if (epNumber === 2) {
-        return [
-          {
-            heading: "1. Konsep Fundamental: Database Spreadsheet Kebal Geser Kolom",
-            content: "Tantangan terbesar menggunakan spreadsheet sebagai database adalah kerapuhan sistem saat ada penambahan atau pergeseran posisi kolom oleh admin. Pada episode kedua ini, kita mengimplementasikan arsitektur Dynamic Header Index Mapping. Dengan arsitektur ini, seluruh query data dipetakan berdasarkan nama header baris pertama, sehingga aplikasi tetap berjalan 100% normal tanpa risiko salah membaca data meskipun susunan kolom spreadsheet diubah."
-          },
-          {
-            heading: "2. Arsitektur Aliran Data & Pemetaan Kolom Otomatis",
-            content: "Sistem backend membaca baris pertama setiap tabel (Row 1) dan secara dinamis membentuk mapping dictionary antara nama atribut (misalnya 'Course ID', 'Episode Video Link', 'Material Text') dengan indeks kolom numeriknya. Seluruh operasi pengambilan maupun pembaruan data modul merujuk pada dictionary ini, memastikan integritas record antara tab USERS, COURSES, dan MODULES tetap presisi."
-          },
-          {
-            heading: "3. Prosedur Praktik: Setup Skema & Script Mapping",
-            content: "Buka Google Sheets database Anda dan pastikan header utama telah terisi rapi sesuai standar ARUNA. Gunakan template 3. setup.gs di bawah untuk menginisialisasi seluruh tabel secara otomatis dengan satu kali klik. Jalankan fungsi mapping pada Apps Script, lalu verifikasi output logger untuk memastikan seluruh kolom terindeks dengan benar tanpa ada field yang bernilai null."
-          },
-          {
-            heading: "4. Keamanan Sistem, In-Memory Caching & Optimasi Kuota",
-            content: "Hindari pemanggilan fungsi SpreadsheetApp.getActiveSheet().getDataRange().getValues() secara berulang dalam loop baris karena akan memicu latensi tinggi dan menghabiskan kuota harian execution time Google Apps Script. Ambil seluruh data tabel dalam satu kali pembacaan array, proses di memori, dan kembalikan response JSON yang telah di-filter untuk menjamin waktu muat di bawah 200ms."
-          },
-          {
-            heading: "5. Rangkuman Output & Arahan Eksekusi Video Pembelajaran",
-            content: "Tonton video tutorial terlampir untuk menyaksikan simulasi pergeseran kolom di spreadsheet dan pembuktian bahwa sistem frontend tetap membaca video link serta progres modul tanpa gangguan. Lakukan pengujian mandiri di spreadsheet Anda, lalu tandai modul ini selesai untuk menyimpan pencapaian progres ke database."
-          }
-        ];
-      }
-
-      if (epNumber === 3) {
-        return [
-          {
-            heading: "1. Konsep Fundamental: Radial Orbit Solar System Navigation",
-            content: "Episode ketiga memperkenalkan inovasi pengalaman pengguna (UX) terdepan platform ARUNA LMS melalui antarmuka navigasi Radial Orbit Solar System. Menu navigasi dirancang melayang dan terinspirasi dari lintasan tata surya, di mana modul-modul utama mengorbit mengelilingi inti logo ARUNA. Desain ini memberikan kesan futuristik, intuitif, dan sangat ergonomis bagi pengguna mobile maupun desktop."
-          },
-          {
-            heading: "2. Arsitektur Visual: CSS Trigonometri & Single Page App (SPA)",
-            content: "Navigasi orbit dibangun memanfaatkan transformasi trigonometri CSS dan variabel custom properties (--angle). Setiap tombol menu berputar secara proporsional mengelilingi pusat lingkaran. Transisi antar halaman (Home, Dashboard, Modul, Project Aruna, ArunaLink) dikendalikan oleh fungsi SPA terpusat yang mengganti tampilan tanpa memicu reload browser, menjaga kehalusan interaksi pengguna."
-          },
-          {
-            heading: "3. Prosedur Praktik: Implementasi Orbit Melayang & Glassmorphism",
-            content: "Salin potongan kode CSS dan markup HTML navigasi orbit dari kotak template 1. index.html di bawah. Pasang event listener touch-friendly pada perangkat mobile. Uji interaksi hover pada planet orbit untuk memastikan animasi putaran melambat secara elegan saat kursor didekatkan, memberikan kenyamanan maksimal bagi siswa dalam memilih modul."
-          },
-          {
-            heading: "4. Best Practice Mobile Responsiveness & Touch Optimization",
-            content: "Pastikan ukuran area sentuh tombol (touch target) memiliki ukuran minimal 44x44 pixel sesuai standar human interface guidelines. Sediakan tombol floating trigger alternatif di sudut layar bawah agar pengguna smartphone satu tangan dapat membuka menu navigasi orbit secara instan kapan saja tanpa perlu scrolling ke atas."
-          },
-          {
-            heading: "5. Rangkuman Desain & Langkah Penerapan Video",
-            content: "Perhatikan tutorial visual pada video di bawah untuk mempelajari teknik pewarnaan palet Royal Blue, pencahayaan glow ambient neon, dan penataan kartu kurikulum. Terapkan styling ke dalam file proyek Anda, lalu klik tombol 'Tandai Selesai & Lanjut' untuk mengantongi poin evaluasi berikutnya."
-          }
-        ];
-      }
-
-      if (epNumber === 4) {
-        return [
-          {
-            heading: "1. Konsep Fundamental: Universal Video Player Engine",
-            content: "Ketersediaan media pembelajaran multimedia yang lancar merupakan jantung dari platform LMS. Di episode keempat, kita mengintegrasikan Video Player Engine pintar yang secara otomatis mendeteksi dan mengonversi berbagai jenis tautan video: mulai dari video YouTube reguler, YouTube Shorts, Google Drive Video sharing link, hingga file video HTML5 mandiri."
-          },
-          {
-            heading: "2. Arsitektur Parser Tautan: Bypass X-Frame-Options Google Drive",
-            content: "Tautan berbagi Google Drive (/view?usp=sharing) tidak dapat diputar langsung di dalam iframe HTML karena proteksi header Google. Engine ARUNA membedah URL tersebut di sisi klien, mengekstrak file ID unik, dan merekonstruksinya menjadi format preview resmi yang diizinkan untuk di-embed (drive.google.com/file/d/{ID}/preview). Begitu pula dengan tautan YouTube yang diubah ke format embed responsif 16:9."
-          },
-          {
-            heading: "3. Prosedur Praktik: Input Video Mandiri Melalui Dashboard Admin",
-            content: "Gunakan panel input video admin di dashboard untuk memasukkan tautan Google Drive atau YouTube ke dalam episode yang dituju. Klik tombol preview untuk memverifikasi bahwa parser video langsung mengenali sumber media dan menampilkan video player aktif tanpa perlu reload halaman."
-          },
-          {
-            heading: "4. Manajemen Hak Akses File & Troubleshooting Pemutaran",
-            content: "Pastikan setelan privasi video pada Google Drive telah disetel ke 'Anyone with the link can view' (Siapa saja yang memiliki link). Untuk video YouTube, pastikan opsi 'Allow embedding' dalam status aktif di YouTube Studio agar video tidak terhalang oleh pembatasan pemutaran pihak ketiga."
-          },
-          {
-            heading: "5. Rangkuman Fitur & Panduan Melanjutkan Modul",
-            content: "Putar video demonstrasi di bawah untuk mengamati pengujian pemutaran berbagai format tautan video secara langsung. Lakukan verifikasi pada proyek Anda dan tandai modul ini selesai untuk melanjutkan ke episode evaluasi kuis otomatis."
-          }
-        ];
-      }
-
-      if (epNumber === 5) {
-        return [
-          {
-            heading: "1. Konsep Fundamental: Automated Grading & Instant Certificate Engine",
-            content: "Episode kelima mematangkan sistem asesmen kompetensi siswa melalui Quiz Engine otomatis dan generator Sertifikat Digital Kompetensi. Setiap peserta yang menyelesaikan evaluasi materi dengan nilai melampaui passing grade (minimal 80/100) secara otomatis diterbitkan sertifikat digital dengan kode verifikasi unik yang tercatat permanen di Google Sheets."
-          },
-          {
-            heading: "2. Arsitektur Evaluasi: Kalkulasi Skor & Sinkronisasi Real-Time",
-            content: "Struktur kuis terdiri dari pertanyaan pilihan ganda yang disinkronkan dari database spreadsheet. Ketika peserta mengirimkan jawaban, sistem memverifikasi kesesuaian jawaban dengan kunci, menghitung persentase nilai akhir, mengupdate poin XP gamifikasi, dan menyuntikkan catatan kelulusan ke sheet USERS dan MODULES secara asinkron."
-          },
-          {
-            heading: "3. Prosedur Praktik: Pengerjaan Kuis & Pratinjau Sertifikat",
-            content: "Pilih opsi jawaban yang paling tepat pada form kuis interaktif di bawah. Klik tombol submit untuk melihat feedback skor seketika. Jika lulus, modal pratinjau sertifikat digital ARUNA Royal Hub akan muncul lengkap dengan nama peserta, judul modul, skor akhir, dan tombol cetak PDF berkualitas tinggi."
-          },
-          {
-            heading: "4. Standar Keamanan Asesmen & Pencegahan Manipulasi Skor",
-            content: "Pastikan validasi passing grade dilakukan dengan verifikasi integritas data. Kunci jawaban tidak diekspos secara mentah di elemen markup DOM yang mudah diinspeksi. Terapkan proteksi penguncian tombol submit ganda untuk mencegah duplikasi catatan sertifikat di dalam spreadsheet."
-          },
-          {
-            heading: "5. Rangkuman Evaluasi & Rekomendasi Langkah Selanjutnya",
-            content: "Simak video instruksional di bawah untuk memelajari cara mengkustomisasi layout sertifikat digital, menambahkan watermark stempel resmi, dan menyesuaikan bobot passing grade kuis sesuai standar kurikulum institusi Anda."
-          }
-        ];
-      }
-
-      // Default terstruktur untuk Episode 6 sampai 10
-      var epTitleClean = t.replace(/^EP\s*\d+:\s*/i, '');
-      return [
-        {
-          heading: "1. Konsep Fundamental & Urgensi Materi " + epTitleClean,
-          content: "Pada materi Episode " + epNumber + " ini, kita mendalami modul '" + epTitleClean + "' yang dirancang khusus untuk memperkuat kapabilitas arsitektur web aplikasi LMS enterprise ARUNA. Pemahaman mendalam pada topik ini menjadi kunci untuk menghasilkan sistem yang scalable, handal, dan mampu melayani ratusan interaksi peserta didik secara simultan tanpa penurunan performa."
-        },
-        {
-          heading: "2. Arsitektur Data, Relasi Spreadsheet & Komunikasi API",
-          content: "Integrasi data pada modul ini menghubungkan komponen frontend interaktif dengan tabel database Google Sheets secara transparan. Setiap perubahan status progres, pengerjaan tugas, maupun pembaruan data pengguna dikirimkan melalui payload JSON terenkripsi ke backend Google Apps Script, memastikan sinkronisasi data antar device berjalan konsisten tanpa latensi tinggi."
-        },
-        {
-          heading: "3. Prosedur Penerapan Langkah demi Langkah (Hands-on Implementation)",
-          content: "Ikuti langkah praktik sistematis: pertama, pastikan workspace editor Anda telah mengimpor template kode terbaru dari tab 1. index.html dan 2. code.gs di bawah. Kedua, sesuaikan variabel parameter sesuai konfigurasi database Anda. Ketiga, lakukan verifikasi melalui browser developer tools (F12) untuk memastikan setiap request API mengembalikan respons status success."
-        },
-        {
-          heading: "4. Best Practice Keamanan, Isolasi Bug & Troubleshooting",
-          content: "Terapkan prinsip kehati-hatian dalam manajemen hak akses: batasi hak modifikasi konfigurasi sensitif hanya untuk akun dengan role Admin. Jika sistem mengalami kendala konektivitas data, lakukan pengecekan URL Web App Google Apps Script dan pastikan izin deployment berada pada mode 'Anyone' agar tidak terjadi penolakan autentikasi lintas domain."
-        },
-        {
-          heading: "5. Rangkuman Capaian Pembelajaran & Penerapan dalam Video",
-          content: "Tonton dan pelajari seluruh demonstrasi teknis yang disajikan pada video pembelajaran di bawah. Cocokkan langkah-langkah yang ada di video dengan materi tertulis ini. Setelah seluruh alur berhasil Anda kuasai dan implementasikan di sistem Anda, klik tombol 'Tandai Selesai & Lanjut' di bawah untuk mengklaim +150 XP gamifikasi Anda."
-        }
-      ];
+    function isPlaceholderMaterial(rawText) {
+      var t = String(rawText || '').trim();
+      if (!t) return true;
+      if (t.indexOf('Isi materi pembelajaran untuk') === 0) return true;
+      if (t.indexOf('Materi pembelajaran untuk') === 0) return true;
+      if (t.indexOf('Belum ada teks/catatan materi') === 0) return true;
+      return false;
     }
 
     function renderFormattedMaterial(rawText, title, epNumber) {
-      var paras = getFiveParagraphsForEpisode(epNumber, title, rawText);
-      var html = '<div class="space-y-4">';
-
-      // Jika ada catatan khusus dari admin/sheet yang bukan teks default singkat, tampilkan juga di atas
-      if (rawText && rawText.trim().length > 60 && rawText.indexOf('Materi pembelajaran untuk') === -1) {
-        html += '<div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/30 space-y-1.5">' +
-          '<div class="flex items-center gap-2">' +
-            '<span class="text-sm">📌</span>' +
-            '<span class="text-xs font-black uppercase tracking-wider text-blue-500 dark:text-blue-300">Catatan Khusus Instruktur (Google Sheets Kolom I)</span>' +
+      if (rawText && rawText.trim() && !isPlaceholderMaterial(rawText)) {
+        var blocks = rawText.trim().split(/\n\s*\n/);
+        return '<div class="space-y-3.5">' +
+          '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs text-blue-700 dark:text-blue-300 font-bold flex items-center gap-2">' +
+            '<span>💡</span><span>Materi Terstruktur (Tersinkronisasi dengan Google Sheets Kolom I) • Episode ' + (epNumber || 1) + '</span>' +
           '</div>' +
-          '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed pl-6">' + rawText.trim() + '</p>' +
+          blocks.map(function (block) {
+            var lines = block.trim().split('\n');
+            var firstLine = (lines[0] || '').trim();
+            var rest = lines.slice(1).join(' ').trim();
+            if (/^(\d+\.|Langkah\s*\d+:|Step\s*\d+:)/i.test(firstLine) && rest) {
+              return '<div class="space-y-1.5 p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-blue-500/15">' +
+                '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-blue-300">' + firstLine + '</h4>' +
+                '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">' + rest + '</p>' +
+              '</div>';
+            }
+            return '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">' + block.trim().replace(/\n/g, '<br>') + '</p>';
+          }).join('') +
         '</div>';
       }
 
-      // Header Info Box 5 Paragraf
-      html += '<div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/25 flex items-start gap-2.5">' +
-        '<span class="text-lg">💡</span>' +
-        '<div class="space-y-1">' +
-          '<p class="text-xs font-bold text-blue-600 dark:text-blue-300">Panduan Teori & Praktik Kurikulum • Episode ' + epNumber + '</p>' +
-          '<p class="text-[11px] text-slate-600 dark:text-slate-300">Pelajari secara saksama 5 poin penting berikut ini sebelum menyimak tayangan video pembelajaran interaktif di bawah.</p>' +
+      return '<div class="space-y-3.5">' +
+        '<div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs text-blue-700 dark:text-blue-300 font-bold flex items-center gap-2">' +
+        '<span>💡</span><span>Ikuti panduan langkah demi langkah berikut ini sebelum atau saat menonton video:</span>' +
         '</div>' +
-      '</div>';
-
-      // 5 Paragraf Terstruktur
-      paras.forEach(function(p, idx) {
-        html += '<div class="space-y-1.5 p-3.5 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200 dark:border-blue-500/15">' +
-          '<div class="flex items-center gap-2">' +
-            '<span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-500 dark:text-blue-400 border border-blue-500/30 font-black text-[10px] flex items-center justify-center flex-shrink-0">' + (idx + 1) + '</span>' +
-            '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">' + p.heading + '</h4>' +
-          '</div>' +
-          '<p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed pl-7">' + p.content + '</p>' +
+        '<div class="space-y-2">' +
+        '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 1: Memahami Sasaran Modul</h4>' +
+        '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Pada episode <strong>' + title + '</strong>, pastikan Anda memahami alur arsitektur sistem, struktur data Google Sheets yang digunakan, serta integrasi endpoint.</p>' +
+        '</div>' +
+        '<div class="space-y-2">' +
+        '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 2: Menyiapkan Alat & Workspace</h4>' +
+        '<ul class="list-disc list-inside text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1">' +
+        '<li>Buka spreadsheet database ARUNACOURSE pada tab browser Anda.</li>' +
+        '<li>Buka editor Google Apps Script jika Anda perlu menyesuaikan formula atau skrip.</li>' +
+        '<li>Gunakan console browser (F12) untuk memantau status komunikasi data jika diperlukan.</li>' +
+        '</ul>' +
+        '</div>' +
+        '<div class="space-y-2">' +
+        '<h4 class="font-black text-xs sm:text-sm text-slate-900 dark:text-white">Langkah 3: Tonton Video & Praktikkan</h4>' +
+        '<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Putar video pembelajaran interaktif di bawah sampai tuntas. Setelah selesai, klik tombol <strong>"✓ Tandai Selesai & Lanjut"</strong> di bawah untuk otomatis mengklaim +150 XP dan melanjutkan ke materi berikutnya.</p>' +
+        '</div>' +
         '</div>';
-      });
-
-      // Kotak Menu Source Code Mode Template dengan 1-Click Copy-Paste (1. index.html)
-      html += '<div class="mt-5 pt-4 border-t border-slate-200 dark:border-blue-500/20 space-y-3">' +
-        '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">' +
-          '<div>' +
-            '<span class="text-[11px] font-black uppercase tracking-wider text-blue-500 flex items-center gap-1.5">' +
-              '<span>💻</span><span>Source Code Starter Template • Mode Copy-Paste</span>' +
-            '</span>' +
-            '<p class="text-[11px] text-slate-500 dark:text-slate-400">Pilih mode template di bawah lalu klik salin untuk langsung diterapkan di workspace Anda:</p>' +
-          '</div>' +
-          '<div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900/90 p-1 rounded-xl border border-blue-500/30 self-start sm:self-auto">' +
-            '<button type="button" onclick="switchSnippetMode(\'index\')" id="snip-btn-index" class="touch-target px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-blue-600 text-white shadow-sm">' +
-              '1. index.html' +
-            '</button>' +
-            '<button type="button" onclick="switchSnippetMode(\'backend\')" id="snip-btn-backend" class="touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer">' +
-              '2. code.gs' +
-            '</button>' +
-            '<button type="button" onclick="switchSnippetMode(\'setup\')" id="snip-btn-setup" class="touch-target px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-white transition cursor-pointer">' +
-              '3. setup.gs' +
-            '</button>' +
-          '</div>' +
-        '</div>' +
-        '<div class="relative rounded-2xl bg-slate-950 border border-blue-500/35 overflow-hidden shadow-2xl">' +
-          '<div class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-blue-500/20">' +
-            '<div class="flex items-center space-x-2">' +
-              '<span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>' +
-              '<span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>' +
-              '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>' +
-              '<span id="active-snippet-label" class="text-xs font-mono font-bold text-blue-400 ml-2">1. index.html • Frontend Monolith Starter</span>' +
-            '</div>' +
-            '<button id="btn-copy-snippet" type="button" onclick="copyCurrentActiveSnippet()" class="touch-target px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-black flex items-center gap-1.5 transition shadow-sm cursor-pointer">' +
-              '<span>📋</span>' +
-              '<span>Salin Kode</span>' +
-            '</button>' +
-          '</div>' +
-          '<pre class="p-4 text-xs font-mono text-emerald-300 overflow-x-auto max-h-60 leading-relaxed selection:bg-blue-600"><code id="code-snippet-display"></code></pre>' +
-        '</div>' +
-      '</div>';
-
-      html += '</div>';
-      return html;
     }
 
     function openModuleDetail(courseId, modId) {
@@ -2107,7 +2180,6 @@
       var matContent = document.getElementById('modal-material-content-text');
       if (matContent) {
         matContent.innerHTML = renderFormattedMaterial(mod.materialText, mod.title, epNumber);
-        switchSnippetMode('index');
       }
 
       // 4. Kolom Kiri: Video Player
@@ -2122,7 +2194,7 @@
           return '<label class="flex items-center space-x-2.5 p-2.5 rounded-lg bg-white/80 dark:bg-slate-900 border border-blue-500/20 cursor-pointer">' +
             '<input type="radio" name="quiz-opt" value="' + i + '" ' + (i === 0 ? 'checked' : '') + '>' +
             '<span class="text-xs font-semibold">' + opt + '</span>' +
-          '</label>';
+            '</label>';
         }).join('');
       } else {
         qBox.classList.add('hidden');
@@ -2163,29 +2235,29 @@
             // Active Episode (Gambar 4: Border hijau/biru tebal + dot)
             return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-3 rounded-xl border-2 border-emerald-500 dark:border-blue-400 bg-emerald-500/10 dark:bg-blue-500/20 shadow-md cursor-pointer transition">' +
               '<div class="flex items-center space-x-2.5 truncate pr-2">' +
-                '<span class="w-3 h-3 rounded-full bg-emerald-500 dark:bg-blue-400 flex-shrink-0 animate-pulse"></span>' +
-                '<span class="font-black text-xs text-emerald-800 dark:text-white truncate">EP' + num + ': ' + m.title + '</span>' +
+              '<span class="w-3 h-3 rounded-full bg-emerald-500 dark:bg-blue-400 flex-shrink-0 animate-pulse"></span>' +
+              '<span class="font-black text-xs text-emerald-800 dark:text-white truncate">EP' + num + ': ' + m.title + '</span>' +
               '</div>' +
               '<span class="font-mono text-[11px] font-bold text-emerald-700 dark:text-blue-300 flex-shrink-0">' + dur + '</span>' +
-            '</div>';
+              '</div>';
           } else if (m.completed) {
             // Completed Episode (Gambar 4: Centang hijau)
             return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/15 cursor-pointer transition text-xs">' +
               '<div class="flex items-center space-x-2.5 truncate pr-2">' +
-                '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
-                '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate">EP' + num + ': ' + m.title + '</span>' +
+              '<span class="text-emerald-500 font-black text-xs flex-shrink-0">✓</span>' +
+              '<span class="font-bold text-emerald-700 dark:text-emerald-400 truncate">EP' + num + ': ' + m.title + '</span>' +
               '</div>' +
               '<span class="font-mono text-[11px] text-emerald-600 dark:text-emerald-300 font-bold flex-shrink-0">' + dur + '</span>' +
-            '</div>';
+              '</div>';
           } else {
             // Pending Episode (Gambar 4: Lingkaran abu-abu)
             return '<div onclick="openModuleDetail(\'' + course.id + '\', \'' + m.id + '\')" class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200/70 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 hover:border-blue-500/40 hover:bg-blue-500/5 cursor-pointer transition text-xs">' +
               '<div class="flex items-center space-x-2.5 truncate pr-2">' +
-                '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
-                '<span class="font-medium text-slate-700 dark:text-slate-300 truncate">EP' + num + ': ' + m.title + '</span>' +
+              '<span class="text-slate-400 font-bold text-xs flex-shrink-0">○</span>' +
+              '<span class="font-medium text-slate-700 dark:text-slate-300 truncate">EP' + num + ': ' + m.title + '</span>' +
               '</div>' +
               '<span class="font-mono text-[11px] text-slate-400 font-bold flex-shrink-0">' + dur + '</span>' +
-            '</div>';
+              '</div>';
           }
         }).join('');
       }
@@ -2223,7 +2295,7 @@
         courseId: activeModContext.courseId,
         modId: activeModContext.modId,
         score: score
-      }, function(res) {
+      }, function (res) {
         btn.disabled = false;
         if (res && res.success) {
           appState = res.appData;
@@ -2232,7 +2304,7 @@
           st.innerText = '✓ ' + (res.message || 'Episode berhasil diselesaikan! +150 XP');
 
           // Otomatis lanjut ke episode berikutnya dalam 700ms
-          setTimeout(function() {
+          setTimeout(function () {
             var course = appState.courses.find(function (c) { return c.id === activeModContext.courseId; });
             var nextIndex = activeModContext.epIndex + 1;
             if (course && nextIndex < course.modules.length) {
@@ -2244,7 +2316,7 @@
         } else if (res && res.message) {
           st.innerText = '⚠️ ' + res.message;
         }
-      }, function(err) {
+      }, function (err) {
         btn.disabled = false;
         st.innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
       });
@@ -2263,7 +2335,7 @@
       callBackend('saveModule', {
         userId: currentUser.id,
         payload: { courseId: activeModContext.courseId, epOrder: activeModContext.epOrder, modId: activeModContext.modId.indexOf('-EP') !== -1 ? '' : activeModContext.modId, title: t, videoUrl: u, materialText: m, durationMin: d }
-      }, function(res) {
+      }, function (res) {
         btn.disabled = false;
         if (res && res.success) {
           appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
@@ -2273,7 +2345,7 @@
         } else if (res && res.message) {
           st.innerText = '⚠️ ' + res.message;
         }
-      }, function(err) {
+      }, function (err) {
         btn.disabled = false;
         st.innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
       });
@@ -2352,7 +2424,7 @@
           resourceUrl: document.getElementById('proj-input-res').value.trim(),
           status: document.getElementById('proj-input-status').value
         }
-      }, function(res) {
+      }, function (res) {
         btn.disabled = false;
         if (res && res.success) {
           appState = res.appData; ensureTenEpisodesPerCourse(appState); renderAllConnectedMenus();
@@ -2360,7 +2432,7 @@
         } else if (res && res.message) {
           document.getElementById('proj-modal-msg').innerText = '⚠️ ' + res.message;
         }
-      }, function(err) {
+      }, function (err) {
         btn.disabled = false;
         document.getElementById('proj-modal-msg').innerText = '⚠️ Gagal simpan: ' + (err && err.message ? err.message : String(err));
       });
@@ -2381,4 +2453,5 @@
     }
   </script>
 </body>
+
 </html>
